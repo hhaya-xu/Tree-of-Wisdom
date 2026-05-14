@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "🌿 知识库",
+    pageTitle: "🌿 Tree of Wisdom",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -92,3 +92,4 @@ const config: QuartzConfig = {
 }
 
 export default config
+
