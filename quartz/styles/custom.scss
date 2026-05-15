@@ -1,3 +1,127 @@
-@use "./base.scss";
+﻿/* ===== Tree of Wisdom — 入流亡所群聊录 专用样式 ===== */
 
-// put your custom CSS here!
+/* 仅作用于群聊录页面 */
+body[data-slug$="入-流-亡-所-群-聊-录"] {
+  --chat-bg: #fdfaf6;
+  max-width: 720px;
+}
+
+/* --- 文档标题 --- */
+body[data-slug$="入-流-亡-所-群-聊-录"] .doc-title {
+  display: block;
+  font-size: 22pt;
+  font-weight: 700;
+  color: #1A1A1A;
+  text-align: center;
+  margin: 2rem 0 0.5rem;
+  line-height: 1.4;
+}
+
+/* --- 日期 --- */
+body[data-slug$="入-流-亡-所-群-聊-录"] .doc-date {
+  text-align: center;
+  color: #888888;
+  font-size: 10pt;
+  margin: 0 0 0.2rem;
+}
+
+/* --- 群名 --- */
+body[data-slug$="入-流-亡-所-群-聊-录"] .doc-group {
+  text-align: center;
+  color: #888888;
+  font-size: 10pt;
+  margin: 0 0 1rem;
+}
+
+/* --- 分隔线 --- */
+body[data-slug$="入-流-亡-所-群-聊-录"] .doc-sep {
+  border: none;
+  height: 1px;
+  background: #D4C4B0;
+  margin: 1.5rem 0;
+  opacity: 0.6;
+}
+
+/* --- 章节标题 --- */
+body[data-slug$="入-流-亡-所-群-聊-录"] .chap-title {
+  display: block;
+  font-size: 13pt;
+  font-weight: 700;
+  color: #5C3A21;
+  margin: 2rem 0 0.8rem;
+}
+
+/* --- 子标题 --- */
+body[data-slug$="入-流-亡-所-群-聊-录"] .chap-sub {
+  color: #999999;
+  font-size: 8.5pt;
+  margin: 0 0 0.8rem;
+}
+
+/* --- 格式1: 单人发言 HH:MM content --- */
+body[data-slug$="入-流-亡-所-群-聊-录"] .msg-single {
+  color: #444444;
+  font-size: 9.5pt;
+  margin: 0.15rem 0;
+  line-height: 1.6;
+}
+
+/* --- 格式1: 时间戳部分 --- */
+body[data-slug$="入-流-亡-所-群-聊-录"] .msg-time-single {
+  color: #AAAAAA;
+  font-size: 8pt;
+  margin-right: 0.6rem;
+}
+
+/* --- 格式2: 精华摘录 --- */
+body[data-slug$="入-流-亡-所-群-聊-录"] .msg-excerpt {
+  color: #333333;
+  font-size: 10.5pt;
+  margin: 0.3rem 0;
+  line-height: 2;
+}
+
+/* --- 格式3 容器 --- */
+body[data-slug$="入-流-亡-所-群-聊-录"] .chat-block {
+  margin: 0.8rem 0;
+  padding: 0.4rem 0;
+  border-left: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+/* --- 格式3: 时间戳 --- */
+body[data-slug$="入-流-亡-所-群-聊-录"] .msg-time {
+  color: #AAAAAA;
+  font-size: 8pt;
+  margin: 0 0 0.1rem;
+}
+
+/* --- 格式3: 说话人 --- */
+body[data-slug$="入-流-亡-所-群-聊-录"] .msg-name {
+  color: #8B6914;
+  font-size: 9pt;
+  font-weight: 700;
+  margin: 0 0 0.2rem;
+}
+
+/* --- 格式3: 内容 --- */
+body[data-slug$="入-流-亡-所-群-聊-录"] .msg-body {
+  color: #222222;
+  font-size: 10.5pt;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* --- 图片占位 --- */
+body[data-slug$="入-流-亡-所-群-聊-录"] .msg-image {
+  color: #222222;
+  font-size: 10.5pt;
+  font-style: italic;
+}
+
+/* --- 移动端适配 --- */
+@media (max-width: 600px) {
+  body[data-slug$="入-流-亡-所-群-聊-录"] .doc-title { font-size: 16pt; }
+  body[data-slug$="入-流-亡-所-群-聊-录"] .msg-body { font-size: 9.5pt; }
+}
+
