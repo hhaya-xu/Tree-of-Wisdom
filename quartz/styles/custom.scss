@@ -1,16 +1,20 @@
 ﻿/* ============================================================
-   Tree of Wisdom — 汴京十二时辰风格
-   暗底暖金 · 古画质感 · 现代交互
+   Tree of Wisdom — Hallmark Atmospheric Edition
+   OKLCH 色彩 · 极端字重 · 收紧字距 · 行宽约束 · 字体淡入
    ============================================================ */
 
-/* ---------- 1. 根基：背景 & 底纹 ---------- */
+/* ---------- 0. 字体加载淡入 (Hallmark #6) ---------- */
+body { animation: hallmarkFontFade 0.4s 0.15s both; }
+
+/* ---------- 1. 根基：背景 & 底纹 (OKLCH) ---------- */
 
 body {
   background:
-    radial-gradient(circle at 18% 16%, rgba(210,179,121,.14), transparent 28%),
-    radial-gradient(circle at 74% 22%, rgba(143,61,46,.06), transparent 24%),
-    radial-gradient(circle at 52% 78%, rgba(52,89,92,.08), transparent 22%),
-    linear-gradient(180deg, #0d0c0a, #0f0e0c 55%, #0d0c0a);
+    radial-gradient(circle at 18% 16%, oklch(78% 0.075 82 / 14%), transparent 28%),
+    radial-gradient(circle at 74% 22%, oklch(42% 0.12 30 / 6%), transparent 24%),
+    radial-gradient(circle at 52% 78%, oklch(42% 0.04 210 / 8%), transparent 22%),
+    linear-gradient(180deg, oklch(12% 0.005 80), oklch(14% 0.005 80) 55%, oklch(12% 0.005 80));
+  font-weight: 300; /* Hallmark #2: body 300 */
 }
 
 body::before {
@@ -21,8 +25,8 @@ body::before {
   z-index: 0;
   opacity: .10;
   background-image:
-    linear-gradient(rgba(210,179,121,.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(210,179,121,.06) 1px, transparent 1px);
+    linear-gradient(oklch(78% 0.075 82 / 6%) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(78% 0.075 82 / 6%) 1px, transparent 1px);
   background-size: 108px 108px;
   mask-image: radial-gradient(circle at center, black 38%, transparent 95%);
   -webkit-mask-image: radial-gradient(circle at center, black 38%, transparent 95%);
@@ -30,118 +34,111 @@ body::before {
 
 #quartz-root { position: relative; z-index: 1; }
 
-/* ---------- 2. 排版 ---------- */
+/* ---------- 2. 排版 (Hallmark #2: display 800, #3: letter-spacing -0.02em) ---------- */
 
 h1, h2, h3, h4, h5, h6,
 .article-title,
 .page-title,
 .folder-title {
   font-family: "Noto Serif SC", "Iowan Old Style", Baskerville, "Palatino Linotype", "Times New Roman", serif !important;
-  font-weight: 500;
-  letter-spacing: .01em;
+  font-weight: 800; /* Hallmark #2 */
 }
+
+h1 { font-size: 1.8rem; color: oklch(92% 0.022 86); letter-spacing: -0.02em; } /* Hallmark #3 */
+.article-title { font-size: 1.9rem; color: oklch(92% 0.022 86); letter-spacing: -0.02em; } /* Hallmark #3 */
+h2 { font-size: 1.35rem; color: oklch(92% 0.022 86); border-bottom: 1px solid oklch(35% 0.018 82); padding-bottom: .4rem; letter-spacing: -0.01em; }
+h3 { font-size: 1.1rem; color: oklch(84% 0.028 86); letter-spacing: -0.005em; }
 
 body {
   font-family: "Noto Sans SC", "Avenir Next", "PingFang SC", "Hiragino Sans GB", sans-serif;
 }
 
-h1 { font-size: 1.8rem; color: var(--dark); }
-h2 { font-size: 1.35rem; color: var(--dark); border-bottom: 1px solid var(--gray); padding-bottom: .4rem; }
-h3 { font-size: 1.1rem; color: var(--darkgray); }
-
-/* ---------- 3. 链接 ---------- */
+/* ---------- 3. 链接 (OKLCH) ---------- */
 
 a, a:visited {
-  color: var(--secondary);
+  color: oklch(78% 0.075 82);
   text-decoration: none;
   transition: color .18s ease, border-color .18s ease;
 }
 
 a:hover {
-  color: var(--tertiary);
-  border-bottom: 1px solid var(--tertiary);
+  color: oklch(85% 0.08 85);
+  border-bottom: 1px solid oklch(85% 0.08 85);
 }
 
 .internal {
-  color: var(--secondary) !important;
+  color: oklch(78% 0.075 82) !important;
 }
 
 .internal:hover {
-  color: var(--tertiary) !important;
+  color: oklch(85% 0.08 85) !important;
 }
 
-/* ---------- 4. 侧边栏 ---------- */
+/* ---------- 4. 侧边栏 (OKLCH) ---------- */
 
 .left,
 .sidebar {
   background:
-    radial-gradient(circle at 20% 30%, rgba(210,179,121,.06), transparent 50%),
-    linear-gradient(180deg, rgba(14,13,11,.94), rgba(10,9,7,.96));
-  border-right: 1px solid rgba(210,179,121,.12);
+    radial-gradient(circle at 20% 30%, oklch(78% 0.075 82 / 6%), transparent 50%),
+    linear-gradient(180deg, oklch(14% 0.005 80 / 94%), oklch(10% 0.005 80 / 96%));
+  border-right: 1px solid oklch(78% 0.075 82 / 12%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
-/* 侧边栏标题 */
 .sidebar .page-title,
 .left .page-title {
   font-family: "Noto Serif SC", serif !important;
   font-size: 1.15rem;
-  font-weight: 500;
-  letter-spacing: .04em;
-  color: var(--dark);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: oklch(92% 0.022 86);
 }
 
-/* 侧边栏列表项 */
 .explorer a,
 .recent-notes a,
 .folder-container button {
-  color: var(--darkgray) !important;
+  color: oklch(84% 0.028 86) !important;
   transition: color .18s ease;
 }
 
 .explorer a:hover,
 .recent-notes a:hover,
 .folder-container button:hover {
-  color: var(--secondary) !important;
+  color: oklch(78% 0.075 82) !important;
 }
 
-/* explorer 文件夹图标 */
 .folder-icon {
-  color: var(--secondary);
+  color: oklch(78% 0.075 82);
 }
 
-/* ---------- 5. 顶栏 ---------- */
+/* ---------- 5. 顶栏 (OKLCH) ---------- */
 
 .page-header {
-  border-bottom: 1px solid rgba(210,179,121,.10);
+  border-bottom: 1px solid oklch(78% 0.075 82 / 10%);
   padding-bottom: 1.2rem;
   margin-bottom: 2rem;
 }
 
 .breadcrumb-container a {
-  color: var(--darkgray);
+  color: oklch(84% 0.028 86);
   opacity: .7;
 }
 
 .breadcrumb-container a:hover {
-  color: var(--secondary);
+  color: oklch(78% 0.075 82);
   opacity: 1;
 }
 
-.article-title {
-  font-size: 1.9rem;
-  color: var(--dark);
-}
-
-/* ---------- 6. 内容区 ---------- */
+/* ---------- 6. 内容区 (Hallmark #5: 62ch) ---------- */
 
 .center {
   background: transparent;
 }
 
 article {
-  color: var(--darkgray);
+  color: oklch(84% 0.028 86);
+  max-width: 62ch; /* Hallmark #5 */
 }
 
 article p {
@@ -150,34 +147,31 @@ article p {
 }
 
 article strong {
-  color: var(--dark);
+  color: oklch(92% 0.022 86);
 }
 
-/* 引用块 */
 blockquote {
-  border-left: 2px solid rgba(210,179,121,.35);
-  background: rgba(210,179,121,.04);
+  border-left: 2px solid oklch(78% 0.075 82 / 35%);
+  background: oklch(78% 0.075 82 / 4%);
   padding: .8rem 1.2rem;
   margin: 1.2rem 0;
   border-radius: 0 6px 6px 0;
-  color: var(--darkgray);
+  color: oklch(84% 0.028 86);
 }
 
-/* 代码块 */
 pre {
-  background: #0d0c0a !important;
-  border: 1px solid rgba(210,179,121,.15);
+  background: oklch(12% 0.005 80) !important;
+  border: 1px solid oklch(78% 0.075 82 / 15%);
   border-radius: 8px;
 }
 
 code {
-  background: rgba(210,179,121,.10);
-  color: var(--tertiary);
+  background: oklch(78% 0.075 82 / 10%);
+  color: oklch(85% 0.08 85);
   padding: .15em .4em;
   border-radius: 4px;
 }
 
-/* 表格 */
 table {
   border-collapse: collapse;
   width: 100%;
@@ -185,25 +179,25 @@ table {
 }
 
 th {
-  background: rgba(210,179,121,.08);
-  color: var(--dark);
-  border-bottom: 1px solid rgba(210,179,121,.25);
+  background: oklch(78% 0.075 82 / 8%);
+  color: oklch(92% 0.022 86);
+  border-bottom: 1px solid oklch(78% 0.075 82 / 25%);
   padding: .6rem .9rem;
   text-align: left;
   font-family: "Noto Serif SC", serif;
 }
 
 td {
-  border-bottom: 1px solid rgba(210,179,121,.08);
+  border-bottom: 1px solid oklch(78% 0.075 82 / 8%);
   padding: .5rem .9rem;
 }
 
-/* ---------- 7. 搜索 ---------- */
+/* ---------- 7. 搜索 (OKLCH) ---------- */
 
 .search-container input {
-  background: rgba(14,13,11,.85);
-  border: 1px solid rgba(210,179,121,.18);
-  color: var(--darkgray);
+  background: oklch(14% 0.005 80 / 85%);
+  border: 1px solid oklch(78% 0.075 82 / 18%);
+  color: oklch(84% 0.028 86);
   border-radius: 8px;
   padding: .55rem .8rem;
   font-family: inherit;
@@ -211,177 +205,179 @@ td {
 }
 
 .search-container input:focus {
-  border-color: rgba(210,179,121,.45);
+  border-color: oklch(78% 0.075 82 / 45%);
   outline: none;
-  box-shadow: 0 0 20px rgba(210,179,121,.08);
+  box-shadow: 0 0 20px oklch(78% 0.075 82 / 8%);
 }
 
 .search-container .search-icon {
-  color: var(--gray);
+  color: oklch(35% 0.018 82);
 }
 
-/* 搜索结果 */
 .popover {
-  background: rgba(14,13,11,.96);
-  border: 1px solid rgba(210,179,121,.18);
+  background: oklch(14% 0.005 80 / 96%);
+  border: 1px solid oklch(78% 0.075 82 / 18%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 10px;
 }
 
-/* ---------- 8. 知识图谱 ---------- */
+/* ---------- 8. 知识图谱 (OKLCH) ---------- */
 
 .graph {
-  background: rgba(10,9,7,.6);
-  border: 1px solid rgba(210,179,121,.10);
+  background: oklch(10% 0.005 80 / 60%);
+  border: 1px solid oklch(78% 0.075 82 / 10%);
   border-radius: 12px;
   overflow: hidden;
 }
 
-/* ---------- 9. 反向链接 ---------- */
+/* ---------- 9. 反向链接 (OKLCH) ---------- */
 
 .backlinks {
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(210,179,121,.12);
+  border-top: 1px solid oklch(78% 0.075 82 / 12%);
 }
 
 .backlinks h3 {
-  color: var(--secondary);
+  color: oklch(78% 0.075 82);
   font-size: .85rem;
   letter-spacing: .12em;
 }
 
 .backlinks .overflow {
-  color: var(--darkgray);
+  color: oklch(84% 0.028 86);
 }
 
-/* ---------- 10. 标签 ---------- */
+/* ---------- 10. 标签 (OKLCH) ---------- */
 
 .tag {
-  background: rgba(210,179,121,.10);
-  color: var(--secondary);
+  background: oklch(78% 0.075 82 / 10%);
+  color: oklch(78% 0.075 82);
   border-radius: 4px;
   padding: .15em .55em;
   font-size: .8rem;
 }
 
 .tag:hover {
-  background: rgba(210,179,121,.18);
+  background: oklch(78% 0.075 82 / 18%);
 }
 
-/* ---------- 11. 滚动条 ---------- */
+/* ---------- 11. 滚动条 (OKLCH) ---------- */
 
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(210,179,121,.18);
+  background: oklch(78% 0.075 82 / 18%);
   border-radius: 3px;
 }
-::-webkit-scrollbar-thumb:hover { background: rgba(210,179,121,.32); }
+::-webkit-scrollbar-thumb:hover { background: oklch(78% 0.075 82 / 32%); }
 
-/* ---------- 12. 选中文字 ---------- */
+/* ---------- 12. 选中文字 (OKLCH) ---------- */
 
 ::selection {
-  background: rgba(210,179,121,.25);
-  color: var(--dark);
+  background: oklch(78% 0.075 82 / 25%);
+  color: oklch(92% 0.022 86);
 }
 
-/* ---------- 13. 目录 ---------- */
+/* ---------- 13. 目录 (OKLCH) ---------- */
 
 .toc {
-  border-left: 1px solid rgba(210,179,121,.20);
+  border-left: 1px solid oklch(78% 0.075 82 / 20%);
   padding-left: 1rem;
 }
 
 .toc a {
-  color: var(--darkgray);
+  color: oklch(84% 0.028 86);
   font-size: .88rem;
 }
 
 .toc a:hover {
-  color: var(--secondary);
+  color: oklch(78% 0.075 82);
 }
 
-/* ---------- 14. 页脚 ---------- */
+/* ---------- 14. 页脚 (OKLCH) ---------- */
 
 footer {
-  border-top: 1px solid rgba(210,179,121,.10);
-  color: var(--gray);
+  border-top: 1px solid oklch(78% 0.075 82 / 10%);
+  color: oklch(35% 0.018 82);
   font-size: .82rem;
   padding: 1.5rem 0;
   margin-top: 3rem;
 }
 
 footer a {
-  color: var(--darkgray);
+  color: oklch(84% 0.028 86);
 }
 
 footer a:hover {
-  color: var(--secondary);
+  color: oklch(78% 0.075 82);
 }
 
 /* ---------- 15. 移动端 ---------- */
 
 
 /* ============================================================
-   入流亡所群聊录 — 五人物颜色系统
+   入流亡所群聊录 — 五人物颜色系统 (OKLCH + Hallmark)
    ============================================================ */
 
 .speaker-ddj {
-  color: #d2b379;
+  color: oklch(78% 0.075 82);
   font-weight: 700;
 }
 
 .speaker-zz {
-  color: #6a9a8b;
+  color: oklch(63% 0.06 180);
   font-weight: 700;
 }
 
 .speaker-baiyang {
-  color: #c48b7a;
+  color: oklch(66% 0.07 35);
   font-weight: 700;
 }
 
 .speaker-zhan {
-  color: #8a9e6b;
+  color: oklch(67% 0.08 130);
   font-weight: 700;
 }
 
 .speaker-hongliang {
-  color: #7a8fba;
+  color: oklch(62% 0.06 260);
   font-weight: 700;
 }
 
 .speaker-mengyong {
-  color: #9a85a8;
+  color: oklch(63% 0.05 310);
   font-weight: 700;
 }
 
-/* 时间戳 */
+/* Hallmark #4: Geist Mono for timestamps */
 .msg-ts {
-  color: #6b5e46;
+  color: oklch(48% 0.04 82);
   font-size: 8.5pt;
   margin-right: 0.4rem;
+  font-family: "Geist Mono", "IBM Plex Mono", monospace;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
-/* 对话内容 */
 .msg-content {
-  color: #d4c8b0;
+  color: oklch(84% 0.028 86);
   line-height: 1.9;
 }
 
-/* 对话块 */
 .dialogue-block {
   margin: 0.6rem 0;
   padding-left: 0.5rem;
-  border-left: 2px solid rgba(210,179,121,0.15);
+  border-left: 2px solid oklch(78% 0.075 82 / 15%);
 }
 
-/* 感悟摘录特殊样式 */
 .excerpt-line {
-  color: #c4b898;
+  color: oklch(79% 0.03 86);
   line-height: 2.2;
   margin: 0.2rem 0;
   font-style: italic;
 }
+
+
+@keyframes hallmarkFontFade { from { opacity: 0; } to { opacity: 1; } }

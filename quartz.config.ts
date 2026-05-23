@@ -18,7 +18,7 @@ const config: QuartzConfig = {
       typography: {
         header: "Noto Serif SC",
         body: "Noto Sans SC",
-        code: "IBM Plex Mono",
+        code: "Geist Mono",
       },
       colors: {
         lightMode: {
@@ -33,15 +33,15 @@ const config: QuartzConfig = {
           textHighlight: "#fff23688",
         },
         darkMode: {
-          light: "#0d0c0a",
-          lightgray: "#1a1714",
-          gray: "#3d362a",
-          darkgray: "#d4c8b0",
-          dark: "#ece3d1",
-          secondary: "#d2b379",
-          tertiary: "#e8c97a",
-          highlight: "rgba(210,179,121,0.10)",
-          textHighlight: "#d2b37944",
+          light: "oklch(12% 0.005 80)",
+          lightgray: "oklch(20% 0.005 82)",
+          gray: "oklch(35% 0.018 82)",
+          darkgray: "oklch(84% 0.028 86)",
+          dark: "oklch(92% 0.022 86)",
+          secondary: "oklch(78% 0.075 82)",
+          tertiary: "oklch(85% 0.08 85)",
+          highlight: "oklch(78% 0.075 82 / 10%)",
+          textHighlight: "oklch(78% 0.075 82 / 27%)",
         },
       },
     },
