@@ -323,120 +323,65 @@ footer a:hover {
 
 /* ---------- 15. 移动端 ---------- */
 
-@media (max-width: 600px) {
-  h1 { font-size: 1.4rem; }
-  h2 { font-size: 1.15rem; }
-  .article-title { font-size: 1.5rem; }
-  article p { line-height: 1.75; }
-}
 
 /* ============================================================
-   群聊录专用样式（保留，适配暗色主题）
+   入流亡所群聊录 — 五人物颜色系统
    ============================================================ */
 
-body[data-slug$="入-流-亡-所-群-聊-录"] {
-  max-width: 720px;
-}
-
-body[data-slug$="入-流-亡-所-群-聊-录"] .doc-title {
-  display: block;
-  font-size: 22pt;
-  font-weight: 700;
-  color: #ece3d1;
-  text-align: center;
-  margin: 2rem 0 .5rem;
-  line-height: 1.4;
-}
-
-body[data-slug$="入-流-亡-所-群-聊-录"] .doc-date {
-  text-align: center;
-  color: #998a72;
-  font-size: 10pt;
-  margin: 0 0 .2rem;
-}
-
-body[data-slug$="入-流-亡-所-群-聊-录"] .doc-group {
-  text-align: center;
-  color: #998a72;
-  font-size: 10pt;
-  margin: 0 0 1rem;
-}
-
-body[data-slug$="入-流-亡-所-群-聊-录"] .doc-sep {
-  border: none;
-  height: 1px;
-  background: #50442e;
-  margin: 1.5rem 0;
-  opacity: .6;
-}
-
-body[data-slug$="入-流-亡-所-群-聊-录"] .chap-title {
-  display: block;
-  font-size: 13pt;
-  font-weight: 700;
-  color: #c9a96e;
-  margin: 2rem 0 .8rem;
-}
-
-body[data-slug$="入-流-亡-所-群-聊-录"] .chap-sub {
-  color: #8a7b62;
-  font-size: 8.5pt;
-  margin: 0 0 .8rem;
-}
-
-body[data-slug$="入-流-亡-所-群-聊-录"] .msg-single {
-  color: #c4b898;
-  font-size: 9.5pt;
-  margin: .15rem 0;
-  line-height: 1.6;
-}
-
-body[data-slug$="入-流-亡-所-群-聊-录"] .msg-time-single {
-  color: #6b5e46;
-  font-size: 8pt;
-  margin-right: .6rem;
-}
-
-body[data-slug$="入-流-亡-所-群-聊-录"] .msg-excerpt {
-  color: #d4c8b0;
-  font-size: 10.5pt;
-  margin: .3rem 0;
-  line-height: 2;
-}
-
-body[data-slug$="入-流-亡-所-群-聊-录"] .chat-block {
-  margin: .8rem 0;
-  padding: .4rem 0;
-  border-left: 2px solid transparent;
-}
-
-body[data-slug$="入-流-亡-所-群-聊-录"] .msg-time {
-  color: #6b5e46;
-  font-size: 8pt;
-  margin: 0 0 .1rem;
-}
-
-body[data-slug$="入-流-亡-所-群-聊-录"] .msg-name {
+.speaker-ddj {
   color: #d2b379;
-  font-size: 9pt;
   font-weight: 700;
-  margin: 0 0 .2rem;
 }
 
-body[data-slug$="入-流-亡-所-群-聊-录"] .msg-body {
+.speaker-zz {
+  color: #6a9a8b;
+  font-weight: 700;
+}
+
+.speaker-baiyang {
+  color: #c48b7a;
+  font-weight: 700;
+}
+
+.speaker-zhan {
+  color: #8a9e6b;
+  font-weight: 700;
+}
+
+.speaker-hongliang {
+  color: #7a8fba;
+  font-weight: 700;
+}
+
+.speaker-mengyong {
+  color: #9a85a8;
+  font-weight: 700;
+}
+
+/* 时间戳 */
+.msg-ts {
+  color: #6b5e46;
+  font-size: 8.5pt;
+  margin-right: 0.4rem;
+}
+
+/* 对话内容 */
+.msg-content {
   color: #d4c8b0;
-  font-size: 10.5pt;
-  line-height: 1.8;
-  margin: 0;
+  line-height: 1.9;
 }
 
-body[data-slug$="入-流-亡-所-群-聊-录"] .msg-image {
+/* 对话块 */
+.dialogue-block {
+  margin: 0.6rem 0;
+  padding-left: 0.5rem;
+  border-left: 2px solid rgba(210,179,121,0.15);
+}
+
+/* 感悟摘录特殊样式 */
+.excerpt-line {
   color: #c4b898;
-  font-size: 10.5pt;
+  line-height: 2.2;
+  margin: 0.2rem 0;
   font-style: italic;
-}
-
-@media (max-width: 600px) {
-  body[data-slug$="入-流-亡-所-群-聊-录"] .doc-title { font-size: 16pt; }
-  body[data-slug$="入-流-亡-所-群-聊-录"] .msg-body { font-size: 9.5pt; }
 }
