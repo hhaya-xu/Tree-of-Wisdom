@@ -1,4 +1,4 @@
-@use "sass:map";
+﻿@use "sass:map";
 
 /**
  * Layout breakpoints
@@ -8,7 +8,7 @@
  * assuming mobile < desktop
  */
 $breakpoints: (
-  mobile: 800px,
+  mobile: 600px,
   desktop: 1200px,
 );
 
