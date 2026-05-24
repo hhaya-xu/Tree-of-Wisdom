@@ -470,6 +470,8 @@ footer a:hover {
     display: grid;
     grid-template-columns: 260px 1fr 320px !important;
     grid-template-rows: auto 1fr auto !important;
+    column-gap: 0 !important;
+    row-gap: 0 !important;
   }
 
   /* 顶栏：全宽通栏 */
