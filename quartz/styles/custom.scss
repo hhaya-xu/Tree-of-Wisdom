@@ -31,6 +31,7 @@ html, body {
   position: sticky;
   top: 0;
   z-index: 20;
+  background: #09090a;
 }
 
 /* header within page-header: remove default margin */
@@ -150,51 +151,45 @@ a:hover {
 }
 
 
-/* ---------- 顶栏搜索（全宽 header 内，右上角） ---------- */
+/* ---------- 顶栏搜索（flex 布局，顶栏同行右侧） ---------- */
 
-.page-header > .search {
-  position: absolute;
-  top: 0.65rem;
-  right: 1.5rem;
+.page-header .search {
   z-index: 10;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding-right: 1.5rem;
 }
 
-.page-header > .search .search-button {
-  background: #09090a;
-  color: oklch(85% 0.015 82);
-  border: 0.5px solid oklch(60% 0.14 75 / 25%);
+.page-header .search .search-button {
+  background: #09090a !important;
+  color: oklch(78% 0.075 82);
+  border: 0.5px solid oklch(78% 0.075 82 / 25%);
   border-radius: 6px;
   padding: 0.35rem 0.8rem;
-  font-size: 0.82rem;
+  font-size: 15px;
   cursor: pointer;
   transition: border-color 0.2s ease;
 }
 
-.page-header > .search .search-button:hover {
-  border-color: oklch(60% 0.14 75 / 50%);
+.page-header .search .search-button:hover {
+  border-color: oklch(78% 0.075 82 / 50%);
 }
 
-.page-header > .search .search-container {
+.page-header .search .search-button > p {
+  color: oklch(78% 0.075 82);
+}
+
+.page-header .search .search-button svg .search-path {
+  stroke: oklch(78% 0.075 82);
+}
+
+.page-header .search .search-container {
   background: oklch(98% 0.010 82);
   border: 0.5px solid oklch(85% 0.015 82);
   border-radius: 10px;
   box-shadow: 0 12px 40px oklch(20% 0.010 80 / 10%);
 }
-
-@media (max-width: 600px) {
-  .page-header > .search {
-    top: 0.4rem;
-    right: 0.6rem;
-  }
-}/* ---------- 5. 顶栏 ---------- */
-
-.page-header {
-  padding-top: 0;
-  border-bottom: none;
-  padding-bottom: 0;
-  margin-bottom: 0;
-}
-
 .breadcrumb-container a {
   color: oklch(50% 0.012 75);
   font-size: 0.85rem;
@@ -369,19 +364,36 @@ td {
 /* ---------- 14. 页脚 ---------- */
 
 footer {
-  border-top: 0.5px solid oklch(85% 0.015 82);
-  color: oklch(55% 0.012 75);
+  background: #09090a;
+  color: oklch(78% 0.075 82);
+  border-top: none;
+  margin-top: 0;
+  padding: 0 1.8rem;
   font-size: .82rem;
-  padding: 1.5rem 0;
-  margin-top: 3rem;
+  width: 100%;
+  box-sizing: border-box;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 footer a {
-  color: oklch(50% 0.012 75);
+  color: oklch(78% 0.075 82);
+  text-decoration: none;
 }
 
 footer a:hover {
-  color: oklch(60% 0.14 75);
+  color: oklch(85% 0.08 80);
+}
+
+footer ul {
+  list-style: none;
+  margin: 0 0 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 /* ---------- 15. 移动端 ---------- */
@@ -486,13 +498,13 @@ footer a:hover {
     border-bottom: none;
   }
 
-  /* 左栏：2-3 行 */
+  /* 左栏 */
   .left.sidebar {
     grid-column: 1;
-    grid-row: 2 / 4;
+    grid-row: 2 / 3;
     position: sticky;
     top: 3.2rem;
-    height: calc(100vh - 3.2rem);
+    height: 100%;
     overflow-y: auto;
     min-width: 240px;
     max-width: 280px;
@@ -505,23 +517,23 @@ footer a:hover {
     grid-row: 2;
   }
 
-  /* 右栏：2-3 行 */
+  /* 右栏 */
   .right.sidebar {
     grid-column: 3;
-    grid-row: 2 / 4;
+    grid-row: 2 / 3;
     position: sticky;
     top: 3.2rem;
-    height: calc(100vh - 3.2rem);
+    height: 100%;
     overflow-y: auto;
     min-width: 280px;
     max-width: 340px;
     padding: 0 !important;
   }
 
-  /* 页脚 */
+  /* 页脚：全宽 */
+  footer,
   .page-footer {
-    grid-column: 2;
-    grid-row: 3;
+    grid-area: 3 / 1 / 4 / -1;
   }
 }
 
@@ -545,6 +557,18 @@ footer a:hover {
   #quartz-body:has(.right.sidebar:not(:has(.sidebar-zone))) {
     grid-template-columns: 260px 1fr 0 !important;
   }
+}
+
+.sidebar-meta {
+  padding: 0.5rem 0.8rem 0.2rem 0.8rem;
+  font-size: 0.72rem;
+  color: #8b7d6b;
+  border-bottom: 0.5px solid oklch(85% 0.015 82);
+}
+
+.sidebar-meta .content-meta {
+  color: #8b7d6b !important;
+  margin: 0 !important;
 }
 
 .sidebar-intro {

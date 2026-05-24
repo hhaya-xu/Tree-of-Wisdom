@@ -2,11 +2,11 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 100%;
+  flex: 1;
   padding: 0.7rem 1.8rem;
   background: #09090a;
   border-bottom: 0.5px solid oklch(78% 0.075 82 / 18%);
-  min-height: 3.2rem;
+  min-height: 100px;
   box-sizing: border-box;
 }
 
@@ -18,8 +18,8 @@
 
 .topbar__sitetitle {
   font-family: "Noto Serif SC", serif;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 600;
   color: oklch(78% 0.075 82);
   text-decoration: none;
   letter-spacing: 0.02em;
@@ -38,8 +38,8 @@
 
 .topbar__theme {
   font-family: "Noto Serif SC", serif;
-  font-size: 1.4rem;
-  font-weight: 500;
+  font-size: 2.2rem;
+  font-weight: 1000;
   letter-spacing: 0.5em;
   color: oklch(78% 0.075 82);
 }

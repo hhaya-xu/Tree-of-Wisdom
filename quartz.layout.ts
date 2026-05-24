@@ -22,12 +22,10 @@ export const defaultContentPageLayout: PageLayout = {
       component: Component.Breadcrumbs(),
       condition: (page) => page.fileData.slug !== "index",
     }),
-    Component.ArticleTitle(),
-    Component.ContentMeta(),
     Component.TagList(),
   ],
   left: [
-    Component.PageTitle(),
+    Component.ContentMeta(),
     Component.MobileOnly(Component.Spacer()),
     Component.Explorer(),
   ],
@@ -43,9 +41,9 @@ export const defaultContentPageLayout: PageLayout = {
 }
 
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
+  beforeBody: [Component.Breadcrumbs()],
   left: [
-    Component.PageTitle(),
+    Component.ContentMeta(),
     Component.MobileOnly(Component.Spacer()),
     Component.Explorer(),
   ],
