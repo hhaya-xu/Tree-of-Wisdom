@@ -364,8 +364,8 @@ td {
 /* ---------- 14. 页脚 ---------- */
 
 footer {
-  background: #09090a;
-  color: oklch(78% 0.075 82);
+  background: #e8e4dc;
+  color: oklch(35% 0.012 80);
   border-top: none;
   margin-top: 0;
   margin-bottom: 0 !important;
@@ -381,12 +381,12 @@ footer {
 }
 
 footer a {
-  color: oklch(78% 0.075 82);
+  color: oklch(45% 0.08 75);
   text-decoration: none;
 }
 
 footer a:hover {
-  color: oklch(85% 0.08 80);
+  color: oklch(35% 0.12 70);
 }
 
 footer ul {
