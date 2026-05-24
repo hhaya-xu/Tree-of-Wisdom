@@ -3,6 +3,33 @@
    亮纸底 · 暖奶油 · 轻字重 · 琥珀点缀
    ============================================================ */
 
+/* ---------- 0. 视口锁定：全页不滚，仅中栏滚 ---------- */
+html, body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+#quartz-root {
+  height: 100vh;
+  overflow: hidden;
+}
+
+#quartz-body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 中栏可滚 */
+.center {
+  overflow-y: auto;
+}
+
+/* 顶栏固顶 */
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
 /* ---------- 0. 字体加载淡入 ---------- */
 body { animation: hallmarkFontFade 0.4s 0.15s both; }
 
@@ -446,8 +473,8 @@ footer a:hover {
     grid-column: 1;
     grid-row: 2 / 4;
     position: sticky;
-    top: 0;
-    height: 100vh;
+    top: 3.2rem;
+    height: calc(100vh - 3.2rem);
     overflow-y: auto;
     min-width: 240px;
     max-width: 280px;
@@ -463,6 +490,10 @@ footer a:hover {
   .right.sidebar {
     grid-column: 3;
     grid-row: 2 / 4;
+    position: sticky;
+    top: 3.2rem;
+    height: calc(100vh - 3.2rem);
+    overflow-y: auto;
     min-width: 280px;
     max-width: 340px;
   }
