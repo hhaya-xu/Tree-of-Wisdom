@@ -1,15 +1,13 @@
 ﻿/* ============================================================
-   Sidebar Zones — Right sidebar dual-zone flex layout
-   Zone 1: Content (backlinks + TOC)
-   Zone 2: Graph (relationship graph)
-   Expand/collapse via .expanded / .collapsed classes
+   Sidebar Zones — Hallmark tuned
+   P0: zone spacing + hairline divider
    ============================================================ */
 
 .right.sidebar {
   flex-direction: column;
-  gap: 0;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  gap: var(--space-sm, 0.75rem);
+  padding-top: var(--space-md, 1rem);
+  padding-bottom: var(--space-md, 1rem);
   overflow: hidden;
 }
 
@@ -18,8 +16,16 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: flex-grow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: flex-grow 0.4s cubic-bezier(0.33, 1, 0.68, 1);
   min-height: 2.5rem;
+  border-radius: 8px;
+  background: oklch(14% 0.005 80 / 40%);
+}
+
+/* Hairline divider between zones */
+.sidebar-zone + .sidebar-zone {
+  border-top: 0.5px solid oklch(78% 0.075 82 / 12%);
+  padding-top: var(--space-xs, 0.5rem);
 }
 
 /* Default: graph expanded */
@@ -38,7 +44,7 @@
 
 /* Collapsed state */
 .sidebar-zone.collapsed {
-  flex-grow: 0.3;
+  flex-grow: 0.35;
 }
 
 /* ---------- Zone toggle button ---------- */
@@ -48,22 +54,24 @@
   justify-content: space-between;
   width: 100%;
   padding: 0.4rem 0.6rem;
-  background: oklch(78% 0.075 82 / 8%);
-  border: 1px solid oklch(78% 0.075 82 / 12%);
-  border-radius: 6px;
-  color: oklch(78% 0.075 82);
+  background: oklch(78% 0.075 82 / 6%);
+  border: 0.5px solid oklch(78% 0.075 82 / 10%);
+  border-radius: 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  color: oklch(78% 0.075 82 / 80%);
   font-family: "Noto Serif SC", serif;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   cursor: pointer;
   flex-shrink: 0;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .sidebar-zone-toggle:hover {
-  background: oklch(78% 0.075 82 / 14%);
-  border-color: oklch(78% 0.075 82 / 25%);
+  background: oklch(78% 0.075 82 / 10%);
+  color: oklch(78% 0.075 82);
 }
 
 .zone-toggle-label {
@@ -71,9 +79,9 @@
 }
 
 .zone-toggle-icon {
-  font-size: 0.6rem;
+  font-size: 0.55rem;
   transition: transform 0.3s ease;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 /* Collapsed zone: icon rotates */
@@ -86,8 +94,8 @@
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0.4rem 0;
-  transition: opacity 0.3s ease;
+  padding: 0.5rem 0.6rem;
+  transition: opacity 0.35s ease;
 }
 
 /* Collapsed zone: hide body */
@@ -108,7 +116,7 @@
 }
 
 .sidebar-zone-body .graph h3 {
-  display: none; /* zone toggle already shows label */
+  display: none;
 }
 
 .sidebar-zone-body .graph-outer {
@@ -121,11 +129,10 @@
   padding: 0.3rem 0;
 }
 
-/* Hide original TOC header, zone toggle handles it */
 .sidebar-zone-body .toc > button.toc-header,
 .sidebar-zone-body .backlinks > h3 {
-  font-size: 0.7rem;
-  opacity: 0.6;
+  font-size: 0.68rem;
+  opacity: 0.5;
   margin-bottom: 0.2rem;
 }
 
@@ -135,6 +142,6 @@
 }
 
 .sidebar-zone-body::-webkit-scrollbar-thumb {
-  background: oklch(78% 0.075 82 / 15%);
+  background: oklch(78% 0.075 82 / 12%);
   border-radius: 2px;
 }

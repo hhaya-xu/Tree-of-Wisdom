@@ -315,6 +315,53 @@ footer a:hover {
 }
 
 /* ---------- 15. 移动端 ---------- */
+/* ============================================================
+   Hallmark P1: Spacing scale (ref: usehallmark.com tokens)
+   ============================================================ */
+:root {
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --section-gap: 4rem;
+  --section-head-gap: 1.5rem;
+}
+
+/* ============================================================
+   Hallmark P2: Accent收敛 — hover 改用 opacity 微调，不用色相跳变
+   ============================================================ */
+
+/* 链接 hover：去掉 border-bottom，改用 opacity */
+a:hover {
+  border-bottom: none;
+  opacity: 0.82;
+  transition: opacity 0.15s ease;
+}
+
+.internal:hover {
+  opacity: 0.82 !important;
+}
+
+/* Explorer hover：微调透明度，不跳色 */
+.explorer a:hover,
+.recent-notes a:hover,
+.folder-container button:hover {
+  opacity: 0.85 !important;
+}
+
+/* 标签 hover：微调背景透明度 */
+.tag:hover {
+  background: oklch(78% 0.075 82 / 14%);
+}
+
+/* Hallmark 印记 */
+/* Hallmark · macrostructure: Sidebar Explorer · theme: Atmospheric
+ * accent: amber-gold oklch(78% 0.075 82) · studied: yes · DNA-source: url
+ * source-url: https://www.usehallmark.com/  https://www.bianjing-hours.art/
+ * observed-fonts: Fraunces+Geist+GeistMono / IowanOldStyle+PingFangSC
+ * observed-accent: oklch(78% 0.075 82)  ·  rhythm: generous sections 4-6.5rem
+ */
 
 
 /* ============================================================
