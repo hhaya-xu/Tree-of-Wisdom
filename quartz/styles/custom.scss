@@ -381,3 +381,63 @@ footer a:hover {
 
 
 @keyframes hallmarkFontFade { from { opacity: 0; } to { opacity: 1; } }
+/* ============================================================
+   Stage 1 CSS Shell — Layout rules
+   ============================================================ */
+
+/* ---------- 桌面端 Grid 锁定 ---------- */
+@media (min-width: 1200px) {
+  #quartz-body {
+    grid-template-columns: 260px 1fr 320px !important;
+  }
+
+  .left.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    min-width: 240px;
+    max-width: 280px;
+  }
+
+  .right.sidebar {
+    min-width: 280px;
+    max-width: 340px;
+  }
+}
+
+/* ---------- 正文行宽 ---------- */
+@media (min-width: 1200px) {
+  .center article {
+    max-width: 62ch;
+    margin: 0 auto;
+  }
+
+  /* 术语页内容略窄，给右栏反向链接留视觉空间 */
+  [data-slug*="术语库"] .center article {
+    max-width: 58ch;
+  }
+}
+
+/* ---------- 空右栏隐藏（tag / folder / 404 页） ---------- */
+/* perf: has() chain <1ms @ ~100 pages; if >500 pages, switch to JS class toggling */
+@media (min-width: 1200px) {
+  .right.sidebar:not(:has(.sidebar-zone)) {
+    display: none;
+  }
+
+  #quartz-body:has(.right.sidebar:not(:has(.sidebar-zone))) {
+    grid-template-columns: 260px 1fr 0 !important;
+  }
+}
+
+/* ---------- 右栏简介区（description 文字） ---------- */
+.sidebar-intro {
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.4rem;
+  border-bottom: 1px solid oklch(78% 0.075 82 / 10%);
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: oklch(84% 0.028 86 / 70%);
+  font-family: "Noto Sans SC", sans-serif;
+}

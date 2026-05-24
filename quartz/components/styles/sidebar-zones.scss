@@ -1,0 +1,140 @@
+﻿/* ============================================================
+   Sidebar Zones — Right sidebar dual-zone flex layout
+   Zone 1: Content (backlinks + TOC)
+   Zone 2: Graph (relationship graph)
+   Expand/collapse via .expanded / .collapsed classes
+   ============================================================ */
+
+.right.sidebar {
+  flex-direction: column;
+  gap: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  overflow: hidden;
+}
+
+/* ---------- Zone container ---------- */
+.sidebar-zone {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: flex-grow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 2.5rem;
+}
+
+/* Default: graph expanded */
+.sidebar-graph-zone {
+  flex-grow: 4;
+}
+
+.sidebar-content-zone {
+  flex-grow: 1;
+}
+
+/* Expanded state */
+.sidebar-zone.expanded {
+  flex-grow: 6;
+}
+
+/* Collapsed state */
+.sidebar-zone.collapsed {
+  flex-grow: 0.3;
+}
+
+/* ---------- Zone toggle button ---------- */
+.sidebar-zone-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  background: oklch(78% 0.075 82 / 8%);
+  border: 1px solid oklch(78% 0.075 82 / 12%);
+  border-radius: 6px;
+  color: oklch(78% 0.075 82);
+  font-family: "Noto Serif SC", serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.sidebar-zone-toggle:hover {
+  background: oklch(78% 0.075 82 / 14%);
+  border-color: oklch(78% 0.075 82 / 25%);
+}
+
+.zone-toggle-label {
+  text-transform: uppercase;
+}
+
+.zone-toggle-icon {
+  font-size: 0.6rem;
+  transition: transform 0.3s ease;
+  opacity: 0.5;
+}
+
+/* Collapsed zone: icon rotates */
+.sidebar-zone.collapsed .zone-toggle-icon {
+  transform: rotate(180deg);
+}
+
+/* ---------- Zone body (scrollable content) ---------- */
+.sidebar-zone-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.4rem 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Collapsed zone: hide body */
+.sidebar-zone.collapsed .sidebar-zone-body {
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sidebar-zone.expanded .sidebar-zone-body {
+  opacity: 1;
+}
+
+/* ---------- Zone body inner elements ---------- */
+.sidebar-zone-body .graph {
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-zone-body .graph h3 {
+  display: none; /* zone toggle already shows label */
+}
+
+.sidebar-zone-body .graph-outer {
+  min-height: 200px;
+}
+
+.sidebar-zone-body .toc,
+.sidebar-zone-body .backlinks {
+  margin: 0;
+  padding: 0.3rem 0;
+}
+
+/* Hide original TOC header, zone toggle handles it */
+.sidebar-zone-body .toc > button.toc-header,
+.sidebar-zone-body .backlinks > h3 {
+  font-size: 0.7rem;
+  opacity: 0.6;
+  margin-bottom: 0.2rem;
+}
+
+/* Scrollbar within zones */
+.sidebar-zone-body::-webkit-scrollbar {
+  width: 3px;
+}
+
+.sidebar-zone-body::-webkit-scrollbar-thumb {
+  background: oklch(78% 0.075 82 / 15%);
+  border-radius: 2px;
+}
