@@ -5,6 +5,8 @@
 
 /* ---------- 0. 视口锁定：全页不滚，仅中栏滚 ---------- */
 html, body {
+  margin: 0 !important;
+  padding: 0 !important;
   height: 100vh;
   overflow: hidden;
 }
