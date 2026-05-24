@@ -373,7 +373,7 @@ footer {
   font-size: .82rem;
   width: 100%;
   box-sizing: border-box;
-  height: 40px;
+  height: 35px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -505,7 +505,7 @@ footer ul {
     grid-column: 1;
     grid-row: 2 / 3;
     position: sticky;
-    top: 3.2rem;
+    top: 90px;
     height: 100%;
     overflow-y: auto;
     min-width: 240px;
@@ -524,7 +524,7 @@ footer ul {
     grid-column: 3;
     grid-row: 2 / 3;
     position: sticky;
-    top: 3.2rem;
+    top: 90px;
     height: 100%;
     overflow-y: auto;
     min-width: 280px;
