@@ -1,0 +1,35 @@
+﻿.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.5rem;
+  background: #09090a;
+  border-bottom: 0.5px solid oklch(78% 0.075 82 / 18%);
+  min-height: 3rem;
+}
+
+.topbar__theme {
+  display: flex;
+  align-items: center;
+}
+
+.topbar__theme-text {
+  font-family: "Noto Serif SC", serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  color: oklch(78% 0.075 82);
+}
+
+/* Mobile: compact */
+@media (max-width: 600px) {
+  .topbar {
+    padding: 0.4rem 0.8rem;
+    min-height: 2.5rem;
+  }
+
+  .topbar__theme-text {
+    font-size: 0.95rem;
+    letter-spacing: 0.25em;
+  }
+}
