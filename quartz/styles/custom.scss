@@ -36,6 +36,16 @@ html, body {
   margin: 0 !important;
 }
 
+/* ---------- 页面全宽：header 贴边 ---------- */
+.page {
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+#quartz-root {
+  padding: 0 !important;
+}
+
 /* ---------- 0. 字体加载淡入 ---------- */
 body { animation: hallmarkFontFade 0.4s 0.15s both; }
 
@@ -139,9 +149,6 @@ a:hover {
 
 
 /* ---------- 顶栏搜索（全宽 header 内，右上角） ---------- */
-.page-header {
-  position: relative;
-}
 
 .page-header > .search {
   position: absolute;
@@ -151,7 +158,7 @@ a:hover {
 }
 
 .page-header > .search .search-button {
-  background: oklch(25% 0.010 80);
+  background: #09090a;
   color: oklch(85% 0.015 82);
   border: 0.5px solid oklch(60% 0.14 75 / 25%);
   border-radius: 6px;
