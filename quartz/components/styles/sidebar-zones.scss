@@ -1,6 +1,5 @@
 ﻿/* ============================================================
-   Sidebar Zones — Hallmark tuned
-   P0: zone spacing + hairline divider
+   Sidebar Zones — Specimen warm paper
    ============================================================ */
 
 .right.sidebar {
@@ -11,7 +10,6 @@
   overflow: hidden;
 }
 
-/* ---------- Zone container ---------- */
 .sidebar-zone {
   display: flex;
   flex-direction: column;
@@ -19,77 +17,55 @@
   transition: flex-grow 0.4s cubic-bezier(0.33, 1, 0.68, 1);
   min-height: 2.5rem;
   border-radius: 8px;
-  background: oklch(14% 0.005 80 / 40%);
+  background: oklch(98% 0.010 82 / 70%);
+  border: 0.5px solid oklch(85% 0.015 82);
 }
 
-/* Hairline divider between zones */
 .sidebar-zone + .sidebar-zone {
-  border-top: 0.5px solid oklch(78% 0.075 82 / 12%);
-  padding-top: var(--space-xs, 0.5rem);
+  border-top: none;
+  padding-top: 0;
 }
 
-/* Default: graph expanded */
-.sidebar-graph-zone {
-  flex-grow: 4;
-}
+.sidebar-graph-zone { flex-grow: 4; }
+.sidebar-content-zone { flex-grow: 1; }
+.sidebar-zone.expanded { flex-grow: 6; }
+.sidebar-zone.collapsed { flex-grow: 0.35; }
 
-.sidebar-content-zone {
-  flex-grow: 1;
-}
-
-/* Expanded state */
-.sidebar-zone.expanded {
-  flex-grow: 6;
-}
-
-/* Collapsed state */
-.sidebar-zone.collapsed {
-  flex-grow: 0.35;
-}
-
-/* ---------- Zone toggle button ---------- */
 .sidebar-zone-toggle {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   padding: 0.4rem 0.6rem;
-  background: oklch(78% 0.075 82 / 6%);
-  border: 0.5px solid oklch(78% 0.075 82 / 10%);
-  border-radius: 0;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  color: oklch(78% 0.075 82 / 80%);
+  background: transparent;
+  border: none;
+  border-bottom: 0.5px solid oklch(88% 0.012 82);
+  color: oklch(40% 0.012 80);
   font-family: "Noto Serif SC", serif;
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   cursor: pointer;
   flex-shrink: 0;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .sidebar-zone-toggle:hover {
-  background: oklch(78% 0.075 82 / 10%);
-  color: oklch(78% 0.075 82);
+  color: oklch(60% 0.14 75);
 }
 
-.zone-toggle-label {
-  text-transform: uppercase;
-}
+.zone-toggle-label { text-transform: uppercase; }
 
 .zone-toggle-icon {
   font-size: 0.55rem;
   transition: transform 0.3s ease;
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
-/* Collapsed zone: icon rotates */
 .sidebar-zone.collapsed .zone-toggle-icon {
   transform: rotate(180deg);
 }
 
-/* ---------- Zone body (scrollable content) ---------- */
 .sidebar-zone-body {
   flex: 1;
   overflow-y: auto;
@@ -98,30 +74,22 @@
   transition: opacity 0.35s ease;
 }
 
-/* Collapsed zone: hide body */
 .sidebar-zone.collapsed .sidebar-zone-body {
   opacity: 0;
   pointer-events: none;
   overflow: hidden;
 }
 
-.sidebar-zone.expanded .sidebar-zone-body {
-  opacity: 1;
-}
+.sidebar-zone.expanded .sidebar-zone-body { opacity: 1; }
 
-/* ---------- Zone body inner elements ---------- */
 .sidebar-zone-body .graph {
   padding: 0;
   margin: 0;
 }
 
-.sidebar-zone-body .graph h3 {
-  display: none;
-}
+.sidebar-zone-body .graph h3 { display: none; }
 
-.sidebar-zone-body .graph-outer {
-  min-height: 200px;
-}
+.sidebar-zone-body .graph-outer { min-height: 200px; }
 
 .sidebar-zone-body .toc,
 .sidebar-zone-body .backlinks {
@@ -132,16 +100,12 @@
 .sidebar-zone-body .toc > button.toc-header,
 .sidebar-zone-body .backlinks > h3 {
   font-size: 0.68rem;
-  opacity: 0.5;
+  color: oklch(50% 0.012 75);
   margin-bottom: 0.2rem;
 }
 
-/* Scrollbar within zones */
-.sidebar-zone-body::-webkit-scrollbar {
-  width: 3px;
-}
-
+.sidebar-zone-body::-webkit-scrollbar { width: 3px; }
 .sidebar-zone-body::-webkit-scrollbar-thumb {
-  background: oklch(78% 0.075 82 / 12%);
+  background: oklch(75% 0.018 80 / 40%);
   border-radius: 2px;
 }

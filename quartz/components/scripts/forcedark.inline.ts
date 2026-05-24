@@ -1,10 +1,9 @@
-﻿// Force dark theme — Tree of Wisdom is dark-only
-document.documentElement.setAttribute('saved-theme', 'dark')
-if (localStorage.getItem('theme') !== 'dark') {
-  localStorage.setItem('theme', 'dark')
+﻿// Force light theme — Tree of Wisdom is Specimen (light paper) only
+document.documentElement.setAttribute('saved-theme', 'light')
+if (localStorage.getItem('theme') !== 'light') {
+  localStorage.setItem('theme', 'light')
 }
 
-// Block any attempts to switch theme
 document.addEventListener('nav', () => {
-  document.documentElement.setAttribute('saved-theme', 'dark')
+  document.documentElement.setAttribute('saved-theme', 'light')
 })
