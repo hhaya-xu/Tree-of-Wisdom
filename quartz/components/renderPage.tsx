@@ -1,4 +1,4 @@
-import { render } from "preact-render-to-string"
+﻿import { render } from "preact-render-to-string"
 import { QuartzComponent, QuartzComponentProps } from "./types"
 import HeaderConstructor from "./Header"
 import BodyConstructor from "./Body"
@@ -265,9 +265,7 @@ export function renderPage(
       <body data-slug={slug}>
         <div id="quartz-root" class="page">
           <Body {...componentData}>
-            {LeftComponent}
-            <div class="center">
-              <div class="page-header">
+            <div class="page-header">
                 <Header {...componentData}>
                   {header.map((HeaderComponent) => (
                     <HeaderComponent {...componentData} />
@@ -278,7 +276,9 @@ export function renderPage(
                     <BodyComponent {...componentData} />
                   ))}
                 </div>
-              </div>
+            </div>
+            {LeftComponent}
+            <div class="center">
               <Content {...componentData} />
               <hr />
               <div class="page-footer">

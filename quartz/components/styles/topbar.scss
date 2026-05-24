@@ -10,16 +10,37 @@
   box-sizing: border-box;
 }
 
-.topbar__theme {
+.topbar__left {
   display: flex;
-  align-items: center;
+  align-items: baseline;
+  gap: 0.8rem;
 }
 
-.topbar__theme-text {
+.topbar__sitetitle {
   font-family: "Noto Serif SC", serif;
-  font-size: 1.2rem;
+  font-size: 0.95rem;
   font-weight: 500;
-  letter-spacing: 0.4em;
+  color: oklch(78% 0.075 82);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.topbar__sitetitle:hover {
+  color: oklch(85% 0.08 80);
+}
+
+.topbar__sep {
+  display: inline-block;
+  width: 0.5px;
+  height: 1rem;
+  background: oklch(78% 0.075 82 / 30%);
+}
+
+.topbar__theme {
+  font-family: "Noto Serif SC", serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.5em;
   color: oklch(78% 0.075 82);
 }
 
@@ -29,8 +50,12 @@
     min-height: 2.5rem;
   }
 
-  .topbar__theme-text {
+  .topbar__theme {
     font-size: 0.9rem;
     letter-spacing: 0.2em;
+  }
+
+  .topbar__sitetitle {
+    font-size: 0.8rem;
   }
 }

@@ -30,6 +30,12 @@ html, body {
   top: 0;
   z-index: 20;
 }
+
+/* header within page-header: remove default margin */
+.page-header header {
+  margin: 0 !important;
+}
+
 /* ---------- 0. 字体加载淡入 ---------- */
 body { animation: hallmarkFontFade 0.4s 0.15s both; }
 
