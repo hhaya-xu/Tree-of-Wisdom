@@ -368,6 +368,7 @@ footer {
   color: oklch(78% 0.075 82);
   border-top: none;
   margin-top: 0;
+  margin-bottom: 0 !important;
   padding: 0 1.8rem;
   font-size: .82rem;
   width: 100%;
@@ -376,6 +377,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  opacity: 1 !important;
 }
 
 footer a {
