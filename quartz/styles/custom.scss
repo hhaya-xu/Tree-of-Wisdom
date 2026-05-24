@@ -104,9 +104,46 @@ a:hover {
   color: oklch(60% 0.14 75);
 }
 
-/* ---------- 5. 顶栏 ---------- */
+
+/* ---------- 顶栏搜索 ---------- */
+#quartz-body > .search {
+  position: absolute;
+  top: 0.65rem;
+  right: 1.5rem;
+  z-index: 10;
+}
+
+#quartz-body > .search .search-button {
+  background: oklch(25% 0.010 80);
+  color: oklch(85% 0.015 82);
+  border: 0.5px solid oklch(60% 0.14 75 / 25%);
+  border-radius: 6px;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+#quartz-body > .search .search-button:hover {
+  border-color: oklch(60% 0.14 75 / 50%);
+}
+
+#quartz-body > .search .search-container {
+  background: oklch(98% 0.010 82);
+  border: 0.5px solid oklch(85% 0.015 82);
+  border-radius: 10px;
+  box-shadow: 0 12px 40px oklch(20% 0.010 80 / 10%);
+}
+
+@media (max-width: 600px) {
+  #quartz-body > .search {
+    top: 0.4rem;
+    right: 0.6rem;
+  }
+}/* ---------- 5. 顶栏 ---------- */
 
 .page-header {
+  padding-top: 2.5rem;
   border-bottom: 0.5px solid oklch(85% 0.015 82);
   padding-bottom: 1.2rem;
   margin-bottom: 2rem;
