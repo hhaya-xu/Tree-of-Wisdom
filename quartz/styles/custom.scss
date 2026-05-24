@@ -105,15 +105,19 @@ a:hover {
 }
 
 
-/* ---------- 顶栏搜索 ---------- */
-#quartz-body > .search {
+/* ---------- 顶栏搜索（全宽 header 内，右上角） ---------- */
+.page-header {
+  position: relative;
+}
+
+.page-header > .search {
   position: absolute;
   top: 0.65rem;
   right: 1.5rem;
   z-index: 10;
 }
 
-#quartz-body > .search .search-button {
+.page-header > .search .search-button {
   background: oklch(25% 0.010 80);
   color: oklch(85% 0.015 82);
   border: 0.5px solid oklch(60% 0.14 75 / 25%);
@@ -124,11 +128,11 @@ a:hover {
   transition: border-color 0.2s ease;
 }
 
-#quartz-body > .search .search-button:hover {
+.page-header > .search .search-button:hover {
   border-color: oklch(60% 0.14 75 / 50%);
 }
 
-#quartz-body > .search .search-container {
+.page-header > .search .search-container {
   background: oklch(98% 0.010 82);
   border: 0.5px solid oklch(85% 0.015 82);
   border-radius: 10px;
@@ -136,7 +140,7 @@ a:hover {
 }
 
 @media (max-width: 600px) {
-  #quartz-body > .search {
+  .page-header > .search {
     top: 0.4rem;
     right: 0.6rem;
   }
@@ -420,12 +424,27 @@ footer a:hover {
    Stage 1 CSS Shell — Layout rules
    ============================================================ */
 
+/* ---------- 桌面端 Grid：上通栏 + 下三栏 ---------- */
 @media (min-width: 1200px) {
   #quartz-body {
+    display: grid;
     grid-template-columns: 260px 1fr 320px !important;
+    grid-template-rows: auto 1fr auto !important;
   }
 
+  /* 顶栏：全宽通栏 */
+  .page-header {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin: 0;
+    padding: 0;
+    border-bottom: none;
+  }
+
+  /* 左栏：2-3 行 */
   .left.sidebar {
+    grid-column: 1;
+    grid-row: 2 / 4;
     position: sticky;
     top: 0;
     height: 100vh;
@@ -434,9 +453,24 @@ footer a:hover {
     max-width: 280px;
   }
 
+  /* 中栏 */
+  .center {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  /* 右栏：2-3 行 */
   .right.sidebar {
+    grid-column: 3;
+    grid-row: 2 / 4;
     min-width: 280px;
     max-width: 340px;
+  }
+
+  /* 页脚 */
+  .page-footer {
+    grid-column: 2;
+    grid-row: 3;
   }
 }
 
