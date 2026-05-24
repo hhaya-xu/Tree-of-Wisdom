@@ -470,6 +470,7 @@ footer a:hover {
     display: grid;
     grid-template-columns: 260px 1fr 320px !important;
     grid-template-rows: auto 1fr auto !important;
+    grid-template-areas: none !important;
     column-gap: 0 !important;
     row-gap: 0 !important;
   }
@@ -493,6 +494,7 @@ footer a:hover {
     overflow-y: auto;
     min-width: 240px;
     max-width: 280px;
+    padding: 0 !important;
   }
 
   /* 中栏 */
@@ -511,6 +513,7 @@ footer a:hover {
     overflow-y: auto;
     min-width: 280px;
     max-width: 340px;
+    padding: 0 !important;
   }
 
   /* 页脚 */
