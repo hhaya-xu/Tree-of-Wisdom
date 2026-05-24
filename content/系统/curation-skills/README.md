@@ -38,18 +38,4 @@ content/系统/    伯喈定期执行      content/系统/知识库经验/
 - 收拾桌子：伯喈定期从日志中提炼经验，写入三个经验文件
 - 知识库经验：沉淀为可复用的规则和模板
 
-## 双速内容管线
-
-```
-简单内容（日常笔记、术语）
-  主公写 MD → Git 推送 → 壳渲染 → 上线
-
-复杂内容（群聊录、策展文本）
-  主公写 MD → Hallmark audit → CSS 调优 → 上线
-                    ↑
-            （可启动玄策的内容拆解层）
-```
-
 ## 参考
-
-原 skill 仓库：https://github.com/wuyaojunkylin/research-digital-curation-skills
