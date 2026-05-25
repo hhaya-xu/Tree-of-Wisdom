@@ -3,7 +3,7 @@ import * as Plugin from "./quartz/plugins"
 
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "?? ÖÇ»ÛÊ÷",
+    pageTitle: "?? ï¿½Ç»ï¿½ï¿½ï¿½",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -16,8 +16,8 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Fraunces",
-        body: "Geist",
+        header: "Noto Serif SC",
+        body: "Noto Sans SC",
         code: "Geist Mono",
       },
       colors: {

@@ -1,10 +1,10 @@
-﻿// 文姬字体锁定 — 2026-05-25
-// 用 !important 在 :root 和 html,body 双处锁定，
-// 确保编译后位于 app.css 末尾，覆盖 Quartz 默认 Inter
+// 文姬字体锁定 v2 — 2026-05-25
+// 修复：上版 Fraunces/Geist 不含中文字形，中文全站回退系统字体
+// 改为 Noto Serif SC（思源宋体）+ Noto Sans SC（思源黑体），对标 bianjing-hours.art
 
 :root {
-  --bodyFont: "Geist", "Geist Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif !important;
-  --headerFont: "Fraunces", "Iowan Old Style", Georgia, serif !important;
+  --bodyFont: "Noto Sans SC", "思源黑体", "Microsoft YaHei", "PingFang SC", sans-serif !important;
+  --headerFont: "Noto Serif SC", "思源宋体", "Georgia", serif !important;
   --codeFont: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace !important;
 }
 
