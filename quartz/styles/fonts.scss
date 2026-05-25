@@ -1,0 +1,21 @@
+﻿// 文姬字体锁定 — 2026-05-25
+// 用 !important 在 :root 和 html,body 双处锁定，
+// 确保编译后位于 app.css 末尾，覆盖 Quartz 默认 Inter
+
+:root {
+  --bodyFont: "Geist", "Geist Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif !important;
+  --headerFont: "Fraunces", "Iowan Old Style", Georgia, serif !important;
+  --codeFont: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace !important;
+}
+
+html, body {
+  font-family: var(--bodyFont) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--headerFont) !important;
+}
+
+code, pre, kbd, samp {
+  font-family: var(--codeFont) !important;
+}
