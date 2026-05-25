@@ -1,21 +1,47 @@
-// 文姬字体锁定 v2 — 2026-05-25
-// 修复：上版 Fraunces/Geist 不含中文字形，中文全站回退系统字体
-// 改为 Noto Serif SC（思源宋体）+ Noto Sans SC（思源黑体），对标 bianjing-hours.art
+﻿// 文姬字体锁定 v3 — 2026-05-25
+// 诊断：Google Fonts CDN (fonts.googleapis.com / fonts.gstatic.com) 
+// 在中国大陆被墙或极慢，导致 Noto Serif SC / Noto Sans SC 字体文件
+// 从未真正下载。浏览器超时后回退到系统默认字体（微软雅黑/苹方），
+// 用户看到的始终是回退字体，CSS 声明本身完全正确。
+//
+// 修复：切换到系统原生 CJK 字体 + 英文字体，零外部 CDN 依赖。
+// 每个平台的第一选择都是出厂就有的字体，100% 可靠加载。
 
 :root {
-  --bodyFont: "Noto Sans SC", "思源黑体", "Microsoft YaHei", "PingFang SC", sans-serif !important;
-  --headerFont: "Noto Serif SC", "思源宋体", "Georgia", serif !important;
-  --codeFont: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace !important;
+  // 标题：宋体系列 — "bianjing-hours" 同款书卷气
+  // macOS: Songti SC (10.11+) / STSongti-SC (10.14+)
+  // Windows: SimSun (XP+) / NSimun
+  // Linux: Noto Serif CJK SC
+  --headerFont: "Songti SC", "STSongti-SC", "SimSun", "NSimSun",
+                "Noto Serif CJK SC", "Georgia", "Times New Roman", serif !important;
+
+  // 正文：系统黑体 — 干净、清晰、阅读舒适
+  // macOS: PingFang SC (10.11+) / Hiragino Sans GB (10.6+)
+  // Windows: Microsoft YaHei (Vista+)  
+  // Linux: Noto Sans CJK SC / WenQuanYi Micro Hei
+  --bodyFont: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB",
+              "Noto Sans CJK SC", "WenQuanYi Micro Hei",
+              system-ui, -apple-system, sans-serif !important;
+
+  // 代码：系统等宽 — 清晰可辨、层级明确
+  --codeFont: "SF Mono", "Cascadia Code", "Consolas",
+              "Fira Code", "JetBrains Mono", "Source Code Pro",
+              ui-monospace, Menlo, monospace !important;
 }
 
+// 直接锁定关键元素，防止 Quartz joinStyles 的 :root 块覆盖
+// （虽然有 !important 保护，但双保险更稳）
 html, body {
   font-family: var(--bodyFont) !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6,
+.page-title, .article-title,
+.site-title, .folder-title {
   font-family: var(--headerFont) !important;
 }
 
-code, pre, kbd, samp {
+code, pre, kbd, samp, .code,
+pre code, code[class*="language-"] {
   font-family: var(--codeFont) !important;
 }

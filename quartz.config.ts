@@ -13,12 +13,12 @@ const config: QuartzConfig = {
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
-      fontOrigin: "googleFonts",
+      fontOrigin: "local",
       cdnCaching: true,
       typography: {
-        header: "Noto Serif SC",
-        body: "Noto Sans SC",
-        code: "Geist Mono",
+        header: "Songti SC",
+        body: "PingFang SC",
+        code: "SF Mono",
       },
       colors: {
         lightMode: {
@@ -70,8 +70,7 @@ const config: QuartzConfig = {
       Plugin.Static(),
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
-      Plugin.CustomOgImages(),
-    ],
+      ],
   },
 }
 
