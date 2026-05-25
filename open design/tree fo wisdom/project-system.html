@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>系统 路 Tree of Wisdom</title>
+  <style>
+    :root {
+      --bg:      oklch(93% 0.018 95);
+      --surface: oklch(97% 0.006 92);
+      --fg:      oklch(18% 0.014 75);
+      --muted:   oklch(48% 0.018 75);
+      --border:  oklch(82% 0.08 85 / 0.30);
+      --accent:  oklch(78% 0.12 80);
+      --accent-strong: oklch(68% 0.16 80);
+      --red:     oklch(35% 0.10 28);
+      --teal:    oklch(38% 0.04 210);
+      --chrome-bg:    oklch(9% 0.003 85);
+      --chrome-fg:    oklch(93% 0.012 90);
+      --chrome-muted: oklch(80% 0.012 90 / 0.68);
+      --font-display: 'Iowan Old Style', 'Baskerville', 'Palatino Linotype', 'Noto Serif SC', 'Source Han Serif SC', serif;
+      --font-body: 'Avenir Next', 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans CJK SC', system-ui, sans-serif;
+      --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--fg); background: radial-gradient(circle at 18% 16%, oklch(78% 0.12 80 / 0.10), transparent 24%), radial-gradient(circle at 74% 22%, oklch(35% 0.10 28 / 0.04), transparent 22%), linear-gradient(180deg, #ede3cf, #ebe0ca 55%, #e7dbc4); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+    body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: 0.10; background-image: linear-gradient(rgba(120,102,71,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(120,102,71,0.05) 1px, transparent 1px); background-size: 120px 120px; mask-image: radial-gradient(circle at center, black 38%, transparent 95%); -webkit-mask-image: radial-gradient(circle at center, black 38%, transparent 95%); z-index: 0; }
+    .topbar { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; gap: clamp(0.9rem, 2vw, 1.6rem); padding: 1.0rem 2rem; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); background: linear-gradient(180deg, oklch(8% 0.003 85 / 0.94), oklch(8% 0.003 85 / 0.84)); border-bottom: 1px solid rgba(255,246,226,0.06); }
+    .topbar__brand { display: flex; flex-direction: column; align-items: flex-start; gap: 0.12rem; }
+    .topbar__eyebrow { font-size: 0.70rem; letter-spacing: 0.08em; color: var(--accent); font-family: var(--font-body); }
+    .topbar__title { font-family: var(--font-display); font-size: 1.1rem; color: var(--chrome-fg); text-decoration: none; }
+    .topbar__back { font-family: var(--font-mono); font-size: 0.70rem; letter-spacing: 0.10em; color: var(--chrome-muted); text-decoration: none; margin-right: auto; }
+    .topbar__back:hover { color: var(--accent); }
+    .topbar__nav { margin-left: auto; display: flex; gap: clamp(0.9rem, 1.8vw, 1.4rem); }
+    .topbar__nav a { font-family: var(--font-display); color: var(--chrome-muted); text-decoration: none; font-size: 0.92rem; transition: color 0.18s; }
+    .topbar__nav a:hover { color: var(--accent); }
+
+    .layout { position: relative; z-index: 1; display: grid; grid-template-columns: 240px 1fr; min-height: calc(100vh - 56px); }
+    .sidebar { position: sticky; top: 56px; align-self: start; height: calc(100vh - 56px); overflow-y: auto; display: flex; flex-direction: column; gap: 1.2rem; padding: 2rem 1.4rem; border-right: 1px solid oklch(82% 0.08 85 / 0.22); background: oklch(94% 0.012 95 / 0.55); backdrop-filter: blur(6px); }
+    .sidebar__label { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-strong); }
+    .sidebar__project { font-family: var(--font-display); font-size: 1.2rem; color: var(--fg); line-height: 1.25; }
+    .sidebar__nav { display: flex; flex-direction: column; gap: 0.22rem; }
+    .sidebar__nav a { display: block; font-family: var(--font-display); font-size: 0.90rem; color: var(--muted); text-decoration: none; padding: 0.36rem 0.5rem; border-radius: 2px; transition: color 0.16s, background 0.16s; }
+    .sidebar__nav a:hover, .sidebar__nav a.is-active { color: var(--accent-strong); background: oklch(78% 0.12 80 / 0.08); }
+
+    .main { padding: 0; }
+    .hero { position: relative; min-height: 40vh; padding: 3rem 3rem 2.5rem; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+    .hero__glow { position: absolute; top: 10%; left: 12%; width: 50%; height: 40%; background: radial-gradient(circle, oklch(78% 0.12 80 / 0.10), transparent 55%); pointer-events: none; }
+    .hero__kicker { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-strong); margin-bottom: 1rem; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4.2rem); font-weight: 400; line-height: 1.08; letter-spacing: -0.008em; margin-bottom: 1.2rem; }
+    .hero p { font-family: var(--font-display); font-size: clamp(1rem, 1.4vw, 1.2rem); line-height: 1.9; max-width: 52ch; color: var(--muted); border-left: 1px solid var(--border); padding-left: clamp(1rem, 1.6vw, 1.4rem); }
+
+    .sec-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.4rem; padding: 0 3rem; }
+    .sec-head h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; letter-spacing: -0.01em; }
+    .sec-head span { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.10em; color: var(--muted); opacity: 0.6; }
+    .section-pad { padding: 0 3rem 2.5rem; }
+
+    .credo-block { padding: 1.5rem 1.8rem; border: 1px solid oklch(82% 0.08 85 / 0.22); background: oklch(98% 0.005 92 / 0.50); margin-bottom: 0.8rem; }
+    .credo-block__num { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; color: var(--accent-strong); margin-bottom: 0.3rem; }
+    .credo-block h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; margin-bottom: 0.3rem; }
+    .credo-block p { font-size: 0.84rem; line-height: 1.6; color: var(--muted); }
+
+    .comp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.8rem; }
+    .comp-card { padding: 1.2rem 1.4rem; border: 1px solid oklch(82% 0.08 85 / 0.22); background: oklch(98% 0.005 92 / 0.50); }
+    .comp-card__icon { font-family: var(--font-display); font-size: 1.6rem; line-height: 1; margin-bottom: 0.4rem; }
+    .comp-card h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 400; margin-bottom: 0.3rem; }
+    .comp-card p { font-size: 0.80rem; line-height: 1.55; color: var(--muted); }
+
+    .footer { display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 3rem; border-top: 1px solid oklch(82% 0.08 85 / 0.22); font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.06em; color: var(--muted); opacity: 0.55; }
+    .footer a { color: inherit; text-decoration: none; }
+    .footer a:hover { color: var(--accent-strong); }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; height: auto; border-right: 0; border-bottom: 1px solid oklch(82% 0.08 85 / 0.22); }
+      .hero { min-height: auto; padding: 2.5rem 1.5rem; }
+      .hero h1 { font-size: clamp(1.8rem, 7vw, 2.8rem); }
+      .sec-head, .section-pad, .footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <a href="index.html" class="topbar__back">荻 返回首页</a>
+    <div class="topbar__brand">
+      <span class="topbar__eyebrow">Infrastructure</span>
+      <span class="topbar__title">系统</span>
+    </div>
+    <div class="topbar__nav">
+      <a href="#credo">信条</a>
+      <a href="#components">组件</a>
+      <a href="project-meeting.html">会议室</a>
+    </div>
+  </nav>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div>
+        <span class="sidebar__label">Infrastructure</span>
+        <div class="sidebar__project">系统</div>
+      </div>
+      <nav class="sidebar__nav">
+        <a href="#credo" class="is-active">伯喈信条</a>
+        <a href="#components">系统组件</a>
+        <a href="project-meeting.html">会议室</a>
+        <a href="index.html">返回首页</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <section class="hero" id="credo">
+        <div class="hero__glow"></div>
+        <div class="hero__kicker">Knowledge Steward</div>
+        <h1>系统</h1>
+        <p>知识库总管蔽伯喈蔽的工作间。负责维持整座森林的秩序蔽项目日志、全链工作流、分类经验、模板规范。</p>
+      </section>
+
+      <section>
+        <div class="sec-head"><h2>伯喈五条信条</h2><span>Credo</span></div>
+        <div class="section-pad">
+          <div class="credo-block">
+            <div class="credo-block__num">CREDO I</div>
+            <h3>每一条笔记都应有它唯一的归属</h3>
+            <p>不漂浮、不重复。分类体系是森林的土壤，笔记是树木。根扎得深，枝叶才茂盛。</p>
+          </div>
+          <div class="credo-block">
+            <div class="credo-block__num">CREDO II</div>
+            <h3>双向链接是知识生长的命脉</h3>
+            <p>孤立笔记是死木。每一篇笔记至少与另一篇相连，形成可追溯、可漫步的知识网络。</p>
+          </div>
+          <div class="credo-block">
+            <div class="credo-block__num">CREDO III</div>
+            <h3>模板是效率，不是牢笼</h3>
+            <p>为重复性工作提供模板，但允许例外。结构服务于思想，而非反过来。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="components">
+        <div class="sec-head"><h2>系统组件</h2><span>4 components</span></div>
+        <div class="section-pad">
+          <div class="comp-grid">
+            <div class="comp-card">
+              <div class="comp-card__icon">奡</div>
+              <h3>工作流引擎</h3>
+              <p>从笔记捕获到发布的全链流程：快速笔记 黯 整理 黯 链接 黯 发布。</p>
+            </div>
+            <div class="comp-card">
+              <div class="comp-card__icon">夊</div>
+              <h3>分类体系</h3>
+              <p>项目、领域、人物、术语四维分类法，配合 MOC 地图索引。</p>
+            </div>
+            <div class="comp-card">
+              <div class="comp-card__icon">奛</div>
+              <h3>模板库</h3>
+              <p>术语卡、人物卡、日记录、项目日志——四套标准模板覆盖所有笔记类型。</p>
+            </div>
+            <div class="comp-card">
+              <div class="comp-card__icon">夆</div>
+              <h3>索引中枢</h3>
+              <p>全库 MOC（Map of Content）作为总索引，链接所有项目入口与关键节点。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>系统 路 Tree of Wisdom</span>
+        <span><a href="index.html">首页</a> 路 <a href="project-meeting.html">会议室</a></span>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

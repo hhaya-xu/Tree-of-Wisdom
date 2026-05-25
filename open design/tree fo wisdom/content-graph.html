@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>关系图谱 路 Tree of Wisdom</title>
+  <style>
+    :root {
+      --bg:      oklch(93% 0.018 95);
+      --surface: oklch(97% 0.006 92);
+      --fg:      oklch(18% 0.014 75);
+      --muted:   oklch(48% 0.018 75);
+      --border:  oklch(82% 0.08 85 / 0.30);
+      --accent:  oklch(78% 0.12 80);
+      --accent-strong: oklch(68% 0.16 80);
+      --red:     oklch(35% 0.10 28);
+      --teal:    oklch(38% 0.04 210);
+      --chrome-bg:    oklch(9% 0.003 85);
+      --chrome-fg:    oklch(93% 0.012 90);
+      --chrome-muted: oklch(80% 0.012 90 / 0.68);
+      --font-display: 'Iowan Old Style', 'Baskerville', 'Palatino Linotype', 'Noto Serif SC', 'Source Han Serif SC', serif;
+      --font-body: 'Avenir Next', 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans CJK SC', system-ui, sans-serif;
+      --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--fg);
+      background:
+        radial-gradient(circle at 18% 16%, oklch(78% 0.12 80 / 0.08), transparent 24%),
+        radial-gradient(circle at 74% 22%, oklch(35% 0.10 28 / 0.03), transparent 22%),
+        linear-gradient(180deg, #ede3cf, #ebe0ca 55%, #e7dbc4);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      background-image:
+        linear-gradient(rgba(120,102,71,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(120,102,71,0.05) 1px, transparent 1px);
+      background-size: 120px 120px;
+      mask-image: radial-gradient(circle at center, black 38%, transparent 95%);
+      -webkit-mask-image: radial-gradient(circle at center, black 38%, transparent 95%);
+      z-index: 0;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: clamp(0.9rem, 2vw, 1.6rem);
+      padding: 1.0rem 2rem;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: linear-gradient(180deg, oklch(8% 0.003 85 / 0.94), oklch(8% 0.003 85 / 0.84));
+      border-bottom: 1px solid rgba(255,246,226,0.06);
+    }
+    .topbar__brand { display: flex; flex-direction: column; align-items: flex-start; gap: 0.12rem; }
+    .topbar__eyebrow { font-size: 0.70rem; letter-spacing: 0.08em; color: var(--accent); font-family: var(--font-body); }
+    .topbar__title { font-family: var(--font-display); font-size: 1.1rem; color: var(--chrome-fg); text-decoration: none; }
+    .topbar__nav { margin-left: auto; display: flex; align-items: center; gap: clamp(0.9rem, 1.8vw, 1.4rem); }
+    .topbar__nav a { font-family: var(--font-display); color: var(--chrome-muted); text-decoration: none; font-size: 0.92rem; transition: color 0.18s; }
+    .topbar__nav a:hover { color: var(--accent); }
+    .topbar__back { font-family: var(--font-mono); font-size: 0.70rem; letter-spacing: 0.10em; color: var(--chrome-muted); text-decoration: none; margin-right: auto; }
+    .topbar__back:hover { color: var(--accent); }
+
+    .page { position: relative; z-index: 1; display: flex; flex-direction: column; min-height: calc(100vh - 56px); }
+
+    .graph-header {
+      padding: 2.2rem 2.5rem 1rem;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .graph-header h1 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: -0.008em;
+    }
+    .graph-header__meta {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      opacity: 0.7;
+    }
+
+    .graph-canvas-wrap {
+      flex: 1;
+      position: relative;
+      margin: 0 2.5rem 2rem;
+      border: 1px solid oklch(82% 0.08 85 / 0.28);
+      background: oklch(98% 0.005 92 / 0.5);
+      min-height: 520px;
+      cursor: grab;
+      overflow: hidden;
+    }
+    .graph-canvas-wrap:active { cursor: grabbing; }
+    .graph-canvas-wrap canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .graph-controls {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      display: flex;
+      gap: 0.4rem;
+    }
+    .graph-controls button {
+      width: 34px;
+      height: 34px;
+      border: 1px solid oklch(82% 0.08 85 / 0.30);
+      background: oklch(98% 0.005 92 / 0.85);
+      color: var(--fg);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: border-color 0.18s;
+    }
+    .graph-controls button:hover { border-color: var(--accent-strong); }
+
+    .legend {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 0.9rem 1.1rem;
+      border: 1px solid oklch(82% 0.08 85 / 0.28);
+      background: oklch(98% 0.005 92 / 0.85);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .legend__title {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.7;
+    }
+    .legend__item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .legend__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .legend__dot--core { background: var(--accent-strong); }
+    .legend__dot--person { background: var(--red); }
+    .legend__dot--method { background: var(--teal); }
+    .legend__dot--text { background: var(--muted); }
+
+    .tooltip {
+      position: absolute;
+      pointer-events: none;
+      padding: 0.6rem 0.9rem;
+      background: oklch(20% 0.01 75 / 0.92);
+      color: oklch(93% 0.01 90);
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      line-height: 1.5;
+      border: 1px solid oklch(78% 0.12 80 / 0.35);
+      opacity: 0;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+      max-width: 260px;
+    }
+    .tooltip.show { opacity: 1; }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 2.5rem;
+      border-top: 1px solid oklch(82% 0.08 85 / 0.22);
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      opacity: 0.55;
+    }
+    .footer a { color: inherit; text-decoration: none; }
+    .footer a:hover { color: var(--accent-strong); }
+
+    @media (max-width: 900px) {
+      .graph-header { padding: 1.5rem 1.2rem 0.8rem; }
+      .graph-header h1 { font-size: 1.4rem; }
+      .graph-canvas-wrap { margin: 0 1.2rem 1.5rem; min-height: 400px; }
+      .footer { padding: 1.2rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <a href="project-curation.html" class="topbar__back">荻 入流亡所</a>
+    <div class="topbar__brand">
+      <span class="topbar__eyebrow">Interactive Graph</span>
+      <span class="topbar__title">关系图谱</span>
+    </div>
+    <div class="topbar__nav">
+      <a href="index.html">首页</a>
+      <a href="https://github.com/hhaya-xu/Tree-of-Wisdom" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="graph-header">
+      <h1>入流亡所 路 术语关系图谱</h1>
+      <span class="graph-header__meta">19 节点 路 25 条边 路 拖拽 路 滚轮缩放 路 点击聚焦</span>
+    </div>
+
+    <div class="graph-canvas-wrap" id="graph-wrap">
+      <canvas id="graph-canvas"></canvas>
+      <div class="legend">
+        <span class="legend__title">图例</span>
+        <div class="legend__item"><span class="legend__dot legend__dot--core"></span> 核心术语</div>
+        <div class="legend__item"><span class="legend__dot legend__dot--person"></span> 人物</div>
+        <div class="legend__item"><span class="legend__dot legend__dot--method"></span> 方法 / 禅修</div>
+        <div class="legend__item"><span class="legend__dot legend__dot--text"></span> 经典 / 文本</div>
+      </div>
+      <div class="graph-controls">
+        <button id="btn-zoom-in" title="放大">+</button>
+        <button id="btn-zoom-out" title="缩小">荝</button>
+        <button id="btn-reset" title="重置">奆</button>
+      </div>
+      <div class="tooltip" id="tooltip"></div>
+    </div>
+
+    <footer class="footer">
+      <span>关系图谱 路 Tree of Wisdom</span>
+      <span><a href="index.html">首页</a> 路 <a href="project-curation.html">入流亡所</a></span>
+    </footer>
+  </div>
+
+  <script>(function() {
+  var wrap = document.getElementById('graph-wrap');
+  var canvas = document.getElementById('graph-canvas');
+  var tooltip = document.getElementById('tooltip');
+  if (!wrap || !canvas) return;
+
+  var ctx = canvas.getContext('2d');
+  var dpr = window.devicePixelRatio || 1;
+  var scale = 1, offsetX = 0, offsetY = 0;
+  var dragNode = null, dragWorld = false, lastX = 0, lastY = 0;
+
+  var amber = '#b8942e', red = '#8f3d2e', teal = '#34595c', muted = '#a09080';
+  var edgeColor = '#c8b898';
+
+  var nodes = [
+    { id: 'shurangama',  label: '楞严经',    group: 'text',   desc: '大佛顶首楞严经，卷六观世音菩萨耳根圆通章' },
+    { id: 'sound',       label: '耳根圆通',   group: 'core',   desc: '楞严经核心法门：反闻闻自性' },
+    { id: 'ruins',       label: '入流亡所',   group: 'core',   desc: '初于闻中，入流亡所——闻思修的入门阶段' },
+    { id: 'body',        label: '身根',       group: 'core',   desc: '六根之一，身体触觉感知的根门' },
+    { id: 'pain',        label: '病痛',       group: 'core',   desc: '乳腺炎急性发作的身体经验' },
+    { id: 'breath',      label: '安般念',     group: 'method', desc: '安那般那念，观呼吸的禅修方法' },
+    { id: 'vedana',      label: '受蕴',       group: 'core',   desc: '五蕴之一，苦乐感受的心理现象' },
+    { id: 'mindful',     label: '正念',       group: 'method', desc: '如实觉察当下身心现象' },
+    { id: 'samadhi',     label: '三摩地',     group: 'core',   desc: 'Samadhi，心的专注与安定' },
+    { id: 'wensi',       label: '闻思修',     group: 'method', desc: '听闻佛法、思维法义、实修体证' },
+    { id: 'dai',         label: '呆呆酱',     group: 'person', desc: '第一人称叙述者，急性乳腺炎亲历者' },
+    { id: 'baizhu',      label: '白术散人',   group: 'person', desc: '中医师，安般念引导者' },
+    { id: 'zhouxin',     label: '周鑫',       group: 'person', desc: 'Dr.，西医背景，解剖学与药理分析' },
+    { id: 'viola',       label: 'Viola',      group: 'person', desc: '心理学视角，身体与情绪关系' },
+    { id: 'yiye',        label: '一叶',       group: 'person', desc: '群友，偏方与民间经验' },
+    { id: 'sanna',       label: '想蕴',       group: 'core',   desc: '五蕴之一，知觉与概念的形成' },
+    { id: 'sankhara',    label: '行蕴',       group: 'core',   desc: '五蕴之一，意志与造作' },
+    { id: 'sixroots',    label: '六根',       group: 'core',   desc: '眼耳鼻舌身意，六种感知根门' },
+    { id: 'heart',       label: '心经',       group: 'text',   desc: '般若波罗蜜多心经，照见五蕴皆空' },
+  ];
+
+  var edges = [
+    [0,1],[0,2],[1,2],[0,3],[1,3],
+    [2,3],[3,4],[4,7],[4,6],[6,7],
+    [5,7],[5,6],[0,5],[1,8],[2,8],
+    [8,9],[9,1],[9,2],[10,4],[10,6],
+    [10,11],[10,12],[10,13],[10,14],
+    [11,5],[12,4],[6,15],[15,16],[3,17],[17,15],[17,16],[18,6],[18,15],[18,16]
+  ];
+
+  // Init positions
+  for (var i = 0; i < nodes.length; i++) {
+    nodes[i].x = 200 + Math.random() * 400;
+    nodes[i].y = 150 + Math.random() * 300;
+  }
+  nodes[0].x = 350; nodes[0].y = 260;
+  nodes[0].fixed = true;
+
+  function nodeColor(g) {
+    if (g === 'core') return amber;
+    if (g === 'person') return red;
+    if (g === 'method') return teal;
+    return muted;
+  }
+
+  function nodeRadius(g) {
+    if (g === 'core') return 6;
+    if (g === 'person') return 5;
+    return 4;
+  }
+
+  function resize() {
+    var rect = wrap.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function sim() {
+    var W = canvas.width / dpr, H = canvas.height / dpr;
+    for (var iter = 0; iter < 3; iter++) {
+      for (var i = 0; i < nodes.length; i++) {
+        if (nodes[i].fixed || nodes[i] === dragNode) continue;
+        nodes[i].x += (W/2 - nodes[i].x) * 0.002;
+        nodes[i].y += (H/2 - nodes[i].y) * 0.002;
+        for (var j = 0; j < nodes.length; j++) {
+          if (i === j) continue;
+          var dx = nodes[i].x - nodes[j].x;
+          var dy = nodes[i].y - nodes[j].y;
+          var d = Math.sqrt(dx*dx+dy*dy) || 1;
+          if (d < 70) { var f = 4 / (d * 0.05); nodes[i].x += (dx/d) * f; nodes[i].y += (dy/d) * f; }
+        }
+      }
+      for (var e = 0; e < edges.length; e++) {
+        var a = nodes[edges[e][0]], b = nodes[edges[e][1]];
+        var dx = b.x - a.x, dy = b.y - a.y;
+        var d = Math.sqrt(dx*dx+dy*dy) || 1;
+        var t = 55;
+        var f = (d - t) * 0.02;
+        if (!a.fixed && a !== dragNode) { a.x += (dx/d) * f * 0.5; a.y += (dy/d) * f * 0.5; }
+        if (!b.fixed && b !== dragNode) { b.x -= (dx/d) * f * 0.5; b.y -= (dy/d) * f * 0.5; }
+      }
+    }
+  }
+
+  function draw() {
+    var W = canvas.width / dpr, H = canvas.height / dpr;
+    ctx.clearRect(0, 0, W, H);
+    ctx.save();
+    ctx.translate(W/2 + offsetX, H/2 + offsetY);
+    ctx.scale(scale, scale);
+    ctx.translate(-W/2, -H/2);
+
+    // Edges
+    for (var e = 0; e < edges.length; e++) {
+      var a = nodes[edges[e][0]], b = nodes[edges[e][1]];
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = edgeColor;
+      ctx.lineWidth = 0.6;
+      ctx.globalAlpha = 0.4;
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+
+    // Nodes
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      var r = nodeRadius(n.group);
+      var color = nodeColor(n.group);
+
+      // Glow
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, r + 4, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.globalAlpha = 0.10;
+      ctx.fill();
+
+      // Node
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.globalAlpha = 0.85;
+      ctx.fill();
+
+      // Stroke for core
+      if (n.group === 'core') {
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 0.7;
+        ctx.globalAlpha = 0.30;
+        ctx.stroke();
+      }
+
+      // Label
+      ctx.fillStyle = '#3d3025';
+      ctx.globalAlpha = 0.75;
+      ctx.font = '11px ' + getComputedStyle(document.body).getPropertyValue('--font-body').split(',')[0].trim().replace(/['\"]/g,'') + ', sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(n.label, n.x, n.y - r - 6);
+    }
+    ctx.globalAlpha = 1;
+    ctx.restore();
+  }
+
+  function findNode(mx, my) {
+    var W = canvas.width / dpr, H = canvas.height / dpr;
+    var wx = (mx - W/2 - offsetX) / scale + W/2;
+    var wy = (my - H/2 - offsetY) / scale + H/2;
+    for (var i = nodes.length - 1; i >= 0; i--) {
+      var n = nodes[i];
+      var dx = wx - n.x, dy = wy - n.y;
+      if (Math.sqrt(dx*dx+dy*dy) < nodeRadius(n.group) + 8) return n;
+    }
+    return null;
+  }
+
+  function getPos(e) {
+    var rect = canvas.getBoundingClientRect();
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  }
+
+  canvas.addEventListener('mousedown', function(e) {
+    var pos = getPos(e);
+    var n = findNode(pos.x, pos.y);
+    if (n) {
+      dragNode = n;
+      n.fixed = true;
+    } else {
+      dragWorld = true;
+      lastX = e.clientX;
+      lastY = e.clientY;
+    }
+    e.preventDefault();
+  });
+
+  window.addEventListener('mousemove', function(e) {
+    if (dragNode) {
+      var pos = getPos(e);
+      var W = canvas.width / dpr, H = canvas.height / dpr;
+      dragNode.x = (pos.x - W/2 - offsetX) / scale + W/2;
+      dragNode.y = (pos.y - H/2 - offsetY) / scale + H/2;
+    } else if (dragWorld) {
+      offsetX += (e.clientX - lastX);
+      offsetY += (e.clientY - lastY);
+      lastX = e.clientX;
+      lastY = e.clientY;
+    } else {
+      var pos = getPos(e);
+      var n = findNode(pos.x, pos.y);
+      if (n && tooltip) {
+        tooltip.textContent = n.label + ' : ' + n.desc;
+        tooltip.classList.add('show');
+        tooltip.style.left = (pos.x + 15) + 'px';
+        tooltip.style.top = (pos.y - 36) + 'px';
+      } else if (tooltip) {
+        tooltip.classList.remove('show');
+      }
+    }
+  });
+
+  window.addEventListener('mouseup', function() {
+    if (dragNode) { dragNode.fixed = false; dragNode = null; }
+    dragWorld = false;
+  });
+
+  canvas.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    var ds = e.deltaY > 0 ? 0.92 : 1.08;
+    scale = Math.max(0.3, Math.min(2.5, scale * ds));
+  }, { passive: false });
+
+  // Touch
+  var lastDist = 0;
+  canvas.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 1) {
+      var pos = { x: e.touches[0].clientX - canvas.getBoundingClientRect().left, y: e.touches[0].clientY - canvas.getBoundingClientRect().top };
+      var n = findNode(pos.x, pos.y);
+      if (n) { dragNode = n; n.fixed = true; }
+      else { dragWorld = true; lastX = e.touches[0].clientX; lastY = e.touches[0].clientY; }
+    } else if (e.touches.length === 2) {
+      dragWorld = false;
+      lastDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+    }
+  }, { passive: false });
+
+  canvas.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+    if (dragNode && e.touches.length === 1) {
+      var pos = { x: e.touches[0].clientX - canvas.getBoundingClientRect().left, y: e.touches[0].clientY - canvas.getBoundingClientRect().top };
+      var W = canvas.width / dpr, H = canvas.height / dpr;
+      dragNode.x = (pos.x - W/2 - offsetX) / scale + W/2;
+      dragNode.y = (pos.y - H/2 - offsetY) / scale + H/2;
+    } else if (dragWorld && e.touches.length === 1) {
+      offsetX += (e.touches[0].clientX - lastX);
+      offsetY += (e.touches[0].clientY - lastY);
+      lastX = e.touches[0].clientX;
+      lastY = e.touches[0].clientY;
+    } else if (e.touches.length === 2) {
+      var d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+      scale = Math.max(0.3, Math.min(2.5, scale * (d / lastDist)));
+      lastDist = d;
+    }
+  }, { passive: false });
+
+  canvas.addEventListener('touchend', function() {
+    if (dragNode) { dragNode.fixed = false; dragNode = null; }
+    dragWorld = false;
+  });
+
+  // Buttons
+  document.getElementById('btn-zoom-in').addEventListener('click', function() { scale = Math.min(2.5, scale * 1.2); });
+  document.getElementById('btn-zoom-out').addEventListener('click', function() { scale = Math.max(0.3, scale * 0.83); });
+  document.getElementById('btn-reset').addEventListener('click', function() { scale = 1; offsetX = 0; offsetY = 0; });
+
+  // Click to focus
+  canvas.addEventListener('dblclick', function(e) {
+    var pos = getPos(e);
+    var n = findNode(pos.x, pos.y);
+    if (n) {
+      var W = canvas.width / dpr, H = canvas.height / dpr;
+      offsetX = (W/2 - n.x) * scale;
+      offsetY = (H/2 - n.y) * scale;
+    }
+  });
+
+  function loop() {
+    resize();
+    sim();
+    draw();
+    requestAnimationFrame(loop);
+  }
+
+  resize();
+  loop();
+})();
+  </script>
+</body>
+</html>

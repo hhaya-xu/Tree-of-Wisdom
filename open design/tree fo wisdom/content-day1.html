@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Day 1 : 凌晨 路 入流亡所</title>
+  <style>
+    :root {
+      --bg:      oklch(93% 0.018 95);
+      --surface: oklch(97% 0.006 92);
+      --fg:      oklch(18% 0.014 75);
+      --muted:   oklch(48% 0.018 75);
+      --border:  oklch(82% 0.08 85 / 0.30);
+      --accent:  oklch(78% 0.12 80);
+      --accent-strong: oklch(68% 0.16 80);
+      --red:     oklch(35% 0.10 28);
+      --teal:    oklch(38% 0.04 210);
+      --chrome-bg:    oklch(9% 0.003 85);
+      --chrome-fg:    oklch(93% 0.012 90);
+      --chrome-muted: oklch(80% 0.012 90 / 0.68);
+      --font-display: 'Iowan Old Style', 'Baskerville', 'Palatino Linotype', 'Noto Serif SC', 'Source Han Serif SC', serif;
+      --font-body: 'Avenir Next', 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans CJK SC', system-ui, sans-serif;
+      --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--fg); background: radial-gradient(circle at 18% 16%, oklch(78% 0.12 80 / 0.10), transparent 24%), radial-gradient(circle at 74% 22%, oklch(35% 0.10 28 / 0.04), transparent 22%), linear-gradient(180deg, #ede3cf, #ebe0ca 55%, #e7dbc4); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+    body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: 0.10; background-image: linear-gradient(rgba(120,102,71,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(120,102,71,0.05) 1px, transparent 1px); background-size: 120px 120px; mask-image: radial-gradient(circle at center, black 38%, transparent 95%); -webkit-mask-image: radial-gradient(circle at center, black 38%, transparent 95%); z-index: 0; }
+    .topbar { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; gap: clamp(0.9rem, 2vw, 1.6rem); padding: 1.0rem 2rem; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); background: linear-gradient(180deg, oklch(8% 0.003 85 / 0.94), oklch(8% 0.003 85 / 0.84)); border-bottom: 1px solid rgba(255,246,226,0.06); }
+    .topbar__brand { display: flex; flex-direction: column; align-items: flex-start; gap: 0.12rem; }
+    .topbar__eyebrow { font-size: 0.70rem; letter-spacing: 0.08em; color: var(--accent); font-family: var(--font-body); }
+    .topbar__title { font-family: var(--font-display); font-size: 1.1rem; color: var(--chrome-fg); text-decoration: none; }
+    .topbar__back { font-family: var(--font-mono); font-size: 0.70rem; letter-spacing: 0.10em; color: var(--chrome-muted); text-decoration: none; margin-right: auto; }
+    .topbar__back:hover { color: var(--accent); }
+    .topbar__nav { margin-left: auto; display: flex; gap: clamp(0.9rem, 1.8vw, 1.4rem); }
+    .topbar__nav a { font-family: var(--font-display); color: var(--chrome-muted); text-decoration: none; font-size: 0.92rem; transition: color 0.18s; }
+    .topbar__nav a:hover { color: var(--accent); }
+
+    .layout { position: relative; z-index: 1; display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 56px); }
+    .sidebar { position: sticky; top: 56px; align-self: start; height: calc(100vh - 56px); overflow-y: auto; display: flex; flex-direction: column; gap: 1.2rem; padding: 2rem 1.4rem; border-right: 1px solid oklch(82% 0.08 85 / 0.22); background: oklch(94% 0.012 95 / 0.55); backdrop-filter: blur(6px); }
+    .sidebar__label { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-strong); }
+    .sidebar__project { font-family: var(--font-display); font-size: 1.05rem; color: var(--fg); line-height: 1.25; }
+    .sidebar__nav { display: flex; flex-direction: column; gap: 0.22rem; }
+    .sidebar__nav a { display: block; font-family: var(--font-display); font-size: 0.88rem; color: var(--muted); text-decoration: none; padding: 0.32rem 0.5rem; border-radius: 2px; transition: color 0.16s, background 0.16s; }
+    .sidebar__nav a:hover, .sidebar__nav a.is-active { color: var(--accent-strong); background: oklch(78% 0.12 80 / 0.08); }
+    .sidebar__graph { margin-top: auto; border-top: 1px solid oklch(82% 0.08 85 / 0.22); padding-top: 1rem; }
+    .sidebar__graph-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); opacity: 0.7; margin-bottom: 0.6rem; }
+    .sidebar__graph a { font-family: var(--font-mono); font-size: 0.64rem; color: var(--accent-strong); text-decoration: none; }
+    .sidebar__graph a:hover { opacity: 0.7; }
+
+    .main { padding: 0; }
+    .article { max-width: 56rem; padding: 3rem 3rem 3rem; }
+    .article__kicker { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-strong); margin-bottom: 0.8rem; }
+    .article h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 4.5vw, 3.6rem); font-weight: 400; line-height: 1.10; letter-spacing: -0.008em; margin-bottom: 0.6rem; }
+    .article__sub { font-family: var(--font-display); font-size: clamp(1.05rem, 1.4vw, 1.2rem); color: var(--red); line-height: 1.6; margin-bottom: 2rem; }
+
+    .article__meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid oklch(82% 0.08 85 / 0.22); }
+    .article__meta span { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; color: var(--muted); }
+
+    .article h2 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; letter-spacing: -0.008em; margin: 2rem 0 0.8rem; }
+    .article p { font-family: var(--font-display); font-size: 1.0rem; line-height: 1.95; color: var(--fg); margin-bottom: 1.2rem; max-width: 52ch; }
+    .article p.muted { color: var(--muted); font-size: 0.94rem; }
+
+    .chat-block { padding: 1.2rem 1.5rem; border-left: 2px solid var(--accent-strong); background: oklch(98% 0.005 92 / 0.45); margin-bottom: 1.2rem; }
+    .chat-block__speaker { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.10em; color: var(--accent-strong); margin-bottom: 0.3rem; }
+    .chat-block p { font-size: 0.90rem !important; line-height: 1.7 !important; margin-bottom: 0.5rem !important; }
+
+    .footer { display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 3rem; border-top: 1px solid oklch(82% 0.08 85 / 0.22); font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.06em; color: var(--muted); opacity: 0.55; }
+    .footer a { color: inherit; text-decoration: none; }
+    .footer a:hover { color: var(--accent-strong); }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; height: auto; border-right: 0; border-bottom: 1px solid oklch(82% 0.08 85 / 0.22); }
+      .article { padding: 2rem 1.5rem; }
+      .footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <a href="project-curation.html" class="topbar__back">荻 入流亡所</a>
+    <div class="topbar__brand">
+      <span class="topbar__eyebrow">Day 1</span>
+      <span class="topbar__title">凌晨 路 病发记录</span>
+    </div>
+    <div class="topbar__nav">
+      <a href="#narrative">叙述</a>
+      <a href="#chat">对话</a>
+      <a href="content-graph.html">图谱</a>
+    </div>
+  </nav>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div>
+        <span class="sidebar__label">Day 1</span>
+        <div class="sidebar__project">凌晨 路 病发</div>
+      </div>
+      <nav class="sidebar__nav">
+        <a href="#narrative" class="is-active">身体叙述</a>
+        <a href="#chat">群聊对话</a>
+        <a href="content-graph.html">术语图谱</a>
+        <a href="project-curation.html">返回项目</a>
+      </nav>
+      <div class="sidebar__graph">
+        <div class="sidebar__graph-label">关联术语</div>
+        <a href="content-graph.html">身根 腋 病痛 腋 受蕴 腋 安般 狈</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <article class="article" id="narrative">
+        <div class="article__kicker">Day 1 路 凌晨</div>
+        <h1>病发记录</h1>
+        <p class="article__sub">乳腺炎急性发作。头痛、呕吐、高烧，群聊求助过程中的身体觉察与实修对话。</p>
+
+        <div class="article__meta">
+          <span>日期：2024</span>
+          <span>人物：呆呆酱 / 白术散人 / 周鑫 / Viola</span>
+          <span>标签：身根 / 病痛 / 受蕴</span>
+        </div>
+
+        <h2>身体叙述</h2>
+        <p>
+          凌晨两点左右，左侧乳房开始出现钝痛。起初以为是睡姿压迫，翻身调整后疼痛反而加剧。
+          三点过后，疼痛已从乳房外侧扩散至腋下，伴随明显的搏动感。
+        </p>
+        <p>
+          起身测量体温，38.6蔽。头痛从后枕部开始，像有人用钝器持续敲打。
+          随后出现恶心，凌晨四点半呕吐一次，胃内容物排空后转为干呕。
+        </p>
+        <p class="muted">
+          蔽记录时间：凌晨 04:42。呆呆酱在微信群发出第一条求助消息。
+        </p>
+
+        <h2 id="chat">群聊对话实录</h2>
+
+        <div class="chat-block">
+          <div class="chat-block__speaker">呆呆酱 04:42</div>
+          <p>乳腺炎发作……头痛得不行，刚才吐了一次。谁能帮我看一下是不是需要去急诊？</p>
+        </div>
+
+        <div class="chat-block">
+          <div class="chat-block__speaker">白术散人 04:50</div>
+          <p>先别急。你现在能不能描述一下疼痛的位置和性质？是胀痛、刺痛还是灼痛？另外有没有发冷、寒战？</p>
+        </div>
+
+        <div class="chat-block">
+          <div class="chat-block__speaker">呆呆酱 04:53</div>
+          <p>左侧外侧，搏动性的钝痛。腋下也有痛感。发冷有，盖了被子还是觉得冷。</p>
+        </div>
+
+        <div class="chat-block">
+          <div class="chat-block__speaker">周鑫 05:02</div>
+          <p>乳腺炎的典型表现。如果体温持续上升到 39蔽以上，或者出现明显的红肿热痛加重，建议去急诊。现在可以先冷敷，但不要按摩。你手边有退烧药吗？</p>
+        </div>
+
+        <div class="chat-block">
+          <div class="chat-block__speaker">白术散人 05:08</div>
+          <p>周鑫说得对。另外你可以尝试把注意力放在呼吸上——不是去对抗疼痛，而是觉察它。安般念的方法：吸气时知道在吸气，呼气时知道在呼气。疼痛就在那里，但你不是它。</p>
+        </div>
+
+        <div class="chat-block">
+          <div class="chat-block__speaker">呆呆酱 05:20</div>
+          <p>试了一下……很难不去注意疼痛。但你说蔽你不是它蔽的那一下，好像有那么一秒钟的松动。再试试。</p>
+        </div>
+      </article>
+
+      <footer class="footer">
+        <span>Day 1 路 入流亡所</span>
+        <span><a href="project-curation.html">项目</a> 路 <a href="content-graph.html">图谱</a></span>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
