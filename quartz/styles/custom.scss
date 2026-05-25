@@ -74,7 +74,6 @@ h1, h2, h3, h4, h5, h6,
 .article-title,
 .page-title,
 .folder-title {
-  font-family: "Fraunces", "Iowan Old Style", Baskerville, "Palatino Linotype", "Times New Roman", serif !important;
   font-weight: 500;
   color: oklch(16% 0.012 80);
 }
@@ -85,8 +84,7 @@ h2 { font-size: 1.35rem; border-bottom: 0.5px solid oklch(85% 0.015 82); padding
 h3 { font-size: 1.1rem; color: oklch(30% 0.012 80); letter-spacing: -0.005em; }
 
 body {
-  font-family: "Geist", "Avenir Next", "PingFang SC", "Hiragino Sans GB", sans-serif;
-}
+  }
 
 /* ---------- 3. 链接（轴4-A：极简琥珀） ---------- */
 
@@ -126,7 +124,6 @@ a:hover {
 
 .sidebar .page-title,
 .left .page-title {
-  font-family: "Fraunces", serif !important;
   font-size: 1.15rem;
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -270,8 +267,7 @@ td {
   color: oklch(25% 0.015 80);
   border-radius: 8px;
   padding: .55rem .8rem;
-  font-family: inherit;
-  transition: border-color .2s ease;
+    transition: border-color .2s ease;
 }
 
 .search-container input:focus {
@@ -451,7 +447,6 @@ footer ul {
   color: oklch(55% 0.012 75);
   font-size: 8.5pt;
   margin-right: 0.4rem;
-  font-family: "Geist Mono", "IBM Plex Mono", monospace;
   font-weight: 400;
   letter-spacing: -0.01em;
 }
