@@ -79,7 +79,7 @@ function formatFontSpecification(
   }
 
   if (features.length > 0) {
-    return `${spec.name}:${features.join(",")}`
+    return `${spec.name.replace(/ /g, "+")}:${features.join(",")}`
   }
 
   return spec.name
