@@ -16,8 +16,8 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Noto Serif SC",
-        body: "Noto Sans SC",
+        header: "Fraunces",
+        body: "Geist",
         code: "Geist Mono",
       },
       colors: {
