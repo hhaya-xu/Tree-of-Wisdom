@@ -1,4 +1,4 @@
-﻿---
+---
 title: GitHub Actions
 date: 2026-05-14
 ---
