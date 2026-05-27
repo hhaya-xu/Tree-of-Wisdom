@@ -3,7 +3,7 @@ import * as Plugin from "./quartz/plugins"
 
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "?? �ǻ���",
+  pageTitle: "🌿 入流亡所群聊录",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
