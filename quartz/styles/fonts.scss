@@ -1,36 +1,33 @@
-﻿// 文姬字体锁定 v3 — 2026-05-25
-// 诊断：Google Fonts CDN (fonts.googleapis.com / fonts.gstatic.com) 
-// 在中国大陆被墙或极慢，导致 Noto Serif SC / Noto Sans SC 字体文件
-// 从未真正下载。浏览器超时后回退到系统默认字体（微软雅黑/苹方），
-// 用户看到的始终是回退字体，CSS 声明本身完全正确。
+// 文姬字体锁定 v4 — 2026-05-27
+// v3 → v4 变更：
+//   1. 所有字体栈末尾追加 emoji 字体，修复 Emoji 显示为 ?? 的问题
+//   2. --bodyFont 从黑体切换为宋体，正文与标题统一宋体书卷气质
 //
-// 修复：切换到系统原生 CJK 字体 + 英文字体，零外部 CDN 依赖。
-// 每个平台的第一选择都是出厂就有的字体，100% 可靠加载。
+// 技术约束：
+//   - 零外部 CDN 依赖，全部系统原生字体
+//   - !important 防止 joinStyles :root 块覆盖
+//   - emoji 字体必须在泛型族（serif/sans-serif/monospace）之前
 
 :root {
-  // 标题：宋体系列 — "bianjing-hours" 同款书卷气
-  // macOS: Songti SC (10.11+) / STSongti-SC (10.14+)
-  // Windows: SimSun (XP+) / NSimun
-  // Linux: Noto Serif CJK SC
+  // 标题：宋体系列 — bianjing-hours 同款书卷气
   --headerFont: "Songti SC", "STSongti-SC", "SimSun", "NSimSun",
-                "Noto Serif CJK SC", "Georgia", "Times New Roman", serif !important;
+                "Noto Serif CJK SC", "Georgia", "Times New Roman",
+                "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+                serif !important;
 
-  // 正文：系统黑体 — 干净、清晰、阅读舒适
-  // macOS: PingFang SC (10.11+) / Hiragino Sans GB (10.6+)
-  // Windows: Microsoft YaHei (Vista+)  
-  // Linux: Noto Sans CJK SC / WenQuanYi Micro Hei
-  --bodyFont: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB",
-              "Noto Sans CJK SC", "WenQuanYi Micro Hei",
-              system-ui, -apple-system, sans-serif !important;
+  // 正文：宋体系列 — 统一书卷气质（v4 从黑体切为宋体）
+  --bodyFont: "Songti SC", "STSongti-SC", "SimSun", "NSimSun",
+              "Noto Serif CJK SC", "Georgia", "Times New Roman",
+              "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+              serif !important;
 
-  // 代码：系统等宽 — 清晰可辨、层级明确
+  // 代码：系统等宽
   --codeFont: "SF Mono", "Cascadia Code", "Consolas",
               "Fira Code", "JetBrains Mono", "Source Code Pro",
               ui-monospace, Menlo, monospace !important;
 }
 
-// 直接锁定关键元素，防止 Quartz joinStyles 的 :root 块覆盖
-// （虽然有 !important 保护，但双保险更稳）
+// 直接锁定关键元素
 html, body {
   font-family: var(--bodyFont) !important;
 }
