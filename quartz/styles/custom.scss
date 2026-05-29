@@ -1,4 +1,4 @@
-﻿/* 文姬 · 智慧树视觉 · 唯一样式入口 · 最后更新: 左栏5处修复 2026-05-29 */
+﻿/* 文姬 · 智慧树视觉 · 唯一样式入口 · 最后更新: 左栏preview-v4深化 2026-05-29 */
 /* ============================================================
    Tree of Wisdom · custom.scss
    文姬重建 v2 · 2026-05-27
@@ -168,42 +168,169 @@ body::before {
 .left.sidebar {
   background: #f4efe2;
   border-right: 1px solid #d4c9b0;
-  padding: 24px 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-
-/* 文件夹标题 → Geist Mono 小写大写 */
-.folder-container button span,
-.folder-container div > a {
+/* Explorer 头部：浏览 + 图标 + 装饰线 */
+.explorer .title-button.desktop-explorer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 20px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+.explorer .title-button.desktop-explorer h2 {
   font-family: var(--codeFont) !important;
   font-size: 10px !important;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
+  color: #6b5f52 !important;
+  font-weight: 400 !important;
+  margin: 0;
+}
+.explorer .title-button.desktop-explorer .fold {
+  opacity: 0.5;
+  width: 11px;
+  height: 11px;
+}
+
+/* 标题装饰线 */
+.explorer .title-button.desktop-explorer::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: #d4c9b0;
+  margin-left: 10px;
+}
+
+/* Explorer 可滚动区域 */
+.explorer .explorer-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 24px 20px 32px;
+}
+
+/* 自定义滚动条 */
+.explorer .explorer-content::-webkit-scrollbar { width: 4px; }
+.explorer .explorer-content::-webkit-scrollbar-track { background: transparent; }
+.explorer .explorer-content::-webkit-scrollbar-thumb { background: #d4c9b0; border-radius: 2px; }
+.explorer .explorer-content::-webkit-scrollbar-thumb:hover { background: #b8860b; }
+.explorer .explorer-content { scrollbar-width: thin; scrollbar-color: #d4c9b0 transparent; }
+
+/* 清除 explorer-ul 默认样式 */
+.explorer-ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 分组区间距 */
+.explorer-ul > li {
+  margin-bottom: 8px;
+}
+
+/* 文件夹标题：等宽9.5px大写 + 下划线 */
+.folder-container button,
+.folder-container .folder-button {
+  font-family: var(--codeFont) !important;
+  font-size: 9.5px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #6b5f52 !important;
+  font-weight: 400 !important;
+  background: none;
+  border: none;
+  padding: 12px 0 6px 0;
+  border-bottom: 0.5px solid #d4c9b0;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+.folder-container button span,
+.folder-container .folder-button span,
+.folder-container .folder-title {
+  font-family: var(--codeFont) !important;
+  font-size: 9.5px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
   color: #6b5f52 !important;
   font-weight: 400 !important;
 }
 
-/* 嵌套文件夹左边线色 */
-.folder-outer > ul {
-  border-left: 1px solid #d4c9b0 !important;
+/* 文件夹图标琥珀色 */
+.folder-container svg.folder-icon,
+.folder-icon {
+  color: #b8860b;
+  opacity: 0.6;
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+  flex-shrink: 0;
+  transition: transform 0.2s, opacity 0.2s;
 }
 
-/* 文件条目 → 左边线 hover */
-.explorer-content ul li > a {
-  color: #4a3f35;
-  border-left: 2px solid transparent;
-  padding: 4px 0 4px 12px;
-  transition: border-color 0.18s, color 0.18s;
-  display: block;
-  text-decoration: none;
+/* 嵌套文件夹左边线 */
+.folder-outer > ul {
+  border-left: 1px solid #d4c9b0 !important;
+  margin: 0;
+  padding-left: 0;
 }
-.explorer-content ul li > a:hover,
-.explorer-content ul li > a.active {
+
+/* 文件条目 */
+.explorer-ul li > a,
+.explorer-content ul li > a {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  margin: 1px 0;
+  color: #4a3f35;
+  text-decoration: none;
+  font-size: 13.5px;
+  line-height: 1.5;
+  border-left: 2px solid transparent;
+  border-radius: 0 3px 3px 0;
+  transition: all 0.18s ease;
+}
+.explorer-ul li > a:hover,
+.explorer-content ul li > a:hover {
   color: #b8860b;
+  background: rgba(184, 134, 11, 0.08);
   border-left-color: #b8860b;
 }
+.explorer-ul li > a.active,
 .explorer-content ul li > a.active {
+  color: #b8860b;
   font-weight: 600;
+  background: rgba(184, 134, 11, 0.08);
+  border-left-color: #b8860b;
+}
+
+/* 嵌套子条目缩进 */
+.folder-outer .content > li > a {
+  font-size: 13px !important;
+  padding-left: 24px !important;
+  color: #6b5f52 !important;
+}
+
+/* 嵌套竖线引导 */
+.folder-outer > ul > li {
+  position: relative;
+}
+.folder-outer > ul > li::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, #d4c9b0 0%, transparent 100%);
 }
 
 /* ---- 5. 中栏：透明底，内容居中 ---- */
