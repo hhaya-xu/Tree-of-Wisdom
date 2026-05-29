@@ -127,7 +127,7 @@ body::before {
 
 .topbar {
   box-sizing: border-box;
-  background: #0c0c14;
+  background: #0a0a0f;
   border-bottom: 0.5px solid rgba(196, 168, 92, 0.18);
   display: flex;
   flex: 1;
@@ -364,6 +364,7 @@ hr {
 
 /* ---- 14. 搜索按钮（顶栏右侧） ---- */
 .page-header .search {
+  background: #0a0a0f;
   display: flex;
   align-items: center;
   margin-left: auto;
