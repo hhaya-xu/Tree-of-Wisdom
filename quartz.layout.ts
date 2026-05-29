@@ -1,4 +1,4 @@
-﻿import { PageLayout, SharedLayout } from "./quartz/cfg"
+import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
 export const sharedPageComponents: SharedLayout = {
@@ -27,7 +27,7 @@ export const defaultContentPageLayout: PageLayout = {
   left: [
     Component.ContentMeta(),
     Component.MobileOnly(Component.Spacer()),
-    Component.Explorer(),
+    Component.Explorer({ title: "浏览" }),
   ],
   right: [
     Component.SidebarZones({
@@ -45,7 +45,7 @@ export const defaultListPageLayout: PageLayout = {
   left: [
     Component.ContentMeta(),
     Component.MobileOnly(Component.Spacer()),
-    Component.Explorer(),
+    Component.Explorer({ title: "浏览" }),
   ],
   right: [],
 }
