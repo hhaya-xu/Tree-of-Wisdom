@@ -1,4 +1,4 @@
-﻿/* 文姬 · 智慧树视觉 · 唯一样式入口 · 最后更新: 左栏v4-5处精准修复 2026-05-29 */
+﻿/* 文姬 · 智慧树视觉 · 唯一样式入口 · 最后更新: 浏览标题+计数徽章 2026-05-29 */
 /* ============================================================
    Tree of Wisdom · custom.scss
    文姬重建 v2 · 2026-05-27
@@ -174,39 +174,55 @@ body::before {
   overflow: hidden;
 }
 
-/* Explorer 头部：浏览 + 图标 + 装饰线 */
-.explorer .title-button.desktop-explorer {
-  display: flex;
+/* Explorer header — 对标 preview-v4 浏览区 */
+.title-button {
+  display: flex !important;
   align-items: center;
   gap: 8px;
-  padding: 20px 20px 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-.explorer .title-button.desktop-explorer h2 {
+  padding: 20px 20px 0 !important;
   font-family: var(--codeFont) !important;
   font-size: 10px !important;
+  font-weight: 400 !important;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   color: #6b5f52 !important;
-  font-weight: 400 !important;
-  margin: 0;
-}
-.explorer .title-button.desktop-explorer .fold {
-  opacity: 0.5;
-  width: 11px;
-  height: 11px;
+  width: 100%;
+  border-bottom: none !important;
 }
 
-/* 标题装饰线 */
-.explorer .title-button.desktop-explorer::after {
+.title-button h2 {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  margin: 0 !important;
+  color: inherit !important;
+  text-transform: inherit;
+  letter-spacing: inherit;
+}
+
+.title-button .fold {
+  opacity: 0.5;
+  width: 11px !important;
+  height: 11px !important;
+  margin-left: 0 !important;
+}
+
+.title-button::after {
   content: '';
   flex: 1;
   height: 0.5px;
   background: #d4c9b0;
   margin-left: 10px;
+}
+
+/* 文件夹条目计数徽章 */
+.folder-count {
+  margin-left: auto;
+  font-family: var(--codeFont);
+  font-size: 9.5px;
+  color: #6b5f52;
+  opacity: 0.6;
+  flex-shrink: 0;
 }
 
 /* Explorer 可滚动区域 */

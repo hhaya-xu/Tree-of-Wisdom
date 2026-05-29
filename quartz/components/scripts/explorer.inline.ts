@@ -151,6 +151,15 @@ function createFolderNode(
     ul.appendChild(childNode)
   }
 
+  // 文件夹条目计数
+  const directCount = node.children.length
+  if (directCount > 0) {
+    const countSpan = document.createElement("span")
+    countSpan.className = "folder-count"
+    countSpan.textContent = String(directCount)
+    titleContainer.appendChild(countSpan)
+  }
+
   return li
 }
 
