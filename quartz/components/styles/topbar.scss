@@ -45,9 +45,9 @@
 
 .topbar__theme {
   font-family: var(--headerFont);
-  font-size: 2rem;
+  font-size: 40px;
   font-weight: 900;
-  letter-spacing: 0.5em;
+  letter-spacing: 10px;
   color: #c4a85c;
 }
 
@@ -101,7 +101,7 @@
 
 /* ---- search-button 与 topbar 融合 ---- */
 .search > .search-button {
-  background-color: #0a0a0f;
+  background-color: #0a0a0f !important;
   border: 0.5px solid rgba(196, 168, 92, 0.2);
 
   & > p {
