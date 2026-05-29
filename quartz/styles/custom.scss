@@ -163,14 +163,6 @@ body::before {
   background: rgba(196, 168, 92, 0.3);
 }
 
-.topbar__theme {
-  font-family: var(--headerFont);
-  color: #c4a85c;
-  font-size: 2.5em;
-  font-weight: 900;
-  letter-spacing: 1.3em;
-}
-
 /* ---- 4. 左栏：暖纸 + 文件树 ---- */
 .left.sidebar {
   background: linear-gradient(
@@ -668,3 +660,237 @@ body {
   width: 100%;
   background: #0a0a0f;
 }
+
+/* === 顶栏样式（来自 topbar.scss） === */
+﻿/* ============================================================
+   Tree of Wisdom · topbar.scss
+   文姬调整 · 2026-05-25
+   72px 暗色顶栏 · 暖金文字
+   ============================================================ */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  padding: 0 1.8rem;
+  background: #0a0a0f;
+  border-bottom: 0.5px solid rgba(196, 168, 92, 0.18);
+  min-height: 72px;
+  box-sizing: border-box;
+}
+
+.topbar__left {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  gap: 0.8rem;
+}
+
+.topbar__sitetitle {
+  font-family: var(--headerFont);
+  font-size: 19px;
+  font-weight: 600;
+  color: #c4a85c;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.topbar__sitetitle:hover {
+  color: #d4b86c;
+}
+
+.topbar__sep {
+  display: inline-block;
+  width: 0.5px;
+  height: 1rem;
+  background: rgba(196, 168, 92, 0.3);
+}
+
+.topbar__theme {
+  font-family: var(--headerFont);
+  font-size: 2.5em;
+  font-weight: 900;
+  letter-spacing: 1.3em;
+  color: #c4a85c;
+}
+
+/* ---- topbar-nav ---- */
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  margin-left: 1.2rem;
+
+  a {
+    font-family: var(--codeFont);
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(196, 168, 92, 0.55);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    transition: color 0.18s;
+    white-space: nowrap;
+
+    &:hover {
+      color: #c4a85c;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .topbar-nav {
+    display: none;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .topbar {
+    padding: 0.4rem 0.8rem;
+    min-height: 2.5rem;
+  }
+
+  .topbar__theme {
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+  }
+
+  .topbar__sitetitle {
+    font-size: 0.8rem;
+  }
+}
+
+
+/* ---- search-button 与 topbar 融合 ---- */
+.search > .search-button {
+  background-color: #0a0a0f !important;
+  border: 0.5px solid rgba(196, 168, 92, 0.2);
+
+  & > p {
+    color: #c4a85c;
+  }
+
+  .search-path {
+    stroke: #c4a85c;
+  }
+
+  &:hover {
+    background-color: rgba(196, 168, 92, 0.06);
+  }
+}
+
+/* === 右栏样式（来自 sidebar-zones.scss） === */
+/* ============================================================
+   Sidebar Zones �� Specimen warm paper
+   ============================================================ */
+
+.right.sidebar {
+  flex-direction: column;
+  gap: var(--space-sm, 0.75rem);
+  padding-top: var(--space-md, 1rem);
+  padding-bottom: var(--space-md, 1rem);
+  overflow: hidden;
+}
+
+.sidebar-zone {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: flex-grow 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+  min-height: 2.5rem;
+  border-radius: 8px;
+  background: rgba(245, 240, 228, 0.7);
+  border: 0.5px solid oklch(85% 0.015 82);
+}
+
+.sidebar-zone + .sidebar-zone {
+  border-top: none;
+  padding-top: 0;
+}
+
+.sidebar-graph-zone { flex-grow: 4; }
+.sidebar-content-zone { flex-grow: 1; }
+.sidebar-zone.expanded { flex-grow: 6; }
+.sidebar-zone.collapsed { flex-grow: 0.35; }
+
+.sidebar-zone-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  background: transparent;
+  border: none;
+  border-bottom: 0.5px solid oklch(88% 0.012 82);
+  color: oklch(40% 0.012 80);
+  font-family: var(--headerFont);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.sidebar-zone-toggle:hover {
+  color: oklch(60% 0.14 75);
+}
+
+.zone-toggle-label { text-transform: uppercase; }
+
+.zone-toggle-icon {
+  font-size: 0.55rem;
+  transition: transform 0.3s ease;
+  opacity: 0.35;
+}
+
+.sidebar-zone.collapsed .zone-toggle-icon {
+  transform: rotate(180deg);
+}
+
+.sidebar-zone-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.5rem 0.6rem;
+  transition: opacity 0.35s ease;
+}
+
+.sidebar-zone.collapsed .sidebar-zone-body {
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sidebar-zone.expanded .sidebar-zone-body { opacity: 1; }
+
+.sidebar-zone-body .graph {
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-zone-body .graph h3 { display: none; }
+
+.sidebar-zone-body .graph-outer { min-height: 200px; }
+
+.sidebar-zone-body .toc,
+.sidebar-zone-body .backlinks {
+  margin: 0;
+  padding: 0.3rem 0;
+}
+
+.sidebar-zone-body .toc > button.toc-header,
+.sidebar-zone-body .backlinks > h3 {
+  font-size: 0.68rem;
+  color: oklch(50% 0.012 75);
+  margin-bottom: 0.2rem;
+}
+
+.sidebar-zone-body::-webkit-scrollbar { width: 3px; }
+.sidebar-zone-body::-webkit-scrollbar-thumb {
+  background: oklch(75% 0.018 80 / 40%);
+  border-radius: 2px;
+}
+
