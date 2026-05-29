@@ -7,7 +7,7 @@ const Topbar: QuartzComponent = ({ cfg }: QuartzComponentProps) => {
       <div class="topbar__left">
         <a href="/Tree-of-Wisdom" class="topbar__sitetitle">{cfg.pageTitle}</a>
         <span class="topbar__sep"></span>
-        <span class="topbar__theme">Ил Бч Нц Лщ Иє БД Вј</span>
+        <span class="topbar__theme">生命艺术家</span>
         <nav class="topbar-nav">
           <a href="/Tree-of-Wisdom/入流亡所策展">策展</a>
           <a href="/Tree-of-Wisdom/会议室">会议室</a>
