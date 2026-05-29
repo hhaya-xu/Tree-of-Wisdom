@@ -1,4 +1,4 @@
-﻿import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
+import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import style from "./styles/topbar.scss"
 
 const Topbar: QuartzComponent = ({ cfg }: QuartzComponentProps) => {
@@ -7,7 +7,13 @@ const Topbar: QuartzComponent = ({ cfg }: QuartzComponentProps) => {
       <div class="topbar__left">
         <a href="/Tree-of-Wisdom" class="topbar__sitetitle">{cfg.pageTitle}</a>
         <span class="topbar__sep"></span>
-        <span class="topbar__theme">入 流 亡 所 群 聊 录</span>
+        <span class="topbar__theme">Ил Бч Нц Лщ Иє БД Вј</span>
+        <nav class="topbar-nav">
+          <a href="/Tree-of-Wisdom/入流亡所策展">策展</a>
+          <a href="/Tree-of-Wisdom/会议室">会议室</a>
+          <a href="/Tree-of-Wisdom/系统文件夹">系统</a>
+          <a href="/Tree-of-Wisdom/图谱">图谱</a>
+        </nav>
       </div>
     </div>
   )

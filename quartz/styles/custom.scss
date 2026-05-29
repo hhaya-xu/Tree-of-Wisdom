@@ -1,14 +1,20 @@
 ﻿/* ============================================================
    Tree of Wisdom · custom.scss
-   文姬重建 · 2026-05-25
+   文姬重建 v2 · 2026-05-27
+
+   美学理念：暖纸如卷，墨色如刻
+   Paper warm as a scroll, ink dark as carving.
 
    设计参考：bianjing-hours.art
-   暖纸渐变底 · 暗色顶栏 72px · 琥珀暗金 accent
+   色彩从 20+ 收敛为 10 个 token
+   暖纸渐变底 · 暗金顶栏 72px · 单琥珀 accent
    左中右三栏：260px | 1fr | 320px
    仅中栏可滚
    ============================================================ */
 
-/* ---- 0. 视口锁定：全页不滚，仅中栏滚 ---- */
+@import 'fonts.scss';
+
+/* ---- 0. 视口锁定 ---- */
 html, body {
   margin: 0;
   padding: 0;
@@ -21,18 +27,29 @@ html, body {
   overflow: hidden;
 }
 
-/* ---- 1. 全局背景：暖纸渐变 ---- */
+/* ---- 1. 纸张 —— 暖纸渐变 + 肌理 ---- */
 body {
   background: linear-gradient(
     175deg,
     #ede3cf 0%,
-    #ebe0ca 30%,
-    #e7dbc4 60%,
+    #e9dfca 35%,
+    #e5dac3 65%,
     #ede3cf 100%
   );
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* 纸纹 —— CSS 噪点叠加，模拟手工纸肌理 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.6;
 }
 
 /* ---- 2. 布局：桌面端三栏 Grid ---- */
@@ -45,13 +62,13 @@ body {
     row-gap: 0;
   }
 
-  /* 顶栏 — 通栏 */
   .page-header {
     grid-column: 1 / -1;
     grid-row: 1;
+    position: relative;
+    z-index: 20;
   }
 
-  /* 左栏 */
   .left.sidebar {
     grid-column: 1;
     grid-row: 2;
@@ -62,7 +79,6 @@ body {
     padding: 0;
   }
 
-  /* 中栏 — 唯一可滚 */
   .center {
     grid-column: 2;
     grid-row: 2;
@@ -70,7 +86,6 @@ body {
     height: calc(100vh - 72px);
   }
 
-  /* 右栏 */
   .right.sidebar {
     grid-column: 3;
     grid-row: 2;
@@ -81,14 +96,13 @@ body {
     padding: 0;
   }
 
-  /* 页脚 — 通栏 */
   footer,
   .page-footer {
     grid-column: 1 / -1;
     grid-row: 3;
   }
 
-  /* 右栏无内容时自动隐藏，中栏扩展 */
+  /* 右栏为空时自动折叠 */
   .right.sidebar:not(:has(.sidebar-zone)) {
     display: none;
   }
@@ -98,7 +112,7 @@ body {
   }
 }
 
-/* ---- 3. 顶栏 ---- */
+/* ---- 3. 顶栏：暗色，金线底边 ---- */
 .page-header {
   position: sticky;
   top: 0;
@@ -111,64 +125,109 @@ body {
   margin: 0;
 }
 
-/* ---- 4. 左栏：暖纸底 + 文件树 ---- */
+.topbar {
+  box-sizing: border-box;
+  background: #0c0c14;
+  border-bottom: 0.5px solid rgba(196, 168, 92, 0.18);
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 72px;
+  padding: 0 1.8rem;
+}
+
+.topbar__left {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+
+.topbar__sitetitle {
+  font-family: var(--headerFont);
+  color: #c4a85c;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.topbar__sitetitle:hover {
+  color: #d4b86c;
+}
+
+.topbar__sep {
+  display: inline-block;
+  width: 0.5px;
+  height: 1rem;
+  background: rgba(196, 168, 92, 0.3);
+}
+
+.topbar__theme {
+  font-family: var(--headerFont);
+  color: #c4a85c;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.5em;
+}
+
+/* ---- 4. 左栏：暖纸 + 文件树 ---- */
 .left.sidebar {
   background: linear-gradient(
     180deg,
-    #f5f0e4 0%,
-    #efe8da 100%
+    #f4efe2 0%,
+    #ede6d5 100%
   );
-  border-right: 0.5px solid rgba(180, 160, 130, 0.25);
+  border-right: 0.5px solid rgba(196, 168, 92, 0.2);
 }
 
 /* ---- 5. 中栏：透明底，内容居中 ---- */
 .center {
   background: transparent;
-  padding: 2rem 3rem;
+  padding: 2.5rem 3rem;
 }
 
 .center article {
-  max-width: 62ch;
+  max-width: 60ch;
   margin: 0 auto;
-  color: #2b2218;
+  color: #1c1814;
 }
 
-/* 术语库页面可稍窄 */
 [data-slug*="术语库"] .center article {
   max-width: 56ch;
 }
 
-/* ---- 6. 右栏：暖纸底 + 图谱 / 反向链接 ---- */
+/* ---- 6. 右栏：暖纸 + 图谱 ---- */
 .right.sidebar {
   background: linear-gradient(
     180deg,
-    #f5f0e4 0%,
-    #efe8da 100%
+    #f4efe2 0%,
+    #ede6d5 100%
   );
-  border-left: 0.5px solid rgba(180, 160, 130, 0.25);
+  border-left: 0.5px solid rgba(196, 168, 92, 0.2);
 }
 
 /* ---- 7. 页脚 ---- */
 footer {
-  background: #e8e4dc;
-  color: #4a3f35;
+  background: #e4dfd1;
+  color: #6b5f52;
   height: 36px;
   display: flex;
   align-items: center;
   padding: 0 1.8rem;
   font-size: 0.78rem;
-  border-top: 0.5px solid rgba(180, 160, 130, 0.3);
+  border-top: 0.5px solid rgba(196, 168, 92, 0.25);
   width: 100%;
   box-sizing: border-box;
   margin: 0;
 }
 
 footer a {
-  color: #8b6914;
+  color: #b8860b;
 }
 
 footer a:hover {
-  color: #6b5010;
+  color: #9a6f09;
 }
 
 footer ul {
@@ -180,89 +239,122 @@ footer ul {
   gap: 1rem;
 }
 
-/* ---- 8. 排版 ---- */
+/* ---- 8. 排版层级 ---- */
 h1, h2, h3, h4, h5, h6,
 .article-title,
 .page-title,
 .folder-title {
   font-weight: 500;
-  color: #1a1510;
+  color: #1c1814;
 }
 
-h1, .article-title {
-  font-size: 1.8rem;
+h1, .article-title, .page-title {
+  font-size: 2rem;
   letter-spacing: -0.02em;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.25;
 }
 
 h2 {
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   letter-spacing: -0.01em;
-  border-bottom: 0.5px solid #c4b898;
-  padding-bottom: 0.4rem;
-  margin-top: 1.8rem;
-  margin-bottom: 0.9rem;
+  border-bottom: 0.5px solid #d4c9b0;
+  padding-bottom: 0.45rem;
+  margin-top: 2.2rem;
+  margin-bottom: 1rem;
 }
 
 h3 {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   letter-spacing: -0.005em;
-  margin-top: 1.5rem;
+  margin-top: 1.8rem;
   margin-bottom: 0.8rem;
 }
 
-/* ---- 9. 链接 ---- */
-a, a:visited {
-  color: #b8860b;
-  text-decoration: none;
-  transition: color 0.15s ease;
-}
-
-a:hover {
-  color: #8b6914;
-}
-
-.internal {
-  background: rgba(184, 134, 11, 0.06);
-  border-radius: 3px;
-  padding: 0 0.15rem;
-}
-
-.internal:hover {
-  background: rgba(184, 134, 11, 0.12);
-}
-
-/* ---- 10. 正文内容 ---- */
-article p {
-  line-height: 1.9;
-  margin: 0.85rem 0;
-}
-
-article strong {
-  color: #1a1510;
+h4 {
+  font-size: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.6rem;
+  color: #6b5f52;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.8rem;
   font-weight: 600;
 }
 
-blockquote {
-  margin: 1.2rem 0;
-  padding: 0.8rem 1.2rem;
-  border-left: 2px solid rgba(184, 134, 11, 0.3);
-  background: rgba(184, 134, 11, 0.04);
-  border-radius: 0 6px 6px 0;
-  color: #2b2218;
+/* ---- 9. 链接 —— 单琥珀，hover 下划线 ---- */
+a, a:visited {
+  color: #b8860b;
+  text-decoration: none;
+  transition: color 0.18s ease, text-decoration 0.18s ease;
 }
 
+a:hover {
+  color: #9a6f09;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 0.5px;
+  text-decoration-color: rgba(154, 111, 9, 0.4);
+}
+
+.internal {
+  background: rgba(184, 134, 11, 0.08);
+  border-radius: 2px;
+  padding: 0 0.15rem;
+  transition: background 0.15s ease;
+}
+
+.internal:hover {
+  background: rgba(184, 134, 11, 0.16);
+  text-decoration: none;
+}
+
+/* ---- 10. 正文 ---- */
+article p {
+  line-height: 1.85;
+  margin: 0.9rem 0;
+}
+
+article strong {
+  color: #1c1814;
+  font-weight: 600;
+}
+
+article em {
+  color: #4a3f35;
+}
+
+/* ---- 11. 引用块 —— 仿书眉批注 ---- */
+blockquote {
+  margin: 1.4rem 0;
+  padding: 0.9rem 1.3rem;
+  border-left: 2.5px solid #b8860b;
+  background: rgba(184, 134, 11, 0.04);
+  border-radius: 0 4px 4px 0;
+  color: #3a3228;
+  font-style: italic;
+}
+
+blockquote p {
+  margin: 0.4rem 0;
+}
+
+/* ---- 12. 分割线 ---- */
 hr {
   border: none;
   height: 1px;
-  background: #c4b898;
-  margin: 2rem 0;
+  background: #d4c9b0;
+  margin: 2.2rem 0;
 }
 
-/* ---- 11. 面包屑 ---- */
+/* ---- 13. 面包屑 ---- */
+.breadcrumb-container {
+  padding: 0.3rem 0 1rem 0;
+}
+
 .breadcrumb-container a {
-  color: #8b7355;
+  color: #6b5f52;
   font-size: 0.85rem;
 }
 
@@ -270,7 +362,7 @@ hr {
   color: #b8860b;
 }
 
-/* ---- 12. 搜索按钮 ---- */
+/* ---- 14. 搜索按钮（顶栏右侧） ---- */
 .page-header .search {
   display: flex;
   align-items: center;
@@ -279,9 +371,9 @@ hr {
 }
 
 .page-header .search .search-button {
-  background: #0a0a0f;
+  background: #0c0c14;
   color: #c4a85c;
-  border: 0.5px solid rgba(196, 168, 92, 0.25);
+  border: 0.5px solid rgba(196, 168, 92, 0.2);
   border-radius: 6px;
   padding: 0.35rem 0.8rem;
   font-size: 15px;
@@ -290,7 +382,7 @@ hr {
 }
 
 .page-header .search .search-button:hover {
-  border-color: rgba(196, 168, 92, 0.5);
+  border-color: rgba(196, 168, 92, 0.45);
 }
 
 .page-header .search .search-button > p {
@@ -301,54 +393,55 @@ hr {
   stroke: #c4a85c;
 }
 
-/* ---- 13. 搜索弹窗 ---- */
+/* ---- 15. 搜索弹窗 ---- */
 .page-header .search .search-container {
-  background: #f5f0e4;
-  border: 0.5px solid #c4b898;
+  background: #f4efe2;
+  border: 0.5px solid #d4c9b0;
   border-radius: 10px;
-  box-shadow: 0 12px 40px rgba(43, 34, 24, 0.1);
+  box-shadow: 0 14px 44px rgba(28, 24, 20, 0.1);
 }
 
-/* ---- 14. 内容元信息（日期、阅读时长） ---- */
+/* ---- 16. 内容元信息 ---- */
 .content-meta {
-  color: #8b7355;
+  color: #6b5f52;
   font-size: 0.82rem;
 }
 
-/* ---- 15. 侧栏元信息 ---- */
+/* ---- 17. 侧栏元信息 ---- */
 .sidebar-meta {
   padding: 0.5rem 0.8rem 0.2rem 0.8rem;
   font-size: 0.72rem;
-  color: #8b7355;
-  border-bottom: 0.5px solid #c4b898;
+  color: #6b5f52;
+  border-bottom: 0.5px solid #d4c9b0;
 }
 
 .sidebar-meta .content-meta {
-  color: #8b7355;
+  color: #6b5f52;
   margin: 0;
 }
 
 .sidebar-intro {
-  padding: 0.6rem 0.8rem;
+  padding: 0.7rem 0.9rem;
   margin-bottom: 0.4rem;
-  border-bottom: 0.5px solid #c4b898;
+  border-bottom: 0.5px solid #d4c9b0;
   font-size: 0.78rem;
-  line-height: 1.7;
+  line-height: 1.75;
   color: #4a3f35;
   font-family: var(--bodyFont);
 }
 
-/* ---- 16. 目录 ---- */
+/* ---- 18. 目录 ---- */
 .toc a {
-  color: #8b7355;
+  color: #6b5f52;
   font-size: 0.88rem;
+  transition: color 0.15s ease;
 }
 
 .toc a:hover {
   color: #b8860b;
 }
 
-/* ---- 17. 文件树 ---- */
+/* ---- 19. 文件树 ---- */
 .explorer a,
 .recent-notes a,
 .folder-container button {
@@ -366,64 +459,92 @@ hr {
   color: #b8860b;
 }
 
-/* ---- 18. 代码块 ---- */
+/* ---- 20. 代码块 ---- */
 code {
   font-family: var(--codeFont);
   font-size: 0.85em;
-  background: #efe8da;
+  background: #ede6d5;
   border-radius: 3px;
-  padding: 0.1rem 0.3rem;
-  color: #2b2218;
+  padding: 0.15rem 0.35rem;
+  color: #1c1814;
 }
 
 pre {
-  background: #f5f0e4;
-  border: 0.5px solid #c4b898;
+  background: #f4efe2;
+  border: 0.5px solid #d4c9b0;
   border-radius: 6px;
-  margin: 1rem 0;
+  margin: 1.2rem 0;
 }
 
 pre code {
   background: none;
-  padding: 0.8rem 1rem;
+  padding: 0.9rem 1.1rem;
   display: block;
   overflow-x: auto;
 }
 
-/* ---- 19. 表格 ---- */
+/* ---- 21. 表格 ---- */
 table {
   border-collapse: collapse;
   width: 100%;
-  margin: 1rem 0;
+  margin: 1.2rem 0;
 }
 
 th {
   text-align: left;
-  padding: 0.4rem 0.7rem;
-  border-bottom: 2px solid #c4b898;
-  color: #1a1510;
+  padding: 0.5rem 0.8rem;
+  border-bottom: 2px solid #d4c9b0;
+  color: #1c1814;
   font-weight: 600;
 }
 
 td {
-  padding: 0.3rem 0.7rem;
-  border-bottom: 1px solid #e7dbc4;
+  padding: 0.4rem 0.8rem;
+  border-bottom: 1px solid rgba(212, 201, 176, 0.6);
 }
 
 tr:last-child td {
   border-bottom: none;
 }
 
-/* ---- 20. 图片 ---- */
+/* ---- 22. 图片 ---- */
 img {
   max-width: 100%;
-  border-radius: 4px;
-  margin: 1rem 0;
+  border-radius: 3px;
+  margin: 1.2rem 0;
+}
+
+/* ---- 23. 图谱面板 ---- */
+.graph {
+  background: #f4efe2;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+/* ---- 24. 反向链接 ---- */
+.backlinks {
+  margin-top: 1rem;
+}
+
+.backlinks h3 {
+  font-size: 0.82rem;
+  color: #6b5f52;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 0.5px solid #d4c9b0;
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.backlinks li {
+  margin: 0.3rem 0;
+  list-style: none;
 }
 
 /* ============================================================
    入流亡所群聊录 · 六人物色彩系统
    ============================================================ */
+
 
 .speaker-ddj {
   color: #b8860b;
@@ -457,7 +578,7 @@ img {
 }
 
 .msg-ts {
-  color: #8b7355;
+  color: #6b5f52;
   font-size: 0.75rem;
   margin-right: 0.4rem;
   font-weight: 400;
@@ -465,14 +586,14 @@ img {
 }
 
 .msg-content {
-  color: #2b2218;
+  color: #1c1814;
   line-height: 1.9;
 }
 
 .dialogue-block {
   margin: 0.6rem 0;
   padding-left: 0.5rem;
-  border-left: 2px solid #c4b898;
+  border-left: 2px solid #d4c9b0;
 }
 
 .excerpt-line {
@@ -485,6 +606,7 @@ img {
 /* ============================================================
    移动端适配
    ============================================================ */
+
 @media (max-width: 1199px) {
   html, body {
     overflow: auto;
@@ -512,19 +634,28 @@ img {
   .center article {
     max-width: 100%;
   }
+
+  .topbar {
+    min-height: 56px;
+    padding: 0 1rem;
+  }
+
+  .topbar__theme {
+    letter-spacing: 0.2em;
+    font-size: 0.9rem;
+  }
+
+  .topbar__sitetitle {
+    font-size: 0.85rem;
+  }
 }
 
-/* ============================================================
-   字体加载淡入
-   ============================================================ */
+/* ---- 字体淡入动画 ---- */
 @keyframes fontFade {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
 body {
-  animation: fontFade 0.4s 0.15s both;
+  animation: fontFade 0.5s 0.1s both;
 }
-
-@import 'fonts.scss';
-
