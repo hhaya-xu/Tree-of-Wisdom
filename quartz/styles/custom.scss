@@ -1,4 +1,4 @@
-﻿/* 文姬 · 智慧树视觉 · 唯一样式入口 · 最后更新: 左栏preview-v4深化 2026-05-29 */
+﻿/* 文姬 · 智慧树视觉 · 唯一样式入口 · 最后更新: 左栏v4-5处精准修复 2026-05-29 */
 /* ============================================================
    Tree of Wisdom · custom.scss
    文姬重建 v2 · 2026-05-27
@@ -247,7 +247,7 @@ body::before {
   font-weight: 400 !important;
   background: none;
   border: none;
-  padding: 12px 0 6px 0;
+  padding: 8px 0 4px 0;
   border-bottom: 0.5px solid #d4c9b0;
   width: 100%;
   text-align: left;
@@ -277,10 +277,11 @@ body::before {
 }
 
 /* 嵌套文件夹左边线 */
-.folder-outer > ul {
-  border-left: 1px solid #d4c9b0 !important;
-  margin: 0;
+.explorer-content .folder-outer > ul {
+  border-left: 1px solid #d4c9b0;
+  margin: 0 0 0 0;
   padding-left: 0;
+  overflow: visible;
 }
 
 /* 文件条目 */
@@ -295,8 +296,19 @@ body::before {
   font-size: 13.5px;
   line-height: 1.5;
   border-left: 2px solid transparent;
-  border-radius: 0 3px 3px 0;
+  border-radius: 4px;
   transition: all 0.18s ease;
+
+  /* 琥珀 › 箭头 */
+  &::before {
+    content: "\203A";
+    color: #b8860b;
+    margin-right: 7px;
+    font-size: 15px;
+    font-weight: 300;
+    opacity: 0.5;
+    flex-shrink: 0;
+  }
 }
 .explorer-ul li > a:hover,
 .explorer-content ul li > a:hover {
@@ -324,13 +336,13 @@ body::before {
   position: relative;
 }
 .folder-outer > ul > li::before {
-  content: '';
+  content: "";
+  width: 1.5px;
   position: absolute;
-  left: 12px;
   top: 0;
   bottom: 0;
-  width: 1px;
-  background: linear-gradient(to bottom, #d4c9b0 0%, transparent 100%);
+  left: 0;
+  background: linear-gradient(to bottom, #d4c9b0 0%, rgba(212,201,176,0.15) 100%);
 }
 
 /* ---- 5. 中栏：透明底，内容居中 ---- */
