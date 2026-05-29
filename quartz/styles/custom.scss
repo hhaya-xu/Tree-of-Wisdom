@@ -1,4 +1,4 @@
-﻿/* 文姬 · 智慧树视觉 · 唯一样式入口 · 最后更新: topbar-nav灰色 2026-05-29 */
+﻿/* 文姬 · 智慧树视觉 · 唯一样式入口 · 最后更新: 左栏5处修复 2026-05-29 */
 /* ============================================================
    Tree of Wisdom · custom.scss
    文姬重建 v2 · 2026-05-27
@@ -166,12 +166,44 @@ body::before {
 
 /* ---- 4. 左栏：暖纸 + 文件树 ---- */
 .left.sidebar {
-  background: linear-gradient(
-    180deg,
-    #f4efe2 0%,
-    #ede6d5 100%
-  );
-  border-right: 0.5px solid rgba(196, 168, 92, 0.2);
+  background: #f4efe2;
+  border-right: 1px solid #d4c9b0;
+  padding: 24px 20px;
+}
+
+
+/* 文件夹标题 → Geist Mono 小写大写 */
+.folder-container button span,
+.folder-container div > a {
+  font-family: var(--codeFont) !important;
+  font-size: 10px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #6b5f52 !important;
+  font-weight: 400 !important;
+}
+
+/* 嵌套文件夹左边线色 */
+.folder-outer > ul {
+  border-left: 1px solid #d4c9b0 !important;
+}
+
+/* 文件条目 → 左边线 hover */
+.explorer-content ul li > a {
+  color: #4a3f35;
+  border-left: 2px solid transparent;
+  padding: 4px 0 4px 12px;
+  transition: border-color 0.18s, color 0.18s;
+  display: block;
+  text-decoration: none;
+}
+.explorer-content ul li > a:hover,
+.explorer-content ul li > a.active {
+  color: #b8860b;
+  border-left-color: #b8860b;
+}
+.explorer-content ul li > a.active {
+  font-weight: 600;
 }
 
 /* ---- 5. 中栏：透明底，内容居中 ---- */
