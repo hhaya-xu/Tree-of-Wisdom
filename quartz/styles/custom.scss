@@ -660,3 +660,11 @@ img {
 body {
   animation: fontFade 0.5s 0.1s both;
 }
+
+
+/* ---- header 全宽暗底 ---- */
+.page-header header {
+  margin: 0;
+  width: 100%;
+  background: #0a0a0f;
+}
