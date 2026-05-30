@@ -1,4 +1,4 @@
-﻿/* 文姬 · 智慧树视觉 · 唯一样式入口 · 最后更新: folder-icon18px+baseUrl 2026-05-30 */
+﻿/* 文姬 · 智慧树视觉 · 唯一样式入口 · 最后更新: 文姬footer优化 2026-05-30 */
 /* ============================================================
    Tree of Wisdom · custom.scss
    文姬重建 v2 · 2026-05-27
@@ -391,32 +391,33 @@ body:before {
 footer {
   background: #e4dfd1;
   color: #6b5f52;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  padding: 0 1.8rem;
-  font-size: 0.78rem;
-  border-top: 0.5px solid rgba(196, 168, 92, 0.25);
+  border-top: 1px solid #d4c9b0;
+  text-align: center;
+  opacity: 0.85;
+  margin: 0;
+  padding: 1.2rem 2rem;
+  font-family: var(--codeFont);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
   width: 100%;
   box-sizing: border-box;
+}
+
+footer p {
   margin: 0;
 }
 
 footer a {
-  color: #b8860b;
+  color: #6b5f52;
+  text-decoration: none;
 }
 
 footer a:hover {
-  color: #9a6f09;
+  color: #b8860b;
 }
 
 footer ul {
-  list-style: none;
-  margin: 0 0 0 auto;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
+  display: none;
 }
 
 /* ---- 8. 排版层级 ---- */
