@@ -1,4 +1,4 @@
-﻿/* 文姬 · 智慧树视觉 · 唯一样式入口 · 最后更新: 浏览标题+计数徽章 2026-05-29 */
+﻿/* 文姬 · 智慧树视觉 · 唯一样式入口 · 最后更新: DartSass双冒号修复 2026-05-30 */
 /* ============================================================
    Tree of Wisdom · custom.scss
    文姬重建 v2 · 2026-05-27
@@ -43,7 +43,7 @@ body {
 }
 
 /* 纸纹 —— CSS 噪点叠加，模拟手工纸肌理 */
-body::before {
+body:before {
   content: "";
   position: fixed;
   inset: 0;
@@ -207,7 +207,7 @@ body::before {
   margin-left: 0 !important;
 }
 
-.title-button::after {
+.title-button:after {
   content: '';
   flex: 1;
   height: 0.5px;
@@ -316,7 +316,7 @@ body::before {
   transition: all 0.18s ease;
 
   /* 琥珀 › 箭头 */
-  &::before {
+  &:before {
     content: "\203A";
     color: #b8860b;
     margin-right: 7px;
@@ -351,7 +351,7 @@ body::before {
 .folder-outer > ul > li {
   position: relative;
 }
-.folder-outer > ul > li::before {
+.folder-outer > ul > li:before {
   content: "";
   width: 1.5px;
   position: absolute;
