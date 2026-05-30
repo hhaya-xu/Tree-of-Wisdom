@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>Tree of Wisdom · 全链工作流（v3 定稿）</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Tree of Wisdom"/><meta property="og:title" content="Tree of Wisdom · 全链工作流（v3 定稿）"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Tree of Wisdom · 全链工作流（v3 定稿）"/><meta name="twitter:description" content="Tree of Wisdom · 全链工作流 版本：v3 | 定稿日：2026-05-24 | 执笔：伯喈（整合审固 v3 + 六轮技术验证） 读者：主公、严律、审固、伯喈 零、项目前因 缘起 主公（GitHub: hhaya-xu）在 D:\ai 搭建了一个知识库系统： Obsidian 本地写笔记 Quartz v4 将 Markdown 生成静态网站（含知识图谱、反向链接、搜索） GitHub Pages 免费托管发布 仓库：github.com/hhaya-xu/Tree-of-Wisdom 站点：hhaya-xu.github.io/Tree-of-Wisdom/ 当前项目 「入流亡..."/><meta property="og:description" content="Tree of Wisdom · 全链工作流 版本：v3 | 定稿日：2026-05-24 | 执笔：伯喈（整合审固 v3 + 六轮技术验证） 读者：主公、严律、审固、伯喈 零、项目前因 缘起 主公（GitHub: hhaya-xu）在 D:\ai 搭建了一个知识库系统： Obsidian 本地写笔记 Quartz v4 将 Markdown 生成静态网站（含知识图谱、反向链接、搜索） GitHub Pages 免费托管发布 仓库：github.com/hhaya-xu/Tree-of-Wisdom 站点：hhaya-xu.github.io/Tree-of-Wisdom/ 当前项目 「入流亡..."/><meta property="og:image:alt" content="Tree of Wisdom · 全链工作流 版本：v3 | 定稿日：2026-05-24 | 执笔：伯喈（整合审固 v3 + 六轮技术验证） 读者：主公、严律、审固、伯喈 零、项目前因 缘起 主公（GitHub: hhaya-xu）在 D:\ai 搭建了一个知识库系统： Obsidian 本地写笔记 Quartz v4 将 Markdown 生成静态网站（含知识图谱、反向链接、搜索） GitHub Pages 免费托管发布 仓库：github.com/hhaya-xu/Tree-of-Wisdom 站点：hhaya-xu.github.io/Tree-of-Wisdom/ 当前项目 「入流亡..."/><meta property="og:image" content="https://www.lifeart.xin/static/og-image.png"/><meta property="og:image:url" content="https://www.lifeart.xin/static/og-image.png"/><meta name="twitter:image" content="https://www.lifeart.xin/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="www.lifeart.xin"/><meta property="og:url" content="https://www.lifeart.xin/会议室/知识库系统/全链工作流"/><meta property="twitter:url" content="https://www.lifeart.xin/会议室/知识库系统/全链工作流"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="Tree of Wisdom · 全链工作流 版本：v3 | 定稿日：2026-05-24 | 执笔：伯喈（整合审固 v3 + 六轮技术验证） 读者：主公、严律、审固、伯喈 零、项目前因 缘起 主公（GitHub: hhaya-xu）在 D:\ai 搭建了一个知识库系统： Obsidian 本地写笔记 Quartz v4 将 Markdown 生成静态网站（含知识图谱、反向链接、搜索） GitHub Pages 免费托管发布 仓库：github.com/hhaya-xu/Tree-of-Wisdom 站点：hhaya-xu.github.io/Tree-of-Wisdom/ 当前项目 「入流亡..."/><meta name="generator" content="Quartz"/><link href="../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiRDpcXEFJXFxteS1rbm93bGVkZ2UtYmFzZVxccXVhcnR6XFxjb21wb25lbnRzXFxzdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="/static/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://www.lifeart.xin/index.xml"/></head><body data-slug="会议室/知识库系统/全链工作流"><div id="quartz-root" class="page"><div id="quartz-body"><div class="page-header"><header><div class="topbar"><div class="topbar__left"><a href="/Tree-of-Wisdom" class="topbar__sitetitle">Tree of Wisdom</a><span class="topbar__sep"></span><span class="topbar__theme">生命艺术家</span><nav class="topbar-nav"><a href="/Tree-of-Wisdom/入流亡所策展">策展</a><a href="/Tree-of-Wisdom/会议室">会议室</a><a href="/Tree-of-Wisdom/系统文件夹">系统</a><a href="/Tree-of-Wisdom/图谱">图谱</a></nav></div></div><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索些什么" placeholder="搜索些什么"/><div class="search-layout" data-preview="true"></div></div></div></div></header><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../会议室/">会议室</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../会议室/知识库系统/">知识库系统</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>Tree of Wisdom · 全链工作流（v3 定稿）</a></div></nav><ul class="tags"><li><a href="../../tags/系统" class="internal tag-link">系统</a></li><li><a href="../../tags/工作流" class="internal tag-link">工作流</a></li><li><a href="../../tags/项目" class="internal tag-link">项目</a></li></ul></div></div><div class="left sidebar"><p show-comma="true" class="content-meta"><time datetime="2026-05-23T16:00:00.000Z">2026年5月24日</time><span>13分钟阅读</span></p><div class="spacer mobile-only"></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-79"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>浏览</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-79" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><article class="popover-hint"><h1 id="tree-of-wisdom--全链工作流">Tree of Wisdom · 全链工作流<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tree-of-wisdom--全链工作流" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote>
+<p>版本：v3 | 定稿日：2026-05-24 | 执笔：伯喈（整合审固 v3 + 六轮技术验证）
+读者：主公、严律、审固、伯喈</p>
+</blockquote>
+<hr/>
+<h2 id="零项目前因">零、项目前因<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#零项目前因" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="缘起">缘起<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#缘起" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>主公（GitHub: <code>hhaya-xu</code>）在 <code>D:\ai</code> 搭建了一个知识库系统：</p>
+<ul>
+<li><strong>Obsidian</strong> 本地写笔记</li>
+<li><strong>Quartz v4</strong> 将 Markdown 生成静态网站（含知识图谱、反向链接、搜索）</li>
+<li><strong>GitHub Pages</strong> 免费托管发布</li>
+</ul>
+<p>仓库：<code>https://github.com/hhaya-xu/Tree-of-Wisdom</code>
+站点：<code>https://hhaya-xu.github.io/Tree-of-Wisdom/</code></p>
+<h3 id="当前项目">当前项目<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#当前项目" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>「入流亡所群聊录」——观世音菩萨耳根圆通法门的现代实修记录。5 人群聊对话（呆呆酱/真维 主述，真正/真湛/真恒/真贞 交流见证），按时间线展开。</p>
+<h3 id="核心需求">核心需求<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#核心需求" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>网站有独特视觉风格（暗底暖金 Atmospheric 调性，参考 <code>bianjing-hours.art</code> + <code>usehallmark.com</code>）</li>
+<li>知识图谱在右侧栏，有视觉冲击力，可交互</li>
+<li>左栏固定导航，右栏可切换内容区/图谱区的大小</li>
+<li>主公只写 Obsidian MD，不改代码</li>
+<li>伯喈负责所有技术实现</li>
+<li>严律负责阶段 4 代码审查</li>
+</ol>
+<hr/>
+<h2 id="一架构总览">一、架构总览<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#一架构总览" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<pre><code>┌─────────────────────────────────────────────────┐
+│                   主公（内容）                     │
+│          Obsidian 写 MD → Git 自动推送            │
+└──────────────────────┬──────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────┐
+│                  伯喈（技术）                      │
+│   CSS 壳 + Hallmark 美学 + Quartz 构建 + 部署     │
+│                                                  │
+│   ┌──────────┐   ┌──────────┐   ┌────────────┐  │
+│   │ custom.  │   │ variables│   │ sidebar-   │  │
+│   │ scss     │   │ .scss    │   │ toggle.js  │  │
+│   └──────────┘   └──────────┘   └────────────┘  │
+│                                                  │
+│   ┌──────────────────────────────────────────┐   │
+│   │           Quartz v4.5.2                    │   │
+│   │   MD → HTML + 图谱 + 反向链接 + 搜索       │   │
+│   └──────────────────────────────────────────┘   │
+└──────────────────────┬──────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────┐
+│               GitHub Pages（发布）                │
+│     https://hhaya-xu.github.io/Tree-of-Wisdom/   │
+└─────────────────────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────┐
+│                  严律（审查）                      │
+│      阶段 4 审查 TSX 补丁 + 关键 CSS 规则          │
+└─────────────────────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────┐
+│                  审固（批评）                      │
+│           阶段间挑刺 + 方法回收日志                 │
+└─────────────────────────────────────────────────┘
+</code></pre>
+<hr/>
+<h2 id="二角色分工">二、角色分工<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#二角色分工" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>角色</th><th>做什么</th><th>不做什么</th><th>介入时机</th></tr></thead><tbody><tr><td><strong>主公</strong></td><td>写 MD 内容、审核预览、确认发布</td><td>不写代码</td><td>全程</td></tr><tr><td><strong>伯喈</strong></td><td>CSS 壳、Hallmark、Quartz 构建、GitHub 部署</td><td>不决定内容</td><td>全程</td></tr><tr><td><strong>严律</strong></td><td>阶段 4 审查 TSX 逻辑 + 关键 CSS 规则</td><td>不参与前期</td><td>阶段 4</td></tr><tr><td><strong>审固</strong></td><td>阶段间挑刺、方法回收日志</td><td>不执行</td><td>阶段边界</td></tr></tbody></table></div>
+<hr/>
+<h2 id="三主公操作手册">三、主公操作手册<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#三主公操作手册" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="你需要做的">你需要做的<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#你需要做的" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>在 Obsidian 里写笔记</strong>，保存即可</li>
+<li><strong>Obsidian Git 插件</strong>每隔 10 分钟自动 commit + push</li>
+<li><strong>浏览器打开站点</strong>看效果，不满意就描述给我</li>
+<li><strong>确认发布</strong>——说”可以了”我就 push</li>
+</ol>
+<h3 id="md-文件规范三条规则">MD 文件规范（三条规则）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#md-文件规范三条规则" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>规则 1：文件放在正确位置</strong></p>
+<pre><code>content/
+├── 入流亡所策展/
+│   ├── 定题说明.md              ← 项目说明
+│   ├── 策展文本/                ← 放策展页 MD
+│   │   ├── Day1-2026-04-14-入流.md
+│   │   ├── Day2-2026-04-16.md
+│   │   └── ...
+│   ├── 术语库/                  ← 放术语条目 MD
+│   │   ├── 入流亡所.md
+│   │   ├── 三摩地.md
+│   │   └── ...
+│   └── 原始材料/                ← 群聊录原文（不改动）
+│       └── 入流亡所群聊录-原文.md
+├── 系统/                        ← 系统文件
+│   ├── 伯喈.md                  ← 伯喈人物档案
+│   └── 全链工作流.md            ← 本文档
+└── 日常笔记/                    ← 非策展内容的普通笔记
+</code></pre>
+<p><strong>规则 2：frontmatter 写三行</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="yaml" data-theme="github-light github-light"><code data-language="yaml" data-theme="github-light github-light" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;">---</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#22863A;">title</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#032F62;">&quot;Day1 · 2026年4月14日&quot;</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#22863A;">date</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">2026-04-14</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#22863A;">description</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#032F62;">&quot;凌晨病发，呆呆酱初入流亡所的体验记录&quot;</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;">---</span></span></code></pre></figure>
+<ul>
+<li><code>title</code>：显示在页面顶部和浏览器标签</li>
+<li><code>date</code>：用于时间线排序</li>
+<li><code>description</code>：显示在右栏内容区顶部（简介文字，可选）</li>
+</ul>
+<p><strong>规则 3：术语用 <code>[[wikilink]]</code></strong></p>
+<p>正文中首次出现的佛法术语，用 <code>[[入流亡所策展/术语库/入流亡所|入流亡所]]</code> 创建双向链接。</p>
+<p>写完就完——不需要手动登记索引、不需要填映射表、不需要跑任何命令。</p>
+<hr/>
+<h2 id="四伯喈工作清单">四、伯喈工作清单<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#四伯喈工作清单" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="阶段-1css-布局壳当前">阶段 1：CSS 布局壳（当前）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#阶段-1css-布局壳当前" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>1.1 右栏 Flex 双区 + expand/collapse 交互</strong></p>
+<p>技术背景：</p>
+<ul>
+<li>Quartz DOM 结构：<code>#quartz-body</code>（CSS Grid 容器）→ <code>.left.sidebar</code> + <code>.center</code> + <code>.right.sidebar</code></li>
+<li>右栏内现有元素：<code>.graph</code>（关系图谱）+ <code>.toc</code>（目录）+ <code>.backlinks</code>（反向链接）</li>
+<li><code>body[data-slug]</code> 包含页面路径，且 SPA 导航时 micromorph 会更新该属性 → CSS 选择器安全</li>
+</ul>
+<p>实现方案：</p>
+<ul>
+<li>右栏改为 Flex 列布局，分两个 zone：<code>.sidebar-content-zone</code>（内容区）+ <code>.sidebar-graph-zone</code>（图谱区）</li>
+<li>初始状态：图谱区 <code>flex-grow: 3</code>，内容区 <code>flex-grow: 1</code></li>
+<li>点击标题栏切换：目标区 <code>flex-grow: 5</code>，另一区 <code>flex-grow: 0.5</code></li>
+<li>CSS transition：<code>transition: flex-grow 0.35s ease</code></li>
+<li>JS 事件：<code>document.body</code> 事件委托（SPA 安全）+ <code>nav</code> 事件兜底重置</li>
+</ul>
+<p><strong>1.2 桌面端 Grid 锁定</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="scss" data-theme="github-light github-light"><code data-language="scss" data-theme="github-light github-light" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">@media</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;"> (</span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">min-width</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">1200</span><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">px</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">) {</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;">  #quartz-body</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;"> {</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">    grid-template-columns</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">260</span><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">px</span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;"> 1</span><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">fr</span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;"> 300</span><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">px</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">  }</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;">  .left.sidebar</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;"> {</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">    position</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">sticky</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">;</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">    top</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">0</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">;</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">    height</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">100</span><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">vh</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">;</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">    overflow-y</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">auto</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">  }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">}</span></span></code></pre></figure>
+<p><strong>1.3 正文行宽</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="scss" data-theme="github-light github-light"><code data-language="scss" data-theme="github-light github-light" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">@media</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;"> (</span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">min-width</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">1200</span><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">px</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">) {</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;">  .center</span><span style="--shiki-light:#22863A;--shiki-dark:#22863A;"> article</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;"> {</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">    max-width</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">62</span><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">ch</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">;</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">    margin</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">0</span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;"> auto</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">  }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">}</span></span></code></pre></figure>
+<p><strong>1.4 空右栏隐藏</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="scss" data-theme="github-light github-light"><code data-language="scss" data-theme="github-light github-light" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">@media</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;"> (</span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">min-width</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">1200</span><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">px</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">) {</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  /* tag / folder / 404 页右栏为空，隐藏 */</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;">  .right.sidebar:not</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;">:has</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;">.graph</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;">.backlinks</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">)) {</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">    display</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">none</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">  }</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;">  #quartz-body:has</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;">.right.sidebar:not</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;">:has</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;">.graph</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;">.backlinks</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">))) {</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">    grid-template-columns</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;">260</span><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">px</span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;"> 1</span><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">fr</span><span style="--shiki-light:#005CC5;--shiki-dark:#005CC5;"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">  }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">}</span></span></code></pre></figure>
+<p><strong>1.5 Hallmark 美学贯穿</strong></p>
+<ul>
+<li>全色值 OKLCH（已在 <code>quartz.config.ts</code> darkMode + <code>custom.scss</code> 中完成）</li>
+<li>字重：display 800（标题）/ body 300（正文）</li>
+<li>字距：h1 <code>.article-title</code> 收紧 <code>-0.02em</code></li>
+<li>字体：Noto Serif SC（标题）+ Noto Sans SC（正文）+ Geist Mono（代码/时间戳）</li>
+<li>正文行宽 62ch</li>
+<li>字体加载淡入动画（CSS keyframes，0.4s）</li>
+<li>暗底暖金底纹（径向渐变 + 网格纹理）</li>
+<li>五人物颜色：呆呆酱 <code>oklch(78% 0.075 82)</code> / 真贞 <code>oklch(63% 0.06 180)</code> / 白羊 <code>oklch(66% 0.07 35)</code> / 真湛 <code>oklch(67% 0.08 130)</code> / 宏亮 <code>oklch(62% 0.06 260)</code></li>
+</ul>
+<p><strong>1.6 自定义 JS 文件位置</strong></p>
+<p>新建 <code>quartz/components/scripts/sidebar-toggle.inline.ts</code>，通过组件 <code>afterDOMLoaded</code> 引用。</p>
+<hr/>
+<h3 id="阶段-2术语页原型">阶段 2：术语页原型<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#阶段-2术语页原型" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>术语页保留右栏（有反向链接），正文 58ch</li>
+<li>Hallmark audit 术语页样式</li>
+<li>主公确认</li>
+</ul>
+<hr/>
+<h3 id="阶段-3批量内容">阶段 3：批量内容<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#阶段-3批量内容" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>主公写后续 Day MD + 术语条目</li>
+<li>伯喈每次新内容 build 后跑 Hallmark audit 快速检查</li>
+</ul>
+<hr/>
+<h3 id="阶段-4技术收尾--严律审查">阶段 4：技术收尾 + 严律审查<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#阶段-4技术收尾--严律审查" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>4.1 TSX 右栏子组件条件渲染</strong>（严律重点审查项）</p>
+<p>当前用 CSS <code>display:none</code> 隐藏空右栏——DOM 中仍存在。需要改为组件级条件渲染：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="tsx" data-theme="github-light github-light"><code data-language="tsx" data-theme="github-light github-light" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// PageLayout.tsx 右栏渲染区域</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// 判断依据：page slug 模式</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// - tag/404 页：不渲染右栏任何子组件</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// - 策展文本：渲染 Graph + Backlinks</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// - 术语条目：渲染 Graph + Backlinks</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// - folder 索引：不渲染右栏</span></span></code></pre></figure>
+<p>改动位置：<code>quartz/components/PageLayout.tsx</code>
+判断条件：<code>fileData.slug</code> 字符串匹配
+改动量：约 15 行</p>
+<p><strong>4.2 性能备注</strong></p>
+<p>在 <code>custom.scss</code> 中 <code>:has()</code> 嵌套链处添加注释：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="scss" data-theme="github-light github-light"><code data-language="scss" data-theme="github-light github-light" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">/* perf: :has() chain &lt;1ms @ ~100 pages; if >500 pages, switch to JS class toggling */</span></span></code></pre></figure>
+<p><strong>4.3 移动端验证</strong></p>
+<ul>
+<li>所有 Grid 规则包 <code>@media (min-width: 1200px)</code></li>
+<li>移动端布局使用 Quartz 默认堆叠（已确认兼容）</li>
+</ul>
+<p><strong>4.4 严律审查清单</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>审查项</th><th>文件</th><th>关键点</th></tr></thead><tbody><tr><td>右栏条件渲染逻辑</td><td><code>PageLayout.tsx</code></td><td>slug 匹配是否正确、是否遗漏页面类型</td></tr><tr><td>Grid 列定义</td><td><code>custom.scss</code></td><td><code>grid-template-columns</code> 值、<code>@media</code> 边界</td></tr><tr><td><code>:has()</code> 嵌套链</td><td><code>custom.scss</code></td><td>选择器是否过于宽泛、性能备注是否到位</td></tr><tr><td>右栏 JS 交互</td><td><code>sidebar-toggle.inline.ts</code></td><td>SPA 安全、事件清理、无内存泄漏</td></tr><tr><td>Hallmark 色值</td><td><code>custom.scss</code> + <code>quartz.config.ts</code></td><td>全部 HEX 已转 OKLCH</td></tr><tr><td>移动端</td><td><code>custom.scss</code></td><td>无 media query 遗漏</td></tr></tbody></table></div>
+<p><strong>4.5 Hallmark 印记</strong></p>
+<p>在 <code>custom.scss</code> 底部添加 Hallmark 注释标记。</p>
+<hr/>
+<h3 id="阶段-5发布--回收">阶段 5：发布 + 回收<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#阶段-5发布--回收" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>首次 push → GitHub Actions 自动部署</li>
+<li>主公确认线上站点</li>
+<li>审固写方法回收日志</li>
+</ul>
+<hr/>
+<h2 id="五技术上下文供严律参考">五、技术上下文（供严律参考）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#五技术上下文供严律参考" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="项目路径">项目路径<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#项目路径" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>组件</th><th>路径</th></tr></thead><tbody><tr><td>Obsidian Vault</td><td><code>D:\ai\my-knowledge-base\content\</code></td></tr><tr><td>Quartz 根</td><td><code>D:\ai\my-knowledge-base\</code></td></tr><tr><td>自定义样式</td><td><code>D:\ai\my-knowledge-base\quartz\styles\custom.scss</code></td></tr><tr><td>Grid 变量</td><td><code>D:\ai\my-knowledge-base\quartz\styles\variables.scss</code></td></tr><tr><td>Quartz 配置</td><td><code>D:\ai\my-knowledge-base\quartz.config.ts</code></td></tr><tr><td>GitHub 仓库</td><td><code>git@github.com:hhaya-xu/Tree-of-Wisdom.git</code></td></tr><tr><td>站点 URL</td><td><code>https://hhaya-xu.github.io/Tree-of-Wisdom/</code></td></tr></tbody></table></div>
+<h3 id="关键-dom-结构">关键 DOM 结构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关键-dom-结构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="html" data-theme="github-light github-light"><code data-language="html" data-theme="github-light github-light" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#22863A;">body</span><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;"> data-slug</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#032F62;">&quot;入流亡所策展/策展文本/Day1-2026-04-14-入流&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">></span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#22863A;">div</span><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;"> id</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#032F62;">&quot;quartz-root&quot;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;"> class</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#032F62;">&quot;page&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">></span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">    &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#22863A;">div</span><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;"> id</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#032F62;">&quot;quartz-body&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">></span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">      &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#22863A;">div</span><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;"> class</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#032F62;">&quot;left sidebar&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">>       ← 导航、搜索、Explorer</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">      &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#22863A;">div</span><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;"> class</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#032F62;">&quot;center&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">>              ← 正文内容（article）</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">      &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#22863A;">div</span><span style="--shiki-light:#6F42C1;--shiki-dark:#6F42C1;"> class</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#032F62;">&quot;right sidebar&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">>       ← 图谱 .graph + 目录 .toc + 反向链接 .backlinks</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">    &lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#22863A;">div</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">></span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">  &lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#22863A;">div</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">></span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#22863A;">body</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">></span></span></code></pre></figure>
+<h3 id="spa-路由行为">SPA 路由行为<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#spa-路由行为" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Quartz 使用 <code>micromorph</code> 做 DOM morphing</li>
+<li><code>document.body</code> 元素本身保持不变（事件委托安全）</li>
+<li><code>body[data-slug]</code> 随导航自动更新</li>
+<li>图谱组件监听 <code>nav</code> 事件重新渲染</li>
+<li><code>window.addCleanup(fn)</code> + <code>window.spaNavigate(url)</code> 是 Quartz 公开 API</li>
+</ul>
+<p><strong>注意：</strong> <code>quartz.config.ts</code> 中 lightMode/darkMode 使用 HEX 值（<code>#0d0c0a</code> 等），非 OKLCH。原因是 <code>CustomOgImages</code> 插件不支持 OKLCH 解析。实际渲染色彩由 <code>custom.scss</code> 中 OKLCH 规则控制，config 仅用于 Quartz CSS 变量兜底。</p>
+<h3 id="色彩体系">色彩体系<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#色彩体系" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>全部使用 OKLCH 色彩空间（Hallmark 方法论）。暗色模式基准值：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>CSS 变量</th><th>OKLCH 值</th><th>用途</th></tr></thead><tbody><tr><td><code>--light</code></td><td><code>oklch(12% 0.005 80)</code></td><td>最深背景</td></tr><tr><td><code>--lightgray</code></td><td><code>oklch(20% 0.005 82)</code></td><td>次深背景</td></tr><tr><td><code>--gray</code></td><td><code>oklch(35% 0.018 82)</code></td><td>分割线、次要文字</td></tr><tr><td><code>--darkgray</code></td><td><code>oklch(84% 0.028 86)</code></td><td>正文颜色</td></tr><tr><td><code>--dark</code></td><td><code>oklch(92% 0.022 86)</code></td><td>标题、强调</td></tr><tr><td><code>--secondary</code></td><td><code>oklch(78% 0.075 82)</code></td><td>链接、琥珀金</td></tr><tr><td><code>--tertiary</code></td><td><code>oklch(85% 0.08 85)</code></td><td>悬停、高亮</td></tr></tbody></table></div>
+<h3 id="页面类型与右栏策略">页面类型与右栏策略<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#页面类型与右栏策略" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>页面类型</th><th>slug 匹配</th><th>图谱</th><th>反向链接</th><th>正文宽度</th><th>右栏</th></tr></thead><tbody><tr><td>策展文本</td><td><code>*策展文本*</code></td><td>✅</td><td>✅</td><td>62ch</td><td>显示</td></tr><tr><td>术语条目</td><td><code>*术语库*</code></td><td>✅</td><td>✅</td><td>58ch</td><td>显示</td></tr><tr><td>人物页</td><td>待建</td><td>❌</td><td>✅</td><td>62ch</td><td>显示</td></tr><tr><td>索引页</td><td><code>*/index</code></td><td>❌</td><td>❌</td><td>默认</td><td>隐藏</td></tr><tr><td>Tag 页</td><td><code>tags/*</code></td><td>❌</td><td>❌</td><td>默认</td><td>隐藏</td></tr><tr><td>404</td><td><code>404</code></td><td>❌</td><td>❌</td><td>默认</td><td>隐藏</td></tr></tbody></table></div>
+<h3 id="五人物颜色">五人物颜色<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#五人物颜色" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>人物</th><th>CSS 类</th><th>OKLCH 颜色</th></tr></thead><tbody><tr><td>呆呆酱（真维）</td><td><code>.speaker-ddj</code></td><td><code>oklch(78% 0.075 82)</code> 琥珀金</td></tr><tr><td>真贞师兄（许涛）</td><td><code>.speaker-zz</code></td><td><code>oklch(63% 0.06 180)</code> 暖青</td></tr><tr><td>白羊（真正/杨军）</td><td><code>.speaker-baiyang</code></td><td><code>oklch(66% 0.07 35)</code> 暖玫</td></tr><tr><td>湛然常寂（真湛）</td><td><code>.speaker-zhan</code></td><td><code>oklch(67% 0.08 130)</code> 苔绿</td></tr><tr><td>宏亮（真恒）</td><td><code>.speaker-hongliang</code></td><td><code>oklch(62% 0.06 260)</code> 钢蓝</td></tr><tr><td>孟拥</td><td><code>.speaker-mengyong</code></td><td><code>oklch(63% 0.05 310)</code> 灰紫</td></tr></tbody></table></div>
+<hr/>
+<h2 id="六文件映射">六、文件映射<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#六文件映射" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>主公写的 MD</th><th>Quartz 输出的 URL</th><th>页面类型</th></tr></thead><tbody><tr><td><code>入流亡所策展/策展文本/Day1-...md</code></td><td><code>/入流亡所策展/策展文本/Day1-...</code></td><td>策展文本</td></tr><tr><td><code>入流亡所策展/术语库/三摩地.md</code></td><td><code>/入流亡所策展/术语库/三摩地</code></td><td>术语条目</td></tr><tr><td><code>入流亡所策展/定题说明.md</code></td><td><code>/入流亡所策展/定题说明</code></td><td>项目首页</td></tr><tr><td><code>系统/全链工作流.md</code></td><td><code>/系统/全链工作流</code></td><td>系统文档</td></tr></tbody></table></div>
+<p>路由规则：文件夹路径 = URL 路径；<code>index.md</code> = 目录索引页。Quartz 自动处理，无需手动配路由。</p>
+<hr/>
+<h2 id="七数字策展技能去向">七、数字策展技能去向<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#七数字策展技能去向" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>原 <code>research-digital-curation-skills</code> 的 7 层管线：</p>
+<p>① topic-framing ② terminology ③ curation-text ④ visual-language ⑤ prototype ⑥ log-method ⑦ workflow</p>
+<p>当前状态：</p>
+<ul>
+<li>④ visual-language → Hallmark 替代</li>
+<li>⑤ prototype → 本 CSS 壳方案替代</li>
+<li>⑦ workflow → Obsidian Git + GitHub Actions 替代</li>
+<li>①②③⑥ → 降级为 <code>content/系统/curation-skills/</code> 下的方法论参考文档</li>
+</ul>
+<p><strong>不被任何角色主动调用。</strong> 主公或伯喈遇到方法论困惑时可查阅，但不作为执行指令。</p>
+<hr/>
+<h2 id="八常用命令伯喈用">八、常用命令（伯喈用）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#八常用命令伯喈用" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="powershell" data-theme="github-light github-light"><code data-language="powershell" data-theme="github-light github-light" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 构建</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">cd D:\ai\my</span><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">knowledge</span><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">base</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">npx quartz build</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 本地预览</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">npx quartz build </span><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">--</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">serve</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 推送</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">cd D:\ai\my</span><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">knowledge</span><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">base</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">git add .</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">git commit </span><span style="--shiki-light:#D73A49;--shiki-dark:#D73A49;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">m </span><span style="--shiki-light:#032F62;--shiki-dark:#032F62;">&quot;描述&quot;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#24292E;">git push origin main</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 站点</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># https://hhaya-xu.github.io/Tree-of-Wisdom/</span></span></code></pre></figure>
+<blockquote>
+<p>本文档随项目进展持续更新</p>
+</blockquote>
+<hr/>
+<h2 id="九双速内容管线">九、双速内容管线<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#九双速内容管线" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<pre><code>简单内容（日常笔记、术语）
+  主公写 MD → Obsidian Git 推送 → 壳渲染 → 上线
+
+复杂内容（群聊录、策展文本）
+  主公写 MD → Hallmark audit → CSS 调优 → 上线
+                    ↑
+            （可启动玄策的内容拆解层）
+```。最新版本位于 `content/系统/全链工作流.md`。
+</code></pre></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="sidebar-zone sidebar-content-zone" id="sidebar-content-zone"><button class="sidebar-zone-toggle" data-zone-toggle="content" aria-label="Toggle content zone"><span class="zone-toggle-label">内容</span><span class="zone-toggle-icon">▲</span></button><div class="sidebar-zone-body"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-33" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#tree-of-wisdom--全链工作流" data-for="tree-of-wisdom--全链工作流">Tree of Wisdom · 全链工作流</a></li><li class="depth-1"><a href="#零项目前因" data-for="零项目前因">零、项目前因</a></li><li class="depth-2"><a href="#缘起" data-for="缘起">缘起</a></li><li class="depth-2"><a href="#当前项目" data-for="当前项目">当前项目</a></li><li class="depth-2"><a href="#核心需求" data-for="核心需求">核心需求</a></li><li class="depth-1"><a href="#一架构总览" data-for="一架构总览">一、架构总览</a></li><li class="depth-1"><a href="#二角色分工" data-for="二角色分工">二、角色分工</a></li><li class="depth-1"><a href="#三主公操作手册" data-for="三主公操作手册">三、主公操作手册</a></li><li class="depth-2"><a href="#你需要做的" data-for="你需要做的">你需要做的</a></li><li class="depth-2"><a href="#md-文件规范三条规则" data-for="md-文件规范三条规则">MD 文件规范（三条规则）</a></li><li class="depth-1"><a href="#四伯喈工作清单" data-for="四伯喈工作清单">四、伯喈工作清单</a></li><li class="depth-2"><a href="#阶段-1css-布局壳当前" data-for="阶段-1css-布局壳当前">阶段 1：CSS 布局壳（当前）</a></li><li class="depth-2"><a href="#阶段-2术语页原型" data-for="阶段-2术语页原型">阶段 2：术语页原型</a></li><li class="depth-2"><a href="#阶段-3批量内容" data-for="阶段-3批量内容">阶段 3：批量内容</a></li><li class="depth-2"><a href="#阶段-4技术收尾--严律审查" data-for="阶段-4技术收尾--严律审查">阶段 4：技术收尾 + 严律审查</a></li><li class="depth-2"><a href="#阶段-5发布--回收" data-for="阶段-5发布--回收">阶段 5：发布 + 回收</a></li><li class="depth-1"><a href="#五技术上下文供严律参考" data-for="五技术上下文供严律参考">五、技术上下文（供严律参考）</a></li><li class="depth-2"><a href="#项目路径" data-for="项目路径">项目路径</a></li><li class="depth-2"><a href="#关键-dom-结构" data-for="关键-dom-结构">关键 DOM 结构</a></li><li class="depth-2"><a href="#spa-路由行为" data-for="spa-路由行为">SPA 路由行为</a></li><li class="depth-2"><a href="#色彩体系" data-for="色彩体系">色彩体系</a></li><li class="depth-2"><a href="#页面类型与右栏策略" data-for="页面类型与右栏策略">页面类型与右栏策略</a></li><li class="depth-2"><a href="#五人物颜色" data-for="五人物颜色">五人物颜色</a></li><li class="depth-1"><a href="#六文件映射" data-for="六文件映射">六、文件映射</a></li><li class="depth-1"><a href="#七数字策展技能去向" data-for="七数字策展技能去向">七、数字策展技能去向</a></li><li class="depth-1"><a href="#八常用命令伯喈用" data-for="八常用命令伯喈用">八、常用命令（伯喈用）</a></li><li class="depth-1"><a href="#九双速内容管线" data-for="九双速内容管线">九、双速内容管线</a></li><li class="overflow-end"></li></ul></div></div></div><div class="sidebar-zone sidebar-graph-zone" id="sidebar-graph-zone"><button class="sidebar-zone-toggle" data-zone-toggle="graph" aria-label="Toggle graph zone"><span class="zone-toggle-label">关系图谱</span><span class="zone-toggle-icon">▲</span></button><div class="sidebar-zone-body"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="/static/katex-copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../postscript.js" type="module" data-persist="true"></script></html>
