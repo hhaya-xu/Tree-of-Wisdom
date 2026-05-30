@@ -1,572 +1,0 @@
-<!DOCTYPE html>
-<html lang="zh" dir="ltr"><head><title>Day3-2026-04-16</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Tree of Wisdom"/><meta property="og:title" content="Day3-2026-04-16"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Day3-2026-04-16"/><meta name="twitter:description" content="��-�-�-� � �t�i�t�l�e�:� �D�a�y� �3� ��� �2�0�2�6�t^4�g1�6��e � �d�a�t�e�:� �2�0�2�6�-�0�4�-�1�6� � �d�e�s�c�r�i�p�t�i�o�n�:� �U_�N�v�[݋�Q�[0�_;NlQ�d�Q0 � �-�-�-� � � � �#� �eQ �Am ��N �@b �� �J� �U_ ��N � � � �2�0�2�6�t^4�g1�6��e � � � � 0��YtQ���s �� 0 � � � �-�-�-� � � � �eQ �Am ��N �@b ��..."/><meta property="og:description" content="��-�-�-� � �t�i�t�l�e�:� �D�a�y� �3� ��� �2�0�2�6�t^4�g1�6��e � �d�a�t�e�:� �2�0�2�6�-�0�4�-�1�6� � �d�e�s�c�r�i�p�t�i�o�n�:� �U_�N�v�[݋�Q�[0�_;NlQ�d�Q0 � �-�-�-� � � � �#� �eQ �Am ��N �@b �� �J� �U_ ��N � � � �2�0�2�6�t^4�g1�6��e � � � � 0��YtQ���s �� 0 � � � �-�-�-� � � � �eQ �Am ��N �@b ��..."/><meta property="og:image:alt" content="��-�-�-� � �t�i�t�l�e�:� �D�a�y� �3� ��� �2�0�2�6�t^4�g1�6��e � �d�a�t�e�:� �2�0�2�6�-�0�4�-�1�6� � �d�e�s�c�r�i�p�t�i�o�n�:� �U_�N�v�[݋�Q�[0�_;NlQ�d�Q0 � �-�-�-� � � � �#� �eQ �Am ��N �@b �� �J� �U_ ��N � � � �2�0�2�6�t^4�g1�6��e � � � � 0��YtQ���s �� 0 � � � �-�-�-� � � � �eQ �Am ��N �@b ��..."/><meta property="og:image" content="https://www.lifeart.xin/static/og-image.png"/><meta property="og:image:url" content="https://www.lifeart.xin/static/og-image.png"/><meta name="twitter:image" content="https://www.lifeart.xin/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="www.lifeart.xin"/><meta property="og:url" content="https://www.lifeart.xin/入流亡所策展/策展文本/Day3-2026-04-16"/><meta property="twitter:url" content="https://www.lifeart.xin/入流亡所策展/策展文本/Day3-2026-04-16"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="��-�-�-� � �t�i�t�l�e�:� �D�a�y� �3� ��� �2�0�2�6�t^4�g1�6��e � �d�a�t�e�:� �2�0�2�6�-�0�4�-�1�6� � �d�e�s�c�r�i�p�t�i�o�n�:� �U_�N�v�[݋�Q�[0�_;NlQ�d�Q0 � �-�-�-� � � � �#� �eQ �Am ��N �@b �� �J� �U_ ��N � � � �2�0�2�6�t^4�g1�6��e � � � � 0��YtQ���s �� 0 � � � �-�-�-� � � � �eQ �Am ��N �@b ��..."/><meta name="generator" content="Quartz"/><link href="../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
-  position: absolute;
-  display: flex;
-  float: right;
-  padding: 0.4rem;
-  margin: 0.3rem;
-  right: 0;
-  color: var(--gray);
-  border-color: var(--dark);
-  background-color: var(--light);
-  border: 1px solid;
-  border-radius: 5px;
-  opacity: 0;
-  transition: 0.2s;
-}
-.expand-button > svg {
-  fill: var(--light);
-  filter: contrast(0.3);
-}
-.expand-button:hover {
-  cursor: pointer;
-  border-color: var(--secondary);
-}
-.expand-button:focus {
-  outline: 0;
-}
-
-pre:hover > .expand-button {
-  opacity: 1;
-  transition: 0.2s;
-}
-
-#mermaid-container {
-  position: fixed;
-  contain: layout;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  display: none;
-  backdrop-filter: blur(4px);
-  background: rgba(0, 0, 0, 0.5);
-}
-#mermaid-container.active {
-  display: inline-block;
-}
-#mermaid-container > #mermaid-space {
-  border: 1px solid var(--lightgray);
-  background-color: var(--light);
-  border-radius: 5px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 80vh;
-  width: 80vw;
-  overflow: hidden;
-}
-#mermaid-container > #mermaid-space > .mermaid-content {
-  position: relative;
-  transform-origin: 0 0;
-  transition: transform 0.1s ease;
-  overflow: visible;
-  min-height: 200px;
-  min-width: 200px;
-}
-#mermaid-container > #mermaid-space > .mermaid-content pre {
-  margin: 0;
-  border: none;
-}
-#mermaid-container > #mermaid-space > .mermaid-content svg {
-  max-width: none;
-  height: auto;
-}
-#mermaid-container > #mermaid-space > .mermaid-controls {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  gap: 8px;
-  padding: 8px;
-  background: var(--light);
-  border: 1px solid var(--lightgray);
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 2;
-}
-#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border: 1px solid var(--lightgray);
-  background: var(--light);
-  color: var(--dark);
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  font-family: var(--bodyFont);
-  transition: all 0.2s ease;
-}
-#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
-  background: var(--lightgray);
-}
-#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
-  transform: translateY(1px);
-}
-#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
-  width: auto;
-  padding: 0 12px;
-  font-size: 14px;
-}
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiRDpcXEFJXFxteS1rbm93bGVkZ2UtYmFzZVxccXVhcnR6XFxjb21wb25lbnRzXFxzdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="/static/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://www.lifeart.xin/index.xml"/></head><body data-slug="入流亡所策展/策展文本/Day3-2026-04-16"><div id="quartz-root" class="page"><div id="quartz-body"><div class="page-header"><header><div class="topbar"><div class="topbar__left"><a href="/Tree-of-Wisdom" class="topbar__sitetitle">Tree of Wisdom</a><span class="topbar__sep"></span><span class="topbar__theme">生命艺术家</span><nav class="topbar-nav"><a href="/Tree-of-Wisdom/入流亡所策展">策展</a><a href="/Tree-of-Wisdom/会议室">会议室</a><a href="/Tree-of-Wisdom/系统文件夹">系统</a><a href="/Tree-of-Wisdom/图谱">图谱</a></nav></div></div><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索些什么" placeholder="搜索些什么"/><div class="search-layout" data-preview="true"></div></div></div></div></header><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../入流亡所策展/">入流亡所策展</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../入流亡所策展/策展文本/">策展文本</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>Day3 2026 04 16</a></div></nav></div></div><div class="left sidebar"><p show-comma="true" class="content-meta"><time datetime="2026-05-24T06:56:02.000Z">2026年5月24日</time><span>7分钟阅读</span></p><div class="spacer mobile-only"></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-122"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>浏览</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-122" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><article class="popover-hint"><p>��-�-�-��
-�t�i�t�l�e�:� �D�a�y� �3� ��� �2�0�2�6�t^4�g1�6��e�
-�d�a�t�e�:� �2�0�2�6�-�0�4�-�1�6��
-�d�e�s�c�r�i�p�t�i�o�n�:� �U_�N�v�[݋�Q�[0�_;NlQ�d�Q0�
-�-�-�-��
-��
-�#� �eQ �Am ��N �@b �� �J� �U_ ��N�
-��
-�2�0�2�6�t^4�g1�6��e�
-��
-�0��YtQ���s ��0�
-��
-�-�-�-��
-��
-�eQ �Am ��N �@b �� �J� �U_ ��N�
-�2�0�2�1�t^4�g1�4��e � �1�7�:�4�0� �  �1�9�:�0�1��
-�0w(g6�f[ ��� �_P[�0�
-��%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�
-�1�8�:�0�3��
-�FTFTq��
-��
-� ��
-�1�8�:�0�5��
-�FTFTq��
-�1u�NMR	Ny�/f�lLuAm@bu�@b�N(W��ϑAm
-NN/���vُ�yir�T��[1/f�-N�v�_N/fw�Y(Wir
-N�v>fa� ��
-�1�8�:�0�6��
-�FTFTq��
-�@b�N-N	�/f�S�N(uegu+RGWa��T^�GWa��v�QR�
-� ��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-�1�8�:�0�6��
-�FTFTq��
-� ��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-�1�8�:�0�6��
-�FTFTq��
-��
-�1�8�:�0�7��
-�FTFTq��
-��V:NKNMR	g^DQ^�Y�b�:N�NHN-N	�/f<span class="katex-error" title="ParseError: KaTeX parse error: Unexpected character: '' at position 20: …Wa��T^�GWa��v�Q̲R��Q�NHN
-N��v…" style="color:#cc0000;">R�eGWa��T^�GWa��v�QR��Q�NHN
-N��vN�1\
-N}Y�bKNMR�VT{
-N�Qeg��s(Wb���VT{�Qeg�N
-�
-�1�8�:�0�8�
-�
-�FTFTq�
-�
-�@b�N:N�NHN�N�[���S���*N-N	� �
-�
-�1�8�:�0�8�
-�
-�FTFTq�
-�
-�b���:N�NHN-N	��N�[���� �
-�
-�1�8�:�0�9�
-�
-�FTFTq�
-�
-�u�^6r�Ǐ�-N	�������N�v݋�S�N\O:N�S���Y�g-N	�
-N������N�v݋`O1\,T,T1\}Y�N0�Ndk{|�c�_P[�̑b��S�v�Oo`�-N	��
-N��l-N
-N-N1\/fb�N</span>R�e�vh�Q0 ��
-�1�8�:�0�9��
-�FTFTq��
-�qN�Sۏeg�v����[����&lt;<code>0�Nbe�S�b�N1\be&lt;</code> ��
-�1�8�:�1�1��
-�FTFTq��
-�^DQ�b�N)Y;<code>�~�N�$N!k�S�u���/f�V:Nb�R�N���Sd��[�v�_4Y � � �1�8�:�1�2� � �FTFTq� � �v^NbT�N�Sd�ُ�y�Q5X���vo� � � �1�8�:�1�4� � �FTFTq� � � � �1�8�:�1�4� � �FTFTq� � �^6r�v�S݋� N��'</code>�ZP�NHN���l	g(u ��
-�1�8�:�1�5��
-�FTFTq��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-�1�8�:�1�7��
-�FTFTq��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-��
-�1�8�:�3�2��
-�FTFTq��
-��
-��
-��l�S_�e�S�N�_Y�VGr��fNR�Q��e:gb�q���w�<del>^�Y�</del>N����
-��
-�1�8�:�3�4��
-�FTFTq��
-�ُ/f��idVy^�vteQ�TL�eQ�6qT�c@w^6rۏ�Nek� teQ �T L�eQ  ��
-�1�8�:�4�1��
-����m�
-�w�^DQOS�Rb�1/f(W�bb�vɉ’<code>�T,{mQaƋR�_���b��~b0Rɉ'</code>�T,{mQaƋ-N��ُ<em>N�� ��
-�1�8�:�4�3��
-�FTFTq��
-�ُ</em>NvQ�[/f^�8^���v�FO/f�S��<code>O��~b�_0Rɉ'</code>�T,{mQaƋKN���v���6qT�b�[R�_�vQ�[1\b�R�NJS�N ��
-�ُ�k̑b�^6r1\���<code>O</code>HN�l	g�<del>Ǐُ<em>N’Y{k�Nju�vǏz�N�S��V�<code>O���l	g�~�SǏ1��y�Y�</code>�vǏz���<code>O/fߍ�Y�</code>(W�Nw��
-��
-�1�8�:�4�5��
-�_[�b�
-��s(Wb�N��/f�悄v�TBl+R�N0�T@w�O�v�@w�O0�T�T�T�T&amp; &amp; �Nt^�[(WN�<code>ُ7h�N0@b�N1\�cLhP[�N0�[(W�l	g�e���Uُ7hj�@wN�SfU0[�rTYr]�[�rTYr]� � � �1�8�:�5�1� � �FTFTq� � �@b�N�1��y�Y�</code>�~�[/f�N</em>N’Y{k�Nju�vǏz�vQ-N�v�u�N����U�
-��{�{�</del>g<del>g�v1\egߍb�����<code>�N���b1\/f�N*N4V�])uǏ�S � �1�8�:�5�2� � �FTFTq� � �@b�N���O0R,{�N*N6��k���q\ N/fq\���4l N/f4l���</code>O1\ZP}YΏ�c�u悄v�QY ��
-�1�8�:�5�2��
-�FTFTq��
-�@b�N���O0R,{�N<em>N6��k���q<br/>
-N/fq\���4lN/f4l���<code>O1\ZP}YΏ�c�u悄v�QY � � �1�8�:�5�3� � �FTFTq� � �@b	g�v[O�(���/fُ7hǏeg�v � �1�8�:�5�5� � �FTFTq� � �ُ̑^6rc�Q�</code>O�S�Nba�FO/f<code>O N����</code>Op��1\���V4Y����N�Q�_‘Y�v�N�N�@b�N�[�SCSt^N�<code>��~ N�S�N�e@wT�0 � � � � � �  ��N N�Q�[l�U_ꁤJ���U_�tet� �2�0�2�6�-�0�4�-�1�4� �  � � � � � �eQ �Am ��N �@b �� �J� �U_ � �mQ � �2�0�2�4�t^4�g1�4��e � �1�8�:�3�1� �  �2�3�:�0�0� �&amp;� �2�0�2�4�t^4�g1�5��e � �1�1�:�0�8� �  �1�1�:�4�0� � �0w(g6�f[ ��� �_P[� 0 � ��%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�% � � � � �1�8�:�3�1� � �_[�b � ��p���N ��\P�n�N � � ��N�NRf � � �1�9�:�0�4� � �FTFTq� � �1\�Q�N�p1\�wS���[�� � � �1�9�:�0�4� � �FTFTq� � �b��[bُHN͑�v�u��S	gw�^DQ�l	gP</code>�<code>��_/f�Y�Y N�R�v�ُ1\/f�R+Y�vSO�s � � �1�9�:�0�5� � �FTFTq� � � N���N:N</code>O4V
-N�<code>O�l�N�6qT</code>O�_̑b��vP<code>�</code>bwN0R ��
-�1�9�:�0�7��
-�FTFTq��
-�v^NYtُ</em>N�u/f�emp�[؏/f��T�[�w�^DQ/f��T��N�b��fk�RؚNO ��
-�1�9�:�3�8��
-�_[�b�
-�^�Y͑u��N)Y�_�_�t㉄v0[��b�b]�[��b�b]��
-�sS�O/fw�^DQ�؏	gb��T�N�v�؏�@wbT0[�rTYr]�[�rTYr]� ��
-�2�0�:�3�9��
-�FTFTq��
-�[�Ɖ�� �-� �1�:�0�4�]�^6r�r^Ɖ�� ��
-�2�0�:�4�0��
-�FTFTq��
-�2�1�t^�b(W��[�v�ePU_�v ��
-�2�0�:�5�2��
-�_[�b�
-��s(Ww0R^6r�l�v[�Am�l]�[�Am�l]��
-�w}Y ��
-��N�v_N�lp�܏ ��
-�2�0�:�5�3��
-�FTFTq��
-�ُ�Q<em>NƉ���b�l	g�S�QegǏ�/fS_�e:g�]T�bU_�v�_�w�1/f�N<span class="katex-error" title="ParseError: KaTeX parse error: Unexpected character: '' at position 2: N̲R��0ُ�y
-N/fN�…" style="color:#cc0000;">NR��0ُ�y
-N/fN�U_^6r�����v�@b�N_N�l�S�QegǏ0 �
-�
-�
-�
-�2�0�:�5�7�
-�
-�_[�b
-�
-�^6r/f�Vg�N�S5�3��[���v^i%N�~ �
-�
-�2�1�:�0�8�
-�
-�FTFTq�
-�
-�
-�
-� �
-�
-�2�1�:�1�2�
-�
-�}v�
-�
-�*Y�s5��N�
-�
-� �
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�
-�2�1�:�1�5�
-�
-�FTFTq�
-�
-�
-�
-� �
-�
-�2�1�:�1�7�
-�
-�FTFTq�
-�
-�@�}v�  � �2�0�1�8�t^8�g1�5��eZf
-N�^6rN�:Nbߍ`O��wzz�Y	g �
-�
-�2�1�:�1�8�
-�
-�FTFTq�
-�
-��V:N,{�N)Yb��v��Vff�vޘ:g�@b�N^6r��)YZf
-N�[@wb�N</span>N</em>N�r�r���N3�<em>N\�e ��
-�2�1�:�1�8��
-�FTFTq��
-��s(W�b�[��]NKbُHN�r�^DQ<code>O�[��]_N N���[l0 � � � � � � � � � � � � � � � � � � � � � � � � � � �2�1�:�2�0� � �FTFTq� � � � � � � �2�1�:�2�0� � �_[�b � �)YPT��l�</code>0R<code>O�O؏	gُ�y n�n[�:_]�[�:_]� � � �2�1�:�2�1� � �_[�b � �^DQ��Owt^{�[�rTYr]�[�rTYr]� � � �2�1�:�2�1� � �_[�b � �}Y�Ua</code>O�Nߍ��^6r��HNYt^�
-� ��
-�2�1�:�2�1��
-�FTFTq��
-�Mb��Ƌ �Mb�c��؏�l�S�^Ǐeg�^6rp��N[�Am�l]�[�Am�l]� ��
-�2�1�:�2�2��
-�FTFTq��
-��l�N��l�N�
-� ��
-�2�1�:�2�3��
-�FTFTq��
-�b_N�Uaw7Y^DQ�TwY�^�Y}YYt^�N ��
-��
-��
-��
-��
-��
-�2�1�:�2�3��
-�FTFTq��
-�[�h��<code>�{�T,� �{�T,� �{�T]� � � � � �2�1�:�2�4� � �_[�b � �R1\/fُ7h � � ��NR��/fRR}Y[��b�b]�[��b�b]� � � � � �2�1�:�2�5� � �FTFTq� � �\</code>Y�v��u�_�_r^�
-�\�vY<code>�	N</code>TL� ��
-��
-�2�2�:�3�3��
-�_[�b�
-�^6r/fhQ[�TAS]�[�TAS]� ��
-�2�2�:�3�3��
-�FTFTq��
-��
-��
-�wck�v R+R �0R�^/f</em>N�NHNR+R��
-�:N�NHNb�N�[_P[��Q�vT�y �wƋ ��R+R� ��
-�2�2�:�3�3��
-�FTFTq��
-�@��[�N @�}v��
-�9hnc1(Wُ̑ ��
-�2�2�:�3�4��
-�FTFTq��
-��UR+R�
-�Z��YR+R ��
-�2�2�:�4�1��
-�FTFTq��
-��_!k�0N��R%R0/f�_ؚ�vNR%Rzf�FO&amp;NN/fNR%R�U�<code>/f^��� NR%R�U�</code>0/f^��GR/fa�u0���Y0�
-��
-�6q�0!qR%Rzf0GR/f�e���l�vNw�0[��YR%R0��_�ua�aI{0@b�N�vu�w0R%R0	giQ.z��N.z/f0[��YR%R0��N.z/f0�UR%R00�
-��
-�0[��YR%R0/f�O�eb�W0b��0baI{��N�b2r-N�_�w��vR%R��Vdk[��YR%R/fiq�<code>�v�O�n�/f!qf�v9h,g0 � � � �6q�0�UR%R 0GR/f�O�l0�Ot�l</code>�<code>�$R��0�c�d�Ee/f0N��/e 0-N0�d�l��/e 0KN@b�O��N/f!qowzf�v�O�n�_N/ff|v,��w���O�v9h,g0 � � � ��V2r��$R���c�dN�����l�Ee��hc�</code>�_�U��e�<code>�O�U��N�e�</code>�O�UEe��Xw��y�_0zfga0�^��u��NRN�QN�U9h�CN�_I�S��g0��c�hQ��/f�O�UR%RKNzf��O0�
-��
-�@b�N0�UR%R02r�_ck�w��0�NR�OL�KN9h,g��N>wN=��<code>S�0��S�0T�S���NL���_��ckS��eQ�e[OS���Y�N	g&lt;w��_��MR�0 � � � �@b�N�}-N�N�0���UR%R���l�v��e,{�N�� N�R 00@b�N0�UR%R 0/f�O'YXN�N0�O!q NXN�N!q�Y�O�O�vzf&lt;w0ga&lt;w0CN�S�&lt;w@b�O�v9h,g��vQ-NsS+T!qϑN�OL��v,��.zP[(WgQ� N/f�[f�v�N��f N/f�N,��N@b�[fO�S�v0 � �2�2�:�4�1� � �FTFTq� � �N���l�/f�_{��vR+R�v�R+R�v�QR1\/fl/f�NHN�r</code>� -N�^�-N �&amp;TR���]eQ�Nv<code>S����S��T�S���� N�wS��؏�S�̑�~��HNY�Nw��w N�wS�ُ7h �N�vN�RO	gY'Y� � � � � � � � � �2�2�:�4�3� � �FTFTq� � � � � � � �2�2�:�4�3� � �FTFTq� � ���)Y/f�(W�̑�� N��$R�e�[��v�[�Bc8�]�[�Bc8�]�[�Bc8�]� � � �2�2�:�4�6� � �FTFTq� � �w/f N</code>{k�v ��
-�2�2�:�5�0��
-�FTFTq��
-�
-0’Y,��m�i�</del>0��}��ʑ�_r&lt;[O	g3�<em>Ni[P[�vQ-N�N</em>Ni[P[1/f�V:N���w�����v�cX0W�r0 ��
-�2�2�:�5�0��
-�FTFTq��
-��
-� ��
-��
-��
-�2�2�:�5�4��
-�FTFTq��
-��e�sNAmL��v�S-��y0NR+R0�GR/fa�u�Q�R�<code>�w��0�O�Y	g�N\O�rbb4xbKNL��+R�NOU�N��N1\�VT{���0�T�b NR+R� 0 � � � ��#j  NR+R I{�N/f  NR�Uv</code> �N��R+R/f^��Uv<code>�R/fa�uaf� ��Nv</code>NE\6qN�w�<code>'a�{S�S'Y�� NZa0WOW�N!q N�l�On��c0�eN���^���Q�QX�v0WTtS��N����N�pؚ��Y/fI�2r��ba�b1\�</code>�w��0 ��
-�2�3�:�0�0��
-�w(g�
-��e�U�ev<code>�_KNSO� � �	g�U	gv</code>aKN�R��
-��w�U�wv<code>/fo��w� � ��sT�Uv</code>/f&lt;hir0�
-��
-�[�rTYr]� ��
-��
-�1�1�:�0�8��
-�}v��
-�@�FTFT�� /f�v� �R�S T�Q�NKb���r��
-��
-��UR+R�T�YR+R�fN-N�v�_nZi�N�nx�[N���m:N�N��
-��
-�T�e��UR+RKNTǑ�S�vL��R_N�_sQ.��N����He�g��_vQ�S�
-��
-��
-�1�1�:�2�0��
-�FTFTq��
-���_vQ�S�1\w	gY�� bk  ��
-�1�1�:�2�1��
-�FTFTq��
-��
-� ��
-�1�1�:�2�4��
-�FTFTq��
-�b�N�<del>�R���</del>�N1/f��dnZi�R���vЏ�RsQ�|T�b�T<code>O(W�Nw��/fb�v��ϑAmT</code>O�؏/f<code>O�v��ϑAmTb����Y�g/f</code>O�v��ϑAmTb�1/f<code>O	gBl�Nb���b1\�S�N�~</code>O��6qT<code>O1\O,T � � �1�1�:�2�4� � �FTFTq� � �@b�Nb�N��ё�~�R�1\/f:N�N����]�N��]�v�NL�kQW[̑b��1��Qeg�6qT��b:N-N���w0R�[�eё(g4lkpW�</code>O0R�^/f�T�N<em>N�6qTb1\�N�T�N�yN<code>O�vKQ�vl(�egh��� � � �1�1�:�2�6� � �FTFTq� � �ُ*N�vMR�S	g/f&amp;T��ZP0R�b�N��/ff[�_�ck(Wf[</code>N�FO/f���wS��Nwck�v��ϑAmSO�Rf[/fُ7hP[�v0@b�N�<code>O</code>7h���SY��</em>N�N��Y�c�~<code>O�va�����Y�b�_Sb�_�1\/f</code>O���wS��N/f��6qT<code>O�Q�SbN�N�m;R	gsQ�v�N��Sߍ�N�l� � � � �ُ�N�pb	gߍw�^DQJ�Ǐ�vQ�[/fw�^DQߍbJ��bMb�z6q�</code>w��Nb�v{��,g
-N��@w^6rS_�e���vُ<em>NsQ�|�I{	g:gO��b��v�eP�؏�S�N�Q��w�^DQߍb�NR�N�NN0�
-��
-�1\b��]eg���vMRb/f�l	g�R�l��Ynpf0R�[�e�����NHN0’YYpe�<code>�QN�b(WZP�v��/f�bb�</code>�<del>�v�</del>�Q�S��N/f�[�ewck�����v�b�vMR/fُ�y�r<code>0 � � � � �1�1�:�2�6� � �FTFTq� � ���bvQ�[/f�Q(uՋ��v�e�l�STf[</code>N��NHN�SՋ��v�e�l�STf[<code>N��k�Y�\�N��b(Wߍ�N��݋�v�eP�b(u�v/f�NHNl�6qT�N�VǏeg�v/f�NHNl��N/f&lt;</code>Ǐeg�v�؏/f��</em>Nl��eQ�N�v��SO�bw�v��YRRff0R�ُ�N�p�R+Y�b	g�v0	g�N�eP�b�N�S݋Ǐ�S��Nl�
-N8�r�1\�_%N��0W&lt;<code>@wb���*N N�c�~�vl1\Ǐeg�N06qTbl� N1\�S</code>�bRMbǏ�S�v/f�NHNl�yYN����ُ<em>Nl���b�^勁�Ǐ�S�v/f�NHNl�6qTbl�
-N9e0�
-� ��
-�1�1�:�2�7��
-�}v��
-�b1\��]sQ�l��vMRt���~T�v�e�l�^(u0�N�S�YUO�g	g�NHN’Y0<code>HN>e>e>eN�ُ�yw�v1\/fb�N�^��l�v�~�~�ST�� N/f�[�ewck</code>HN7h�v0b)R(uُ�yR�g0�
-� ��
-�1�1�:�3�2��
-�FTFTq��
-�bُ1/f@b����yAm)R�vYt�e_�N&amp; &amp; �N��NHN�r<code>�_�Y</code>HNYt�1u�Nb/f���yYY0b�[bُ�yYt�v�e�l�[�b�v�l�Tُ</em>Nl�6qTb_N�wS�ُ1/f�N�y��ϑ�ُ�y�Rϑ_N}Y�ُ�y�Rϑ�[�N<em>N0ُ�yR�g�R_N}Y�ُ1/f�N</em>N��ϑ_N}Y�ُ�yR�g�R_N}Y�ُ1/f��<em>N_N1/fR�g�Ȓb��v��</em>N_N1/flR�g̑b��v��<em>N_N1/fl̑b��v��</em>N_N�S@b��vُ�y�N���R��N���R0bnx�[R�gKNT0�N<em>N�RǏN�S0_N1/f0_N/fb
-N��ُ�y@b�ُ�y@b��v0���ylo<code>ُ*N0_N1\/fI{Ǐ�N06qTb1\ N�</code>�Qt�N�N�b�/f_NNsQ�l�N0FO�N�Y�g�[beg�0yYN����ُ</em>NR��0��b1\��Ǐ�Ǐ�S�v/f�NHN�r<code>�6q�w Nُ�y0 � � � � �1�1�:�3�3� � �FTFTq� � ��S��b�_̑&amp;^	g�b�_�&amp;^	g�c6R�&amp;^	g�~�[�v��ϑ(W̑b��ُ�y݋��Q�S��[�e/fl� N1\O�V&lt;</code>�Veg�v0<code>Ow�A�Ǐ�S�^�A�l� N1\Ǐeg�N0</code>OǏ�S�vl1/f&lt;<code>@w�vl�@b�NǏeg�vl�N�[/f&lt;</code>@w�vl�
-��
-��
-� ��
-�1�1�:�3�5��
-�FTFTq��
-�(W�̑���HNY^DQ^�Y��(W�݋�S�bb��]0��HN�	g�N<em>N�N��N�݋/fN�Rl�v�1/fww^DQ�S�bb��]�vQ�[��/f&lt;<code>Ǐ�S�v�@b�Nb&lt;</code>Ǐ�S01\O	gN�</em>N	g�v&lt;ON�R�v^DQ�Nw�&lt;<code>Ǐeg�@b�Nb��f[</code>N�v1/f�YUON�Rl0�Y�Y�veg���ُ/fb��]�_
-N�v�R+Y�bN�Rl�bN&amp;^^g�_NN&amp;^^�^g0b1/f�Y�Y�v�����HNb�v�R+Y1\�<del>0R�N0�
-� ��
-�1�1�:�3�6��
-�FTFTq��
-�,{�N���be���6qTb�S+R�v^DQ�Nw�&lt;<code>b[�4x�m:N{]�[�4x�m:N{]�[�4x�m:N{]� � � �1�1�:�3�6� � �FTFTq� � �,{�N���f[@w�_�Y�Y�Y�v����[�e/f&amp;T�Rl�/f�[�e�v�N�Nb�esQ�FO/fb/f&amp;T�Rl���/f�N�[��sQ�l�v0 � � �1�1�:�3�7� � �FTFTq� � ���],T0R�NHN1\ NؚtQ���]/f���wS��v � � �1�1�:�3�7� � �FTFTq� � �6qT(Wُ*N NؚtQ Nb��SN�R+Y�ُ$N)Yb��/f(WZPُ*N�N�</code>0�V:Nb(W�̑�T�T’T0W�N�NX�6qT��<span class="katex-error" title="ParseError: KaTeX parse error: Unexpected character: '' at position 4: N)Y̲bte*N�N��
-NǏe…" style="color:#cc0000;">N)Ybte*N�N��
-NǏeg0b	g�]'Y�v��ϑ�m��:N�NHN��N�[/f	g�N�eMb	g�m���S/fߍb�N�Nw��݋�v	g�NMO^DQ_N(W�̑�n�nT{T{�N�NX�FO/f�N�l	g�m�JU�:N�NHN��V:N�N/f�Y�Y0W��
-N&amp;^A��`�~�_N
-N&amp;^^�A��`�~0FOb/f&amp;^�`�~�v�@b�Nُ1\/f�R+Y�v�mEm0��b1\��T�Nf[`N0 �
-�
-�1�1�:�3�8�
-�
-�FTFTq�
-�
-�b1\/f(Wb�v
-NؚtQ��`&lt;`�N
-Nb�N�R+Y �
-�
-�1�1�:�3�8�
-�
-�FTFTq�
-�
-�b�N�v�b��]�:N�NHNbw���N'Y^DQ�S�vُ*N�Oo`�bOGSw��N�y</span>a<code>� NؚtQ�N0b���S㉳Qُ*N��6qTb������]�Nek�NekZP0Rw0Rُ�N�sa��b_N Nul�b_N N�</code>&lt;<code>�N06qTb؏/f�S�N�Y�Y�vh���b�v�p��N�[�e/f&amp;T�Rl���1\/f�N�v�N�</code>�N ��
-�1�1�:�3�9��
-�FTFTq��
-�ُ/f�</del>�S�NMR<span class="katex-error" title="ParseError: KaTeX parse error: Unexpected character: '' at position 10: N)Y�N�`KN̲T�b*N�N�v�S`…" style="color:#cc0000;">N)Y�N�`KNT�b*N�N�v�S`��VIQԏgq�R�N�~^DQ^�Y��O'Y�[�S�0
-�
-�
-�
-�
-�
-� �
-�
-�1�1�:�4�0�
-�
-�}v�
-�
-���YZP0Rُ7h�w�v�]�~
-N��N�^��S� �
-�
-�1�1�:�4�0�
-�
-�FTFTq�
-�
-�b
-N�`��]/f�N��</span>a<code>�v�_�FO/fh�b�tSň�_��evQ�N�ُ7hO�bbte*N�N�d�v0@b�Nb(Wُ̑��fnx0WJTɋ'Y�[�bw0R��7h�v�Oo</code>�S(W�̑�b�_ul�b�_<span class="katex-error" title="ParseError: KaTeX parse error: Unexpected character: '' at position 2: a̲`0b&amp;^@wُ7hu…" style="color:#cc0000;">a`0b&amp;^@wُ7hul�T</span>a<code>�v�</code>�~(W̑b��݋���ُ�N�p1/fb�v�R+YNY�b�v�b��]��w0R0�
-��
-�  ��N
-N�Q�[l�U_ꁤJ���U_�tet� �2�0�2�6�-�0�4�-�1�5� ��
-��
-�</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="sidebar-zone sidebar-content-zone" id="sidebar-content-zone"><button class="sidebar-zone-toggle" data-zone-toggle="content" aria-label="Toggle content zone"><span class="zone-toggle-label">内容</span><span class="zone-toggle-icon">▲</span></button><div class="sidebar-zone-body"></div></div><div class="sidebar-zone sidebar-graph-zone" id="sidebar-graph-zone"><button class="sidebar-zone-toggle" data-zone-toggle="graph" aria-label="Toggle graph zone"><span class="zone-toggle-label">关系图谱</span><span class="zone-toggle-icon">▲</span></button><div class="sidebar-zone-body"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
-                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
-                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
-                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
-                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
-                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
-                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
-                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
-                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
-                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
-                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
-</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
-</script><script src="/static/katex-copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../postscript.js" type="module" data-persist="true"></script></html>

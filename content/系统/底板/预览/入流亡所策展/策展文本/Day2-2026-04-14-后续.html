@@ -1,1344 +1,0 @@
-<!DOCTYPE html>
-<html lang="zh" dir="ltr"><head><title>Day2-2026-04-14-后续</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Tree of Wisdom"/><meta property="og:title" content="Day2-2026-04-14-后续"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Day2-2026-04-14-后续"/><meta name="twitter:description" content="��-�-�-� � �t�i�t�l�e�:� �D�a�y� �2� ��� �2�0�2�6�t^4�g1�4��e �T�~ � �d�a�t�e�:� �2�0�2�6�-�0�4�-�1�4� � �d�e�s�c�r�i�p�t�i�o�n�:� �U_�N�U_�V�v�[݋�Q�[0�_;NlQ�d�Q0 � �-�-�-� � � � �#� �eQ �Am ��N �@b �� �J� �U_ ��N ��� � N ��� ��V � � � �2�0�2�6�t^4�g1�4��e � �T��[݋ � � � � 0��YtQ���s �� 0 �..."/><meta property="og:description" content="��-�-�-� � �t�i�t�l�e�:� �D�a�y� �2� ��� �2�0�2�6�t^4�g1�4��e �T�~ � �d�a�t�e�:� �2�0�2�6�-�0�4�-�1�4� � �d�e�s�c�r�i�p�t�i�o�n�:� �U_�N�U_�V�v�[݋�Q�[0�_;NlQ�d�Q0 � �-�-�-� � � � �#� �eQ �Am ��N �@b �� �J� �U_ ��N ��� � N ��� ��V � � � �2�0�2�6�t^4�g1�4��e � �T��[݋ � � � � 0��YtQ���s �� 0 �..."/><meta property="og:image:alt" content="��-�-�-� � �t�i�t�l�e�:� �D�a�y� �2� ��� �2�0�2�6�t^4�g1�4��e �T�~ � �d�a�t�e�:� �2�0�2�6�-�0�4�-�1�4� � �d�e�s�c�r�i�p�t�i�o�n�:� �U_�N�U_�V�v�[݋�Q�[0�_;NlQ�d�Q0 � �-�-�-� � � � �#� �eQ �Am ��N �@b �� �J� �U_ ��N ��� � N ��� ��V � � � �2�0�2�6�t^4�g1�4��e � �T��[݋ � � � � 0��YtQ���s �� 0 �..."/><meta property="og:image" content="https://www.lifeart.xin/static/og-image.png"/><meta property="og:image:url" content="https://www.lifeart.xin/static/og-image.png"/><meta name="twitter:image" content="https://www.lifeart.xin/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="www.lifeart.xin"/><meta property="og:url" content="https://www.lifeart.xin/入流亡所策展/策展文本/Day2-2026-04-14-后续"/><meta property="twitter:url" content="https://www.lifeart.xin/入流亡所策展/策展文本/Day2-2026-04-14-后续"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="��-�-�-� � �t�i�t�l�e�:� �D�a�y� �2� ��� �2�0�2�6�t^4�g1�4��e �T�~ � �d�a�t�e�:� �2�0�2�6�-�0�4�-�1�4� � �d�e�s�c�r�i�p�t�i�o�n�:� �U_�N�U_�V�v�[݋�Q�[0�_;NlQ�d�Q0 � �-�-�-� � � � �#� �eQ �Am ��N �@b �� �J� �U_ ��N ��� � N ��� ��V � � � �2�0�2�6�t^4�g1�4��e � �T��[݋ � � � � 0��YtQ���s �� 0 �..."/><meta name="generator" content="Quartz"/><link href="../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
-  position: absolute;
-  display: flex;
-  float: right;
-  padding: 0.4rem;
-  margin: 0.3rem;
-  right: 0;
-  color: var(--gray);
-  border-color: var(--dark);
-  background-color: var(--light);
-  border: 1px solid;
-  border-radius: 5px;
-  opacity: 0;
-  transition: 0.2s;
-}
-.expand-button > svg {
-  fill: var(--light);
-  filter: contrast(0.3);
-}
-.expand-button:hover {
-  cursor: pointer;
-  border-color: var(--secondary);
-}
-.expand-button:focus {
-  outline: 0;
-}
-
-pre:hover > .expand-button {
-  opacity: 1;
-  transition: 0.2s;
-}
-
-#mermaid-container {
-  position: fixed;
-  contain: layout;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  display: none;
-  backdrop-filter: blur(4px);
-  background: rgba(0, 0, 0, 0.5);
-}
-#mermaid-container.active {
-  display: inline-block;
-}
-#mermaid-container > #mermaid-space {
-  border: 1px solid var(--lightgray);
-  background-color: var(--light);
-  border-radius: 5px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 80vh;
-  width: 80vw;
-  overflow: hidden;
-}
-#mermaid-container > #mermaid-space > .mermaid-content {
-  position: relative;
-  transform-origin: 0 0;
-  transition: transform 0.1s ease;
-  overflow: visible;
-  min-height: 200px;
-  min-width: 200px;
-}
-#mermaid-container > #mermaid-space > .mermaid-content pre {
-  margin: 0;
-  border: none;
-}
-#mermaid-container > #mermaid-space > .mermaid-content svg {
-  max-width: none;
-  height: auto;
-}
-#mermaid-container > #mermaid-space > .mermaid-controls {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  gap: 8px;
-  padding: 8px;
-  background: var(--light);
-  border: 1px solid var(--lightgray);
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 2;
-}
-#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border: 1px solid var(--lightgray);
-  background: var(--light);
-  color: var(--dark);
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  font-family: var(--bodyFont);
-  transition: all 0.2s ease;
-}
-#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
-  background: var(--lightgray);
-}
-#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
-  transform: translateY(1px);
-}
-#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
-  width: auto;
-  padding: 0 12px;
-  font-size: 14px;
-}
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiRDpcXEFJXFxteS1rbm93bGVkZ2UtYmFzZVxccXVhcnR6XFxjb21wb25lbnRzXFxzdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="/static/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://www.lifeart.xin/index.xml"/></head><body data-slug="入流亡所策展/策展文本/Day2-2026-04-14-后续"><div id="quartz-root" class="page"><div id="quartz-body"><div class="page-header"><header><div class="topbar"><div class="topbar__left"><a href="/Tree-of-Wisdom" class="topbar__sitetitle">Tree of Wisdom</a><span class="topbar__sep"></span><span class="topbar__theme">生命艺术家</span><nav class="topbar-nav"><a href="/Tree-of-Wisdom/入流亡所策展">策展</a><a href="/Tree-of-Wisdom/会议室">会议室</a><a href="/Tree-of-Wisdom/系统文件夹">系统</a><a href="/Tree-of-Wisdom/图谱">图谱</a></nav></div></div><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索些什么" placeholder="搜索些什么"/><div class="search-layout" data-preview="true"></div></div></div></div></header><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../入流亡所策展/">入流亡所策展</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../入流亡所策展/策展文本/">策展文本</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>Day2 2026 04 14 后续</a></div></nav></div></div><div class="left sidebar"><p show-comma="true" class="content-meta"><time datetime="2026-05-24T06:56:02.000Z">2026年5月24日</time><span>10分钟阅读</span></p><div class="spacer mobile-only"></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-121"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>浏览</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-121" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><article class="popover-hint"><p>��-�-�-��
-�t�i�t�l�e�:� �D�a�y� �2� ��� �2�0�2�6�t^4�g1�4��e �T�~�
-�d�a�t�e�:� �2�0�2�6�-�0�4�-�1�4��
-�d�e�s�c�r�i�p�t�i�o�n�:� �U_�N<del>�U_�V�v�[݋�Q�[0�_;NlQ�d�Q0�
-�-�-�-��
-��
-�#� �eQ �Am ��N �@b �� �J� �U_ ��N ��� �	N ��� ��V�
-��
-�2�0�2�6�t^4�g1�4��e � �T�</del>�[݋�
-��
-�0��YtQ���s ��0�
-��
-�-�-�-��
-��
-�eQ �Am ��N �@b �� �J� �U_ ��N�
-�2�0�2�6�t^4�g1�4��e � �1�0�:�0�2� �  �1�0�:�5�3��
-�0��YtQ���s ��0�
-��%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�
-�1�0�:�0�2��
-�FTFTq��
-�UO:N wzz�Y	g �ُ/f��(W�u�-N�S�m�p�v�N/f4V
-N�b>eN�N�bN�u悆N�bzz�N�1\wzz�N�
-���/f>eA<br/>
-�
-�1�0�:�0�3��
-��
-�_[�b�
-�/f�v�/f�v�^�Yb_Nyr+R�_�_��N/f�<del>�N���N0�N/f�l
-N�</del>�N	g�N�S�N�����N0MR	Nt^b�݋�t�SN}Y�^DQ�R+Y�Sؚ�b���Q�S�9h,g�l�N�O0�l�N���_w[n/f�00�T�T�T00w�^DQ�NMR�vUt�u�SY��l�N�O�v00@b�Nُ	Nt^�k�N)Y��(W��]؞؞b�0�
-��0�0|�^DQ^�YُMb/f�Kb�bKb�b�N�Nw�p��
-�1�0�:�0�3��
-��
-�FTFTq��
-�S_͑�ueg�e�<code>O� N�(W��T��N�O�w � �1�0�:�0�3� � � � �_[�b � ��T�T�/f�v0 � �1�0�:�0�3� � � � �FTFTq� � �@��[�N ^DQ�g�_</code>Oeg�NNُ<em>NǏz��NHN�eP�u��_�Y�N�<code>O�vP</code>�<code>�[hQ�Qeg�N�</code>O�v���<code>Mb�_�Y0 � �1�0�:�0�4� � �FTFTq� � �KNMR��/f㉟</code>�N/f���<code> � �1�0�:�0�4� � � � �4TǑ�� � �b_N/f�N7h � �1�0�:�0�4� � � � �FTFTq� � �1�8�t^��Ƌ^6r�2�1�t^b:N_P[�^6r�v��z,T�_�vS_��w�FO/f��Nt^2�0�2�6�t^�N�b�v���</code>MbRR�_�Y�
-�1�0�:�0�5��
-�FTFTq��
-�ASt^‘Yb��N1�8�t^0R�s(W�v8�t^�N�bMbwckw�ek�
-�1�0�:�0�5��
-��
-�_[�b�
-�؏}Y<code>O��Ƌ�v�e0�T�T0 � �1�0�:�0�5� � � � �FTFTq� � �^�Y��̑_P[��Ƌ^6r�e�v�1�3�t^1\��Ƌ�v��Nt^2�0�2�6�t^�N�1�3�t^Ǐ�S�N� �:NeUyY�N8l܏\PYu(W ㉟</code> �vǏz��
-��0�0|�؏}Y<code>O��Ƌ�v�e0�T�T�T0 � �u���Qeg�v݋�ޏ0㉟</code>0�v4l�Q��؏N0R�
-�1�0�:�0�6��
-��
-��[�N�
-��l	g^6r�wR<code>0O��(W0W�r�N� � �1�0�:�0�7� � � � �_[�b � �b_N/f^6rp�T��_�Yf��e�N�S�O</code>��؏}Y	gw�^DQ�Nvj�4O0b<span class="katex-error" title="ParseError: KaTeX parse error: Unexpected character: '' at position 12: N*N/f�N�v�x̲��N�v���b؏O�…" style="color:#cc0000;">N*N/f�N�v�x��N�v���b؏O�N�b1\/f'Y�T00�T�T�T�T0000�N��/f��]�q00w�v00�Neg��/f�Nt
-N�_�[b00�N��]�u悾��S�v�eP��W,g
-N��/f��]S0
-�
-�1�0�:�0�7�
-�
-�
-�
-�FTFTq�
-�
-��N�N(Wr^�NHNbT��[�v0�N/fw�vs0
-�
-�1�0�:�0�8�
-�
-�FTFTq�
-�
-�@��[�N �^DQ�`O9h,g
-N�wS�0W�r/f�NHN�`O�~�SǏ�v�؏
-N�{0W�r0
-�
-� � � � � �|��l	g^6r�wR`0O��(W0W�r�N�
-�
-�1�0�:�0�8�
-�
-�
-�
-�_[�b
-�
-�@b�Nُ1\/fb	g�eP@w%`�v�S�V@T�ُHN}Y�v^6r�ُHN}Y�v�l�:N�NHN
-N?aa��bT0@b�N:N�NHN��
-N�_�Pw�Y0wڋُ7h�v�
-N�~�R�
-N���~����O�S�NN^6r�v�eW[��̑�ef�v�N��(W��̑m`�~00
-�
-�1�0�:�0�8�
-�
-�
-�
-�FTFTq�
-�
-�wck�v0W�r�1\/f���`�v�_�Y
-�
-��N�_u
-�
-��N�_{k
-�
-�1�0�:�0�9�
-�
-�
-�
-�_[�b
-�
-�v`�N
-N�S`�`�v/f�ef�v�N00�N�~�[�N�N�N�vv`00wck�wt�v�N�l	g�N,T00w��v݋�l�Nt��S��beg�vhQ/f)���
-�
-�1�0�:�0�9�
-�
-�
-�
-�FTFTq�
-�
-��[hQ1\(Wُ�N�_��1�0�:�0�9�
-�
-�
-�
-�
-N�{`O(WlQ�S̑��[�^̑�T�y���N:N���T�y��ZZ�b�x�ُ�N��
-N�{�NHN
-�
-�1�0�:�1�0�
-�
-�w6q^DQ�YZ2�0�2�4�t^�b���u�@g�QeǏeg�N�b�N�vj�@w�b�N:NbZP�N�NHN
-�
-�1�0�:�1�0�
-�
-�
-�
-�FTFTq�
-�
-�b�N:Nb	g�O�_
-�
-�b�N:Nb�a�N^6r�v�l
-�
-��a*NA\
-�
-�1�0�:�1�0�
-�
-�_[�b
-�
-��PwR`^DQ(f)Y�v0ޏ/f^���R
-NnZi�؏ߍ@wTS��v�Nf[`NbT0�S�S�eW[1\/fTS��:NUO
-Nw,g(�bT00
-NlbT00�R+Y/f(u(W�T̑�NbT0
-�
-�1�0�:�1�1�
-�
-�FTFTq�
-�
-�wck��]�v���`�_�Y�e�Mb�wS��NHN�S0W�r�
-�
-�1�0�:�1�2�
-�
-�_[�b
-�
-�ُ1\�f�l	g�Q00	g�N�Q�
-NOُ7hw�_�N�`�v0
-�
-�1�0�:�1�2�
-�
-�FTFTq�
-�
-���S�[݋�^6rYeb�v�R+Y1\/fُ*NN��
-N��
-N�{/ffN؏/fƉ���؏/f�N؏/f�NUO�vir��
-N��HQsQl�l
-NO���N��Nh�b�ň�v�Q}Y��[l�O�w0@b�Nb�N�wS�^6rُ*N�l�NT�b��Kml�NT�b��/fl�b9h,g
-NwwQSO�Q�[��S��/f
-N��v�b��
-Nw��v�bMbw0�V:N^6r�[b�vYe�1\/f�bKNMR&amp;^�N�_YfN�&amp;^�N�_YN��^�P��.^bsQ0^�P1\OJTɋbُ*Nl(W�T̑���*Nl(W�T̑��T*N�
-N��v0
-�
-�1�0�:�1�2�
-�
-�
-�
-�_[�b
-�
-�/f�v0�a/f`��R+Y�v0^6r�v�l�^6r�v�k�N*NW[��/f�R+Y
-�
-�
-N/f�eW[wt��
-�
-�1�0�:�1�3�
-�
-�
-�
-�FTFTq�
-�
-�_P[�̑�S�vƉ���b9h,g
-N(uwwQSO�Q�[eg</span>R�e0b��HQsQ�v1/fُ</em>NƉ����Sُ<em>NƉ����N�vl��Nl(W�T̑�ُ</em>NN��N��ُ<em>NN��Y�gN���f�[̑b����v�Q�[���[NT0��b؏w�[r^�NHN�jm9�ُ</em>N�|�R�jm9�ُ<em>N�e��r^�NHN0�
-�^6r�Ǐ���vN���Y�c�<code>O</code>�“O�v��SOMb����<code>O)Y)Y�c扛N N��vN��</code>O��],geg��؏�l</em>N�Q�<code>Oُ��P[؏�</code>�O-NS����O<em>NA<br/>
-�
-��
-�_[�b�
-��T�T�T�T0/f0�
-�1�0�:�1�5��
-�FTFTq��
-�:N�NHN^6rN�-N�vN�NT�N�-N�vN��W,gN(u�:N�NHN�ُ/f^�PcTRT�N/f�v��V:NN��vN�Ojm9���ϑ�jm9���]�vl�
-�^6r�Ǐ�-N	���N�NT����bُ</em>N-N	�{Q’Y{Q�X0<code>O)Y)Yߍ�N�N N��v(W�Nw��w�N�N N��v�</code>Oُ-N	�؏���XT�
-�S_t^^�P�Ǐup���-N�bl�
-NpNeg0S_t^^�P�Ǐ�“l�yP[4l�-N�bl�
-Nbc4l:g�QShV0S_t^^6r�Ğё��<del>�ag�-N�bl�
-N(uĞё��</del>�ag0^6r�Ǐ��vN��bhQ�	��b�^�P�ǏN��vbhQ萛b�_01/f,T݋gq�R�
-��
-�1�0�:�1�4��
-��
-�_[�b�
-��T�T�T�T<del>�</del>�/f00ُ_N/fb:N�NHNN��hg�Q^DQߍw�Y^DQ(W�Nw��v�S�V�
-�1�0�:�1�6��
-��
-�FTFTq��
-��NHN�S�q<code>N&lt; � � �1�0�:�1�7� � �_[�b � ��NMR^6r�b@wNgY�0w7Y N��r^ُ*N� N��r^��*N00vQ�[b�s(WMbf}v�:N�NHN���b@w00�Y�g N/f��*N�N��{���a�_�{0؏�b@w000�Y�g��]	g�N�Q� N�����b�00FO/f(W�l	g�QKNMR����b��*N�Q�W{Q�Qeg0�NT�</code>r^�NHNr^�NHN0�
-�1�0�:�1�8��
-��
-�FTFTq��
-�b(Wُ̑����^6r�[b�w�Y^DQ	g�_YfN��N�b�S�<del>^�Pw�^�P�v�c�ُ<em>NfNN��<code>O N�Qw0FO/fw�Y^DQ�^DQw�vُ�NfN�^�PhQ����Qbw�</code>O�ُ/f:N�NHN�
-��
-�_[�b�
-�؏�_/f^�Y�<code>Oُ*N*Ys�N0^��S0@b�Nb�N(W�Nw�Mb/fhQ0 � �1�0�:�1�8� � � � �FTFTq� � �:N�NHN�w�Y^DQ N��w�vfNb��w�:N�NHN��N^6r�[b�Neg���S��w݋��NO�v�ُ*N N���*N��ُ*N(W� N���*N(W�T̑ � �_[�b � ��[�/f��*N�NMb��� N/f��*N�N���� N(u��0 � �1�0�:�2�0� � �FTFTq� � ��V:NbKNMR�u�u�_&amp;v&amp;v � �2�g�QNN/f)Y)YY̑�S�u � �1�0�:�2�0� � � � �_[�b � �ai</code>��]‘T�;N��/f<code>O�v�O�N0Mb	g�v�NR � �1�0�:�2�1� � �_[�b � ��T�T00^DQ^�Y/f�R00FOsSO/f�R���]�v��*N�Ow� Neg�^6r(W_N�l	g�R�l0 � �1�0�:�2�1� � �FTFTq� � �Teg�	g�N!kw�^DQ(W�_�O NߍbT��|��N1\�b�� N	g�N*N�SY�v��ϑSO0�N}Y}Y��w�vǏKNT��NJTɋb^�P(W</code>O��
-N�bMb�_�Y	g�N�p�O�_0��N6qbw�v�k)YZf
-N�S�ueg�N!k�<code>O�</code>�<code>��/f�NHN�i�_�b�va�_�Rl� N1\���t㉉c�N�؏	g�NHNS� NS��v�b���v[O�~9h,g�</code>Nw�eg�^6rYe�vS�&lt;y�l�9h,g�<code> Nw�eg0 � �1�0�:�2�2� � � � �FTFTq� � ��N��^6r�[@w</code>O�_��e���N��QNNُ�k�e�����[@w<code>O��N</code>O�_�Yu�u�
-�1�0�:�2�2��
-��
-�_[�b�
-�؏؏�_/f^6r0�
-�1�0�:�2�3��
-��
-�^6r_N�[@whg�Q^DQbT00FOhg�Q^DQ��N�cbُ</em>N,�00�T�T</del>�<del>�</del>��
-�1�0�:�2�4��
-�FTFTq��
-���]���NB\�NB\�z4x��]�v�_t2��<del>0w�v���<em>N1/f?���6�/}N�Negb_b�v’��
-�1�0�:�2�4��
-��
-�_[�b�
-�/f�n�
-�1�0�:�2�5��
-��
-�FTFTq��
-�ُ</em>N	g�l	g�z4x��S	g��]�_̑�wS�0S_wckb��[{k�N�v�eP�b��[͑�u�v�eP�b��[S_Nُ�N;R<code>O�g�z���S�v�eP�</code>O�_-N�v�]‘Y�vP<code>�</code>�/}N�Neg�v<code>Nl��O�Qeg � �1�0�:�2�5� � �FTFTq� � �ُ*N�eP�</code>OMb�wS���]�O0R�T̑0bKNMR�N1�2�g�N�_�Y�S�u�1�g�N2�g�N�S_ُ�y�<code>�Qeg4N�v�eP�bw�v�_-N�N�p�l���l	g � �1�0�:�2�5� � � � �_[�b � ��U � �1�0�:�2�5� � � � �FTFTq� � �KNMR@bf[�[hQ�</code>Nw�eg����N;R-N�S�<code>�T̑�b0R�N9hQe}T;zI���b;mNeg0 � �1�0�:�2�6� � � � �_[�b � �/f00t�bT0 � �1�0�:�2�6� � � � �FTFTq� � �wckb��[�Nt�&amp;^eg�v�kw��va�S�v�eP�</code>OMb�wS�<code>OO/f�NHN�r</code>0s^�e’Y�[��/fň�v7h7h}Y�eU�N?Q�l	gS�t�NX�NX��0S_<code>O�rꁁ�b��[ُ�y�]'Y�vP</code>�<code>�v�eP�</code>OMb�wS�<code>O	gY�1_0 � �1�0�:�2�8� � �FTFTq� � �S_</code>O�S�s<code>O�NHN�� N���c�c�ޏ��]�v��SO�� N���c�c�hTm��v�NR�� N���c�c�</code>O@b	g�f�</del>�_̑(Wa�vN�<code>O�� N���c�c�v�eP�</code>OMb�S�s�NHN/fP<code>�</code>0s^�e<code>Oɉ�_</code>ONP<code>�</code>�<code>O9h,ga�S N0Rwck�vP</code>�<code> � �1�0�:�2�9� � �_[�b � �/f00@b�N</code>Oۏeg�NT��Q�Sw^6r�vُ�N_P[؏(WZPh�b�
-N�v�R+Y�v�eP��N<em>N/fjm9��e���ُHN}Y�v�l��N}Y}Y�v�O��SY�N</em>N1/fNQ\0w�v00w@w�N�N(Wh�b�
-N�v���yh�o�T �\O�4ls^<em>YNO�N0�
-�1�0�:�3�0��
-�FTFTq��
-�b�NMR_N�N:Nb�a�N�b�NMR_N/f(Wň�wck�<del>�SǏ�Mb�wS��NHN/fGP��NHN/fw�
-�1�0�:�3�0��
-��
-�_[�b�
-�</del>b0R�‘<code>�Mb	gwck�v��O�Mb	gu}T�vؚ�^0�[^�v�_��00�T�T�T�T0 � �1�0�:�3�2� � � � �_[�b � �/f00@b�N�NMR�T�N_N�l	g�NƖ00�T�T�T�T00�S/f�l	g�</code>0Rۏeg�v/f^�Y0b�N�v�N:N/fhg�Q^DQ00�S��ۏeg1/f�N�[�N00���y�l
-N�v�l	���6q�Nя00�V:NN�����1\�a0�
-�1�0�:�3�4��
-��
-�FTFTq��
-�w�^DQNb�N�S݋�(f)YZf
-N��N�<code>O1\S_��]/f��{k�N'T�</code>O�s(W1/f(Wb��[{k�N0@b�N�N_�S�Nb�v<code>��bwckbe{kT� ��_{kT�ُ*N1\/fb�v����0S_bwckbe{k� ��_{k�b1\Ǐ�Nُ�NsQ�N0FO/fُ�y N/f4V N�bbe{k�b ��_{k�/fS_wckeg�v�eP�</code>O�NHN��N�b��NHN��N�<code>���1\/f~g��w��~g�_��[hQ>eN�ُ/f��SOZP0R� N/f4V�]ZP0R � ��XLu�sMR�v�eP�</code>OMb�wS�<code>O�_-N0R�^(Wgb�S�NHN0s^�e	N�~/fw N���v��XLu�sMR�v�eP�</code>OMbw�_��	N�~�
-�1�0�:�3�4��
-�_[�b�
-�/f00b�N���<del>�SǏ�N00�S/fNT�vb__�FO/f��/fu}T�v���0�
-�1�0�:�3�4��
-��_
-N�[u}T�v����
-��k)Y��(W�</del>�S00�T�T�T�T000�
-�1�0�:�3�6��
-��
-�FTFTq��
-�/f�v��k)Y��(W�<del>�S��k�e�k;R��(W�</del>�S�
-�1�0�:�3�7��
-��
-�1�0�:�4�1��
-�FTFTq��
-��Y�Y/f�x�Qeg�v�N/f���Qeg�v�N/f<code>�~�Qeg�v0 � �b(�u�^6r�vYe�� N�-N�v�Oo</code>Nw�N�-N�vD���Nf[�
-��|�R	gP���N��_<code>��x�Tb�vpS�v^i%N�~ � �1�0�:�4�2� � ��|�R	gP����_</code>�<code>�bb�N_�Np�w�'T � �1�0�:�4�3� � � � �FTFTq� � �}�6q��k*N�N�v����~�S N�N7h�FO/fb�O���	N�~&amp;^�~</code>O�v�u��N�[/f�N7h�v0�
-�1�0�:�4�3��
-��
-�_[�b�
-�=�O�=�O�=�O��
-�1�0�:�4�3��
-��
-�FTFTq��
-�]y<span class="katex-error" title="ParseError: KaTeX parse error: Unexpected character: '' at position 4: NMO̲^DQ�e�e�c�b
-�
-�…" style="color:#cc0000;">NMO^DQ�e�e�c�b
-�
-�1�0�:�4�4�
-�
-�FTFTq�
-�
-����fΘ�eg�_�fs�p�N�N'T
-�
-�1�0�:�4�5�
-�
-�
-�
-�FTFTq�
-�
-��V:N	gُ7h�vSO�����Y�c�b,g��1\/f�[`O�R+Y�v���[��R+Y0R�NMb���c�b00
-�
-�1�0�:�4�7�
-�
-�FTFTq�
-�
-�ck(W�� ;m �v�
-N
-�
-�1�0�:�4�8�
-�
-�
-�
-�w(g
-�
-�悾�Mb���d�_u}T�v(�ϑ�T&lt;h@\=�O�
-�
-�1�0�:�4�9�
-�
-�
-�
-�FTFTq�
-�
-�/f�v
-�
-�1�0�:�4�9�
-�
-�
-�
-�_[�b
-�
-��S	gǏeg�v�N�Mb�aُ�S݋�v�Q�m0
-N/f�eW[
-N�va`0
-�
-�1�0�:�5�2�
-�
-�
-�
-�FTFTq�
-�
-���S�[݋��XLu�sMR�v�eP�wck�v	N�~�v�XLu�sMR�v�eP�`OeU���b
-NOO0/U�N�S�N(u�v1\/f^6r�v~g��S��S	g��*N�S�N(u�b�]�~ՋǏ�N0b\Q\Ql�l���N1�2�g1�g2�g3�g��s(W0R4�g�N�,{�N*NgbMb(Ww�^DQ�v.^�RN�
-z�_�[u}T�va�`	g�paɉ0
-�
-�1�0�:�5�3�
-�
-�FTFTq�
-�
-�6qT`OOw0R��]�v�e�����]�[T�yN��vgb�S�6qT`OO���T�b`HN/fُ*N7hP[JU�
-�
-�  ��N
-N�Q�[l�U_ꁤJ���U_�tet� �2�0�2�6�-�0�4�-�1�4� � 
-�
-�
-�
-�eQ �Am ��N �@b �� �J� �U_ �	N
-�
-�2�0�2�6�t^4�g1�4��e � �1�0�:�5�2� �  �1�1�:�4�9�
-�
-�0��YtQ���s ��
-0
-�
-��%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%
-�
-� �
-�
-�1�0�:�5�3�
-�
-�FTFTq�
-�
-�6qT`OOw0R��]�v�e�����]�[T�yN��vgb�S�6qT`OO���T�b`HN/fُ*N7hP[JU� �
-�
-�1�0�:�5�3�
-�
-�FTFTq�
-�
-��/f�ُ*N/fwck�v`O>f�s�Qeg
-�
-� �
-�
-�1�0�:�5�4�
-�
-�FTFTq�
-�
-�s^8^�N!j�r7h�v��*N7hP[�v`O���
-N/f`O��XLu�sMR�yr+R/f	N�~�sMR�eP�XLu�v��*N`O�Mb/f`O�Neg
-N�wS��v`O �
-�
-�1�0�:�5�4�
-�
-�FTFTq�
-�
-��[hQ�~`OSb4x`O�Seg@b	g�[��]�v���w �
-�
-�1�0�:�5�5�
-�
-�FTFTq�
-�
-�`O�N:N`O/f�NHN7hP[�`O@b	g�v�N:N�(W	N�~�XLu�sMR�v�eP�`O���S�shQ�4x�x0
-�
-� �
-�
-�1�0�:�5�6�
-�
-�_[�b
-�
-�^�Y�`Oُ*Nw�v
-N��R�]�؏/fs�v00�T�T
-�
-� �
-�
-�1�0�:�5�7�
-�
-�FTFTq�
-�
-�/U	g�NHN�S�N�O��S	g-N�S�N�O��S	g�l�S�N�O�ُ*N-N�ُ*N�l�Mb/f`O
-�
-� �
-�
-�1�0�:�5�7�
-�
-�FTFTq�
-�
-�@����m ^DQ�b�s(Wck(W Z�1_ ُ*N�_4Yُ*N�S
-N(u�R0
-�
-� �
-�
-�1�0�:�5�8�
-�
-�FTFTq�
-�
-��YOꁨRw��6qTb1\	gaƋ0W~g��k�e�k;R�S_w�Ydk �
-�
-�1�0�:�5�9�
-�
-�FTFTq�
-�
-�
-Nُ7h�1\�~
-N�N
-�
-� �
-�
-�1�1�:�0�0�
-�
-�FTFTq�
-�
-�@b	g�vMR��
-N�v�S���o���u�5X�b��~g��S�~`N
-Ngb�S0 �
-�
-�1�1�:�0�7�
-�
-��[�N
-�
-�
-N#�R�]��N#��`�N0=�
-�
-�
-� �
-�
-�1�1�:�0�9�
-�
-����m
-�
-�ُ*NMb/fwck�v�O��l0Rُ*N�XLu�v��؏(WYb�
-�
-� �
-�
-�1�1�:�1�0�
-�
-�FTFTq�
-�
-�(f)YZf
-Nc�[5u݋�b�_̑b��N�v؞�_�ɉ'`
-NO�u��ɉ'`
-NO�u�u�ɉ'`
-NO{k�N�b1\�N�v�S
-Y�_ �
-�
-�1�1�:�1�1�
-�
-�FTFTq�
-�
-��V:N�N؏	g�N�pYOYu�v�u�r��k!k	g�N*N�u�r�b1\�_�Y�_ُ�Q�S݋��N	g�N*N�u�r�b�S�_�Y�_ُ�Q�S݋ �
-�
-�1�1�:�1�1�
-�
-�FTFTq�
-�
-��_@w�_@w1\aw@w�N��v0R�N)Y�e
-N��Ǐeg�6qT�N)Y�e
-N�S�_�Y���
-N�T̑	g�N*N{��_�v�u�r�b1\�_�Y�_���Q�S݋�6qT~g� �
-�
-�1�1�:�1�2�
-�
-�FTFTq�
-�
-��V:N�Nwckeg�v�eP*Ys�N�b�S��(Ws^�eY�y/}�N�pُ7h�v�~��0s^�e�u�r
-Nf>f�v�eP�y/}�N�pُ7h�v�~��0��
-N6q��keg�N!kw�v/fJSag}T�l(W�N �
-�
-�1�1�:�1�4�
-�
-����m
-�
-�babaeg�6qT�N�e�e1\ߍ@w`O�N��N�v��(W�`O��aɉ0R �
-�
-�1�1�:�1�4�
-�
-����m
-�
-�6qT�N؏O���N�
-N�_T�y �
-�
-�
-�
-�1�1�:�1�5�
-�
-����m
-�
-�bKNMR�^6r�ُ^y`HN�R=��=��=��
-�
-� �
-�
-�1�1�:�1�5�
-�
-����m
-�
-�^6r�`�N�NN��`O��]3�lGSw�eg��N�_
-NOO�1\p��N
-�
-� �
-�
-�1�1�:�1�6�
-�
-�FTFTq�
-�
-�ُ*NKNMRb_N�Ǐw7Y^DQ
-�
-� �
-�
-�1�1�:�1�6�
-�
-�FTFTq�
-�
-�1\/fX�X�X��@g�v�eP �
-�
-�1�1�:�1�6�
-�
-�FTFTq�
-�
-�w7Y^DQ_N/fُ�y�
-�
-� �
-�
-�1�1�:�1�7�
-�
-����m
-�
-�;N��b_N�l�R+YKNMR�_N
-N�~�R�^6r_N�l�R�l��~�
-�
-� �
-�
-�1�1�:�1�7�
-�
-����m
-�
-��T�T�T�/fbT
-�
-� �
-�
-�1�1�:�1�9�
-�
-�FTFTq�
-�
-�@����m FO/f^DQ�bُ!kɉ�_/f�S�N(W�Nw��v�qQX[ �
-�
-�1�1�:�2�0�
-�
-�FTFTq�
-�
-�Z��N�_ir �
-�
-�
-�
-�1�1�:�2�0�
-�
-�FTFTq�
-�
-�KN@b�NO�Su
-N��qQX[�v�S�V�b�􋫎SO
-N�v�`�Q���/f�V:N,{�N*N�l	g�c�~��l	g�c�~�1\�l	gl�Nbzf �
-�
-�1�1�:�2�0�
-�
-�FTFTq�
-�
-�FO/f�c�~���n�N`Owck���b�[ʑ>e�Qeg�6qTw0R�[�&amp;TR`O1\
-N�wS��[/f*N�NHNN�V �
-�
-�1�1�:�2�1�
-�
-�FTFTq�
-�
-�b
-N��Y0Rb��
-N�vُ�N�1\/f�V:Nb
-N���N�N�Qeg�@b�Nُ*N1\/fb�O`N0�OL��v_�b���Nek�Nek�b�[�N>e�Qeg����ek�^�z���N�N�Qeg�vُ�y�O�_ �
-�
-�1�1�:�2�1�
-�
-�FTFTq�
-�
-����N�N�Qeg�v�O�_�1\/fKQ
-gP`�`�v_
-�
-� �
-�
-�1�1�:�2�4�
-�
-�_[�b
-�
-��NMRFc�v*Y{k�N
-�
-� �
-�
-�1�1�:�2�4�
-�
-�FTFTq�
-�
-��[�v
-�
-� �
-�
-�1�1�:�2�5�
-�
-�FTFTq�
-�
-�b�[^6r�v,T݋gq�R�_Neg�n�N�N\�[6r�k�v,T݋gq�R0�'Y�N�Sb����[�v���y�N�
-N�[�����[�v�^��SZP�r=�6� �
-�
-�
-�
-�1�1�:�2�5�
-�
-�FTFTq�
-�
-�u���N�b,g��vNb�b��zw�egnct�R�N�b��
-Nbe �
-�
-�1�1�:�2�6�
-�
-�FTFTq�
-�
-�ُ1\/f�~v�Y�O݋�v���i4s��Sbe(W�[̑&lt;`�N&lt;`��Q0RYb��[*N*N��/f�[�[ll�v0ُ/fGP�v �
-�
-�1�1�:�2�6�
-�
-�FTFTq�
-�
-���N_N
-Nbe�0b\O:Nf[!h�v�N
-T-NB\r^��_N/ff[!ht^���g'Y�v�E\6q���N*N\b1�0��\�v!h��bOc�yYZP��N�QV{�ZP��Nb
-Nbe��
-Nbenct�R�N��gT1\/f�b��]d{k �
-�
-�1�1�:�2�7�
-�
-�FTFTq�
-�
-�6qT�b؏���S�T�Nd}YsQ�|�d*NA\��gT�b�v�~@\1\/f�_��u �
-�
-�1�1�:�2�7�
-�
-�FTFTq�
-�
-��V:Nb�l	g�O-N�L��b�l	g(W��zw�eg�cLhP[�v�eP�cLhP[ �
-�
-�1�1�:�2�8�
-�
-�_[�b
-�
-�	g�N�'`1\�S�N00�wS��Q�_(Wr^�NHN�Yb��v�v�SUO{�(WabT0 �
-�
-�1�1�:�2�9�
-�
-�FTFTq�
-�
-�
-�
-�b�s(WMbwck�wS�^6r(Wُ*N0W�e�^�]Ğ���\�p�Xُ̑�S_N�v���y�_`
-�
-� �
-�
-�1�1�:�2�9�
-�
-�FTFTq�
-�
-�b�N:Nb/f�Oc�N�N�V�Tl�'Y�[h�b�
-N��Ǐ�_�S�Ǐ�_�S*NA\�f[!hb�N�N)Y�v7hP[� �b�N�_Y�mqN�vTW��u1\/fb�v
-N\O:N0bffw0R�b:N�NHN
-N�
-�
-�w�v�b(Wb�Nf[!hُHNYt^��N�N�_�Y}Y0R�s(Wte*Nf[!h�Q萄v�mqN�b�l	g�bw�ُ�N#��N
-�
-�
-�
-�_[�b
-�
-�/f�v0/f�v0����=\��]@b���SZP�N�N�N�`0sSO�gT�~�g
-N�N�[���Y?a0FO��]�ZP�v��N�[���vNb�b0
-N6q��-N0��S�r^�NHN
-�
-�1�1�:�3�0�
-�
-����m
-�
-�
-N�[f
-N�[f=�O�=�O�=�O�=�O�
-�
-� �
-�
-�1�1�:�3�0�
-�
-�_[�b
-�
-�ُ*N1\/f'Y�[�Nw��_N�c00�\��	g*N
-NT�v�X��Qeg00+R�N_NO`��v �
-�
-�1�1�:�3�2�
-�
-����m
-�
-�ُ�yVR�g*Y͑���N �
-�
-�1�1�:�3�2�
-�
-�FTFTq�
-�
-�S_b�N�vf[!h>f�s�Q�_Y��v�eP�G�0R�N�_Y���p�v�eP�b�S�(ẀTx^~pPNxy�`OwV�`OwV�ُ�N���peg�N�bg�_@w�f'Y�v���peg�bُ*N���[teN�S0
-�
-�ُ�y�_`1\�Sb�N�y�_�1\�Sb�N�Q萅Q�e�v�N�y�_�}�6q���l	gZP�NHN
-�
-� �
-�
-�1�1�:�3�3�
-�
-�FTFTq�
-�
-�ُ�y�y�_HT�s(Wb��SO
-N�v1\/f�u��N�v(Wu�u
-�
-� �
-�
-�1�1�:�3�3�
-�
-�FTFTq�
-�
-�u}T�R��eg��1_���eg��
-Nm1�
-�
-� �
-�
-�1�1�:�3�4�
-�
-�FTFTq�
-�
-��k�N*N�_4Y��/f�N�y�l�R�(Wb�v�Q�_S_-N��epe*N�_4Y��epe�y�l�R�(W�g'Y�v�m�@wb�v3�l �
-�
-�1�1�:�3�4�
-�
-�_[�b
-�
-��NTTP[V00�T�T�T�T~�~�@b�N�vMRgbL��0TfNb��TMO^DQ^�Y��N��]f�v���N;Rw������	gُ*N#��N�v00
-N/fsQ
-NsQ��]�v�N�`�v�N00/f(WS�
-N�v�N��_{�L�S�
-N�v�N0ُMb/f-NS�L��0 �
-�
-�1�1�:�3�6�
-�
-����m
-�
-��NHN�Sf�_��'`bT� �
-�
-�1�1�:�3�6�
-�
-����m
-�
-�1\/fُ7h
-�
-� �
-�
-�1�1�:�3�7�
-�
-�FTFTq�
-�
-�b`q_�Tb�vMR��`S(ub�v�e���q_�Tb�v��SO�T�y�b�_�6qT��b
-N��wck�SZP�_-N�`ZP�v�N�`�ُ�y�w�v�e�N(Wb��
-N1\/f�u�(Wf[!h̑1\/f�mqN �
-�
-�1�1�:�3�7�
-�
-�FTFTq�
-�
-�b�[S��vt�\PYu(W�N�V�Tl
-N�SLe:N�S�b�N:N1\/f�N�V�Tl�1\�SZPSLe:N�S���N �
-�
-�1�1�:�3�8�
-�
-�FTFTq�
-�
-�^6r(W��X
-N��Ǐ�ُ7h�v�N�S�rQ��l	g
-��h0 �
-�
-�1�1�:�3�9�
-�
-�_[�b
-�
-��T�T0/f00/f9h,g/f���T�FOZP�Qeg�v�w�v_N/f:N�N�T��S�v00�
-N/fh�b��v�T�Y
-�
-� �
-�
-�1�1�:�3�9�
-�
-�_[�b
-�
-��T�T00/f000/f9h,g/f���T�FOZP�Qeg�v�N�`_N/f:N�N�T��S�v00�
-N/fh�b�
-N�v�T
-�
-��[00�l	g��'`�v�N�/f�l	gl���v0�l	gΘ���v00:N�NHN	gS�:N5��/f��
-N�v5�l001\/f�'`�vHT�s00l:Wߍs^8^�N1\/f
-NT00
-�
-� �
-�
-�1�1�:�4�0�
-�
-�FTFTq�
-�
-��St^_P[��V:Nُ7YNmX�c�_�v�N�`�Su�N�N�N�N�`��NTb(WNwYgbL���l�T��~�vǏzS_-N�N�N�S݋�f�w'Y^DQ�v�QV{/f��v�:N�NHN؏��gbL��
-�
-�
-�
-�1�1�:�4�1�
-�
-�FTFTq�
-�
-�ُMOgbL��Nb/f�N7h�v�N�
-N�wS��NHNMb/fwck�v �T  �
-�
-�1�1�:�4�2�
-�
-�_[�b
-�
-��T�T0
-�
-� �
-�
-�1�1�:�4�2�
-�
-�FTFTq�
-�
-�yY�S�=\ϑZP�`O�eT��/f��v�=\ϑZP*NA\ �
-�
-�1�1�:�4�2�
-�
-�_[�b
-�
-��T�T�T�T
-�
-� �
-�
-�1�1�:�4�4�
-�
-�FTFTq�
-�
-��St^7YNmX�Su�v�N�TbKNMR(Wf[!h̑b��SuZP�v�N/f�N7h�v0@b�NS_bwckf}vKNT�b��`HN	��b��ZP�NHN�N�ُ*N/fb��]�S�NZP;N�v0b��
-N��4xd���]�v���N�b�_����N�N���b��
-N��4xd��`��+R�N]�bb��`��+R�N�Tb�T�Tllh�b�
-N�v���y��ϑeg�n�؏/fwck�S~b0R�r�z�v�g'Y�v��*N��ϑeg�n �
-�
-�1�1�:�4�6�
-�
-�FTFTq�
-�
-��]�~�wS��Nُag_��p��FO/fb��
-N��	��bZP^6r��7h�v�N�p�^6rp�Ǐ�v��ُ*N/f�����]'Y�v�Rl�v��T�N�~�v������]�Q�_�v0 �
-�
-�1�1�:�4�6�
-�
-�FTFTq�
-�
-�
-�
-�
-�
-�1�1�:�4�7�
-�
-�FTFTq�
-�
-�R}YwR`^DQ(W_P[�̑�S�Nُ�N�k �
-�
-�1�1�:�4�8�
-�
-�FTFTq�
-�
-�l:N/f�R�@�:N@bu�u0��bu�u�N�b1\���SP�c�NN�b�vl�R0R�T̑�S�N0bُ*Nl�N�T̑eg�v�l/f�NHN�l/f�l�R��l�R�N�T̑eg��l�R�N�_�_eg0��b�v�_�_���[�Q��N�b�v�_�_/f�NHNbT �
-�
-�1�1�:�4�9�
-�
-�FTFTq�
-�
-�^6r���O-N�L��	T�e
-N)R���b�s(W
-N	T�N�1\�fb
-N-N �
-�
-�1�1�:�4�9�
-�
-����m
-�
-�im6qckl
-�
-�
-�
-�  ��N
-N�Q�[l�U_ꁤJ���U_�tet� �2�0�2�6�-�0�4�-�1�4� � 
-�
-�
-�
-�eQ �Am ��N �@b �� �J� �U_ ��V
-�
-�2�0�2�6�t^4�g1�4��e � �1�1�:�5�1� �  �1�7�:�4�0�
-�
-�0��YtQ���s ��
-0
-�
-��%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%�%
-�
-� �
-�
-�1�1�:�5�1�
-�
-�FTFTq�
-�
-�
-N���N:N�s(W'Y�[��eP�^�}Y�P��ck8^�'Y�[�_̑υ@w�c@w
-N�S���N�v���Nb��;`	g�N)YOr�S�Qeg �
-�
-�1�1�:�5�2�
-�
-�FTFTq�
-�
-�+R�`υ�+R�`���`O��
-N�N�`O_Nυ
-N�N0S_wck	N�~eg�v�eP�`O���`υ�`O���u��`O���`υ����yP`�`���S�N�b`OTlV0�S	g~g��S	gIQMb��㉳Q���y�u� �
-�
-�1�1�:�5�2�
-�
-�w(g �(����m)�
-�
-�fW6q
-�
-� �
-�
-�1�1�:�5�2�
-�
-�_[�b
-�
-��T�T�T�T00/f000@b�dk�_IQf@T00fWfWa�a� �
-�
-�1�1�:�5�2�
-�
-����m
-�
-��(����~��l
-NǏ�Ydk �
-�
-�
-�
-�1�1�:�5�3�
-�
-�FTFTq�
-�
-�Ǐz�_�u��FO/f�l�U_N�_�k܀
-�
-� �
-�
-�1�1�:�5�4�
-�
-�_[�b
-�
-��u�/fZ�{^�v�u��FO�l�U/fw�[�v�l�U[�TAS]�[�TAS]�[�TAS]�[�TAS]� �
-�
-�1�1�:�5�5�
-�
-�FTFTq�
-�
-�/f/f/f�}�6qُ�S݋MRJS�Sb؏�l����0R�FO/fTJS�S/fwa�S0R�N0[�{8�]�@�w[n  �
-�
-�1�1�:�5�9�
-�
-�_[�b
-�
-�}Y�_�_@T�ُ�y^e�N0�{_0r^�Q0f�Z �
-�
-�1�1�:�5�9�
-�
-�FTFTq�
-�
-�=�O� �=�O� �=�O� �a&quot;�^�Y
-�
-� �
-�
-�1�1�:�5�9�
-�
-�FTFTq�
-�
-�`O�N����bMb	g�_p�=��=��=��
-�
-� �
-�
-�1�1�:�5�9�
-�
-�FTFTq�
-�
-�*Y
-N�[f�N
-�
-� �
-�
-�1�2�:�0�0�
-�
-�_[�b
-�
-�
-Nbe�
-Nbe�^6r
-N�[f�b_N�S/fu�^}T��] �=�O� �=�O� �
-N�_^i`0
-N��O}T �=�G� �=�G�
-�
-� �
-�
-�1�2�:�0�2�
-�
-�w(g �(����m)�
-�
-�wck�vt/fNR�[�vu}TSO���NSO�v�t�N�e�x=�� �=�M� �=�M� �=�M�
-�
-� �
-�
-�1�2�:�0�2�
-�
-�FTFTq�
-�
-�^DQ�b�s(Wwck�a�_�V�g�N�bck(WZP�v�N�`�1\/f�b�V�T�gKN���v�e���])�w1�2�:�0�3�
-�
-�FTFTq�
-�
-�_N1\/f�bt�T��SOKN���v�e���])�w �
-�
-�1�2�:�1�8�
-�
-�}v�
-�
-�@�FTFT�� ,T@w`O�c��`O�v�SS��N�S�Q�_�v�rno�l�o�b�v~vOtz(W�R��|i_�a�l�V��� �
-�
-�
-�
-�1�2�:�2�1�
-�
-�_[�b
-�
-�^6r(W��*N��ϑLub���I{�N�eϑ�R�N[�rTYr]�[�rTYr]�=�� �=��
-�
-� �
-�
-�1�2�:�2�4�
-�
-�_[�b
-�
-�^DQ^�YKN���vُ�y�N�ve�EQ ��Oۏ�w�v*Y}YfU00
-�
-� �
-�
-�1�3�:�3�1�
-�
-�FTFTq�
-�
-�wck�Q�_
-N�vۏek���]/f	ga�S�v0b1u�NMRb�1�2�0�%`Qe�v�~�S�Tb�b�v3�5g�S��(W�NUO0W�e,T0RQe�bf��v�X�0�_-N�vP`�`l�
-N1\���o�S�Qeg���s(Wb�Q!k,T0RQe�bf��v�X��b��l�
-N�bQe�bf��v�X�Tb�v��*N�~�SeR�y�_0�N�P`�`
-N�Q1u�_-NGSw��ُ*N1\/f�OL��`O�����wS�`O�v�_`HN�N�6qT�N(Wr^�NHN06qTKNMRb�QNN}v)YZf
-N��Y(WY(WP`�`S_-N�0RbabaTb�b}v)Y�]�~�QNN��Y�_ck8^�vu;mTm�ZP�N��Q�c@wZf
-NGSw�P`�`�v�ePf[O�[�\��Q0R�S�u�v�eP�_�Yf[`N0 �
-�
-�1�3�:�3�2�
-�
-�FTFTq�
-�
-��N/f�NB\�NB\baba�ۏ�v�`O�v�Q�_��RRff�vɉ�[0R`O	g�l	gۏek�@b�Nw�v
-N��r^�:k:k�N�v�N�` �
-�
-�1�3�:�3�2�
-�
-�FTFTq�
-�
-��V:N`O����+R�N/f\�N����N��]/f'Y�N0`O�v�_0R�T�Nek	g�l	g�R�`O�N�[��YRRff�vw0R0 �
-�
-�1�3�:�3�3�
-�
-�FTFTq�
-�
-�ُMb/f^i%N�~
-N@b���N��n�O0 �
-�
-�1�3�:�3�3�
-�
-�FTFTq�
-�
-�:N�NHN	ga��S��V:NRRQe�bf��SǏ�N��X��Tw��b1\(Ww�b�v�_(W�T̑ �
-�
-�1�3�:�3�6�
-�
-�FTFTq�
-�
-�Qe�bf��v�X�/fY\�b�Q�_�vgqGr/f�Q\9h���S_`O�v�Q\�TY\
-N�Q�~T�v�eP���ُ*N�Q\1\�S�NS㉆N0 �
-�
-�1�3�:�3�6�
-�
-�_[�b
-�
-�=�M� �=�M� �=�M�
-�
-� �
-�
-�1�3�:�3�9�
-�
-�FTFTq�
-�
-��fck
-�
-�Qe�bf��v�X�/fY\�b�Q�_�vgqGr/f�Q\���S_`O�v�Q\�TY\
-N�Q�~T�v�eP���ُ*N�Q\1\�S�NS㉆N0�Q\�vS��1\/f�S�ef�vǏz0 �
-�
-�1�3�:�5�8�
-�
-�
-�
-�1�4�:�1�2�
-�
-�FTFTq�
-�
-�
-N�{w؏/f
-Nw�bɉ�_^i%N�~�^�b:N�k�N*NfNb��vG���KN�[�b�Nwck1\/f�Nُ̑�_�Yf[�_NsS\�Nُ̑p��Q�S0 �
-�
-�1�4�:�1�2�
-�
-�_[�b
-�
-�/f�v0/f�v
-�
-� �
-�
-�1�4�:�1�2�
-�
-�FTFTq�
-�
-�^6r���v�gY�v_N/f^i%N�~ �
-�
-�1�4�:�1�3�
-�
-�FTFTq�
-�
-�ُ�fN/f^�P2�2�t^�N/_/_Ǐeg�3�g�N(WwY�^�Y�[�^6r�Sb�N�S�S_�e�w�eg�^6r1\JTɋb���bpN�T�NWY��^i%N�~؏	g�NWY�gvz�z�v �
-�
-�1�4�:�1�3�
-�
-�FTFTq�
-�
-�^6r��ُ�NWY/f�e���e���w�egO�f��0FO/f�Y�g	gMR</span>N�^i%N�~\O:N�W@x���ُ�N���w�eg/f^�8^�v�k܀�T���v ��
-�1�4�:�1�4��
-�_[�b�
-�=�O� �=�O� �=�O� �=�O��
-� ��
-�1�4�:�4�3��
-�_[�b�
-��V�<code>w��N�_Y � �^6r؏(W�v�eP��S5�3��[��^i%N�~�b/f(W5�3�a�^S��N�v0��^i%N�T�v�eP�l Nb�X��� N/f��]�S�N�c6R�v0vQ�[b��O/f^y	g�p���N0FO/feU�� N�a��e�l	g�R+Y�_N�l	gt�FO��Ol�R �a�w��	g�N0^6rY�_�_�v�^6rMb��Sۏeg�NMO0@b�N^6r�g�_�_�v1\/fb�N��Y��eg0[�rTYr]�[�rTYr]�[�TAS]�[�TAS]�eg0=�� �=�� �=�O� �=�O� � � � � �1�4�:�4�6� � �_[�b � ��+o+ovQ�O܏nQ�b�NqQT�R�R'T0؏}Y^6r/fvz�z�v04x�NR����NR0ASt^:Ng[�wP{]�[�wP{]�[�*Y3�]�[�*Y3�]� � � �1�4�:�5�3� � � � �1�4�:�5�5� � ����m � ��RY��N�v�N6q Nu � ���@b��=\=\�� NOO � ��0�0|��fck�Qe�bf��v�X�/fY\�b�Q�_�vgqGr/f�Q\���S_</code>O�v�Q\�TY<br/>
-N�Q�~T�v�eP���ُ</em>N�Q\1\�S�NS㉆N0�Q\�vS��1/f�S�ef�vǏz0�
-�1�4�:�5�6��
-����m�
-��k<em>N�N�vb����b�lLu ��
-��
-�1�4�:�5�7��
-����m�
-��Nw��R�l�
-��
-�1�7�:�3�5��
-�FTFTq��
-�</em>Y}Y�s�N�
-� ��
-�1�7�:�3�5��
-�FTFTq��
-�1/f�����Rl�
-� ��
-�1�7�:�4�0��
-�_[�b�
-�Tb��f}Y�s�
-�  ��N
-N�Q�[l�U_ꁤJ���U_�tet� �2�0�2�6�-�0�4�-�1�4� ��
-��
-�</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="sidebar-zone sidebar-content-zone" id="sidebar-content-zone"><button class="sidebar-zone-toggle" data-zone-toggle="content" aria-label="Toggle content zone"><span class="zone-toggle-label">内容</span><span class="zone-toggle-icon">▲</span></button><div class="sidebar-zone-body"></div></div><div class="sidebar-zone sidebar-graph-zone" id="sidebar-graph-zone"><button class="sidebar-zone-toggle" data-zone-toggle="graph" aria-label="Toggle graph zone"><span class="zone-toggle-label">关系图谱</span><span class="zone-toggle-icon">▲</span></button><div class="sidebar-zone-body"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
-                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
-                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
-                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
-                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
-                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
-                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
-                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
-                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
-                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
-                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
-</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
-</script><script src="/static/katex-copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../postscript.js" type="module" data-persist="true"></script></html>
