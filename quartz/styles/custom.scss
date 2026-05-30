@@ -1,4 +1,4 @@
-﻿/* 文姬 · 智慧树视觉 · 唯一样式入口 · 最后更新: DartSass双冒号修复 2026-05-30 */
+﻿/* 文姬 · 智慧树视觉 · 唯一样式入口 · 最后更新: folder-icon18px+baseUrl 2026-05-30 */
 /* ============================================================
    Tree of Wisdom · custom.scss
    文姬重建 v2 · 2026-05-27
@@ -285,8 +285,8 @@ body:before {
 .folder-icon {
   color: #b8860b;
   opacity: 0.6;
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   margin-right: 5px;
   flex-shrink: 0;
   transition: transform 0.2s, opacity 0.2s;
