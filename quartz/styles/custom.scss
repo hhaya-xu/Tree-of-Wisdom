@@ -288,9 +288,9 @@ body:before {
 
 /* 文件夹图标 */
 .folder-container svg.folder-icon {
-  width: 18px !important;
-  height: 18px !important;
-  min-width: 18px !important;
+  width: 14px !important;
+  height: 14px !important;
+  min-width: 14px !important;
   color: var(--accent) !important;
   margin-right: 8px !important;
 }
@@ -298,10 +298,10 @@ body:before {
 /* 文件夹标题 */
 .folder-title {
   font-family: var(--codeFont) !important;
-  font-size: 10px !important;
+  font-size: 12px !important;
   font-weight: 500 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
+  letter-spacing: 0.05em !important;
   color: var(--muted) !important;
   transition: color 0.15s;
 }

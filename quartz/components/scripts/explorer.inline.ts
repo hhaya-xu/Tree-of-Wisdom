@@ -129,6 +129,24 @@ function createFolderNode(
     span.textContent = node.displayName
   }
 
+  // Inject folder-count badge
+  const childCount = node.children.length
+  if (childCount > 0) {
+    const existingCount = folderContainer.querySelector(".folder-count")
+    if (!existingCount) {
+      const countSpan = document.createElement("span")
+      countSpan.className = "folder-count"
+      countSpan.textContent = String(childCount)
+      const titleDiv = folderContainer.querySelector("div") as HTMLElement
+      if (titleDiv) {
+        const btn = titleDiv.querySelector(".folder-button, .folder-title") as HTMLElement
+        if (btn && btn.parentNode) {
+          btn.parentNode.appendChild(countSpan)
+        }
+      }
+    }
+  }
+
   // if the saved state is collapsed or the default state is collapsed
   const isCollapsed =
     currentExplorerState.find((item) => item.path === folderPath)?.collapsed ??
