@@ -15,6 +15,18 @@
 
 @import 'fonts.scss';
 
+/* ---- 文姬 v5 · 7变量体系 ---- */
+:root {
+  --bg:      #ede3cf;
+  --fg:      #1c1814;
+  --muted:   #6b5f52;
+  --border:  #d4c9b0;
+  --accent:  #b8860b;
+  --surface: #f4efe2;
+  --code-bg: #f4efe2;
+}
+
+
 /* ---- 0. 视口锁定 ---- */
 html, body {
   margin: 0;
@@ -42,15 +54,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* 纸纹 —— CSS 噪点叠加，模拟手工纸肌理 */
+/* 纸纹 —— 文姬 v5（baseFrequency 0.85）*/
 body:before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
   opacity: 0.6;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
 }
 
 /* ---- 2. 布局：桌面端三栏 Grid ---- */
@@ -164,65 +176,64 @@ body:before {
   background: rgba(196, 168, 92, 0.3);
 }
 
-/* ---- 4. 左栏：暖纸 + 文件树 ---- */
+/* ---- 4. 左栏：文姬 v5 · docs-page 模式 ---- */
 .left.sidebar {
   background: #f4efe2;
   border-right: 1px solid #d4c9b0;
-  padding: 0;
+  padding: 24px 0 32px !important;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-/* Explorer header — 对标 preview-v4 浏览区 */
+/* Explorer header — 浏览标题 */
 .title-button {
   display: flex !important;
   align-items: center;
   gap: 8px;
-  padding: 20px 20px 0 !important;
+  padding: 0 20px 10px !important;
   font-family: var(--codeFont) !important;
   font-size: 10px !important;
-  font-weight: 400 !important;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: #6b5f52 !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: var(--muted) !important;
   width: 100%;
   border-bottom: none !important;
 }
 
 .title-button h2 {
-  font-family: inherit !important;
   font-size: inherit !important;
   font-weight: inherit !important;
-  margin: 0 !important;
-  color: inherit !important;
-  text-transform: inherit;
-  letter-spacing: inherit;
+  font-family: inherit !important;
+  text-transform: inherit !important;
+  letter-spacing: inherit !important;
 }
 
 .title-button .fold {
-  opacity: 0.5;
   width: 11px !important;
   height: 11px !important;
-  margin-left: 0 !important;
+  opacity: 0.6;
 }
 
 .title-button:after {
-  content: '';
-  flex: 1;
+  content: "";
+  display: inline-block;
+  width: 100%;
   height: 0.5px;
-  background: #d4c9b0;
-  margin-left: 10px;
+  background: var(--border);
+  margin-left: 12px;
+  vertical-align: middle;
 }
 
 /* 文件夹条目计数徽章 */
 .folder-count {
-  margin-left: auto;
-  font-family: var(--codeFont);
-  font-size: 9.5px;
-  color: #6b5f52;
-  opacity: 0.6;
-  flex-shrink: 0;
+  font-family: var(--codeFont) !important;
+  font-size: 9.5px !important;
+  color: #a09484 !important;
+  margin-left: auto !important;
+  padding-left: 8px !important;
+  opacity: 0.8;
 }
 
 /* Explorer 可滚动区域 */
@@ -230,15 +241,18 @@ body:before {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 24px 20px 32px;
+  padding: 0 20px !important;
 }
 
 /* 自定义滚动条 */
-.explorer .explorer-content::-webkit-scrollbar { width: 4px; }
-.explorer .explorer-content::-webkit-scrollbar-track { background: transparent; }
-.explorer .explorer-content::-webkit-scrollbar-thumb { background: #d4c9b0; border-radius: 2px; }
-.explorer .explorer-content::-webkit-scrollbar-thumb:hover { background: #b8860b; }
-.explorer .explorer-content { scrollbar-width: thin; scrollbar-color: #d4c9b0 transparent; }
+.left.sidebar::-webkit-scrollbar { width: 4px !important; }
+.left.sidebar::-webkit-scrollbar-track { background: transparent !important; }
+.left.sidebar::-webkit-scrollbar-thumb { background: var(--border) !important; border-radius: 2px !important; }
+.left.sidebar::-webkit-scrollbar-thumb:hover { background: var(--accent) !important; }
+.left.sidebar {
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--border) transparent !important;
+}
 
 /* 清除 explorer-ul 默认样式 */
 .explorer-ul {
@@ -247,90 +261,81 @@ body:before {
   padding: 0;
 }
 
-/* 分组区间距 */
-.explorer-ul > li {
-  margin-bottom: 8px;
+/* 文件夹容器 */
+.folder-container {
+  padding: 8px 0 4px !important;
+  margin-bottom: 20px !important;
+  border-bottom: 0.5px solid var(--border) !important;
+  border-radius: 5px !important;
+  transition: background 0.15s;
+}
+.folder-container:hover {
+  background: var(--surface) !important;
+}
+.folder-container:hover .folder-title {
+  color: var(--accent) !important;
 }
 
-/* 文件夹标题：等宽9.5px大写 + 下划线 */
 .folder-container button,
 .folder-container .folder-button {
-  font-family: var(--codeFont) !important;
-  font-size: 9.5px !important;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: #6b5f52 !important;
-  font-weight: 400 !important;
   background: none;
   border: none;
-  padding: 8px 0 4px 0;
-  border-bottom: 0.5px solid #d4c9b0;
+  padding: 0;
   width: 100%;
   text-align: left;
   cursor: pointer;
 }
-.folder-container button span,
-.folder-container .folder-button span,
-.folder-container .folder-title {
-  font-family: var(--codeFont) !important;
-  font-size: 9.5px !important;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: #6b5f52 !important;
-  font-weight: 400 !important;
+
+/* 文件夹图标 */
+.folder-container svg.folder-icon {
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  color: var(--accent) !important;
+  margin-right: 8px !important;
 }
 
-/* 文件夹图标琥珀色 */
-.folder-container svg.folder-icon,
-.folder-icon {
-  color: #b8860b;
-  opacity: 0.6;
-  width: 18px;
-  height: 18px;
-  margin-right: 5px;
-  flex-shrink: 0;
-  transition: transform 0.2s, opacity 0.2s;
+/* 文件夹标题 */
+.folder-title {
+  font-family: var(--codeFont) !important;
+  font-size: 10px !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color: var(--muted) !important;
+  transition: color 0.15s;
 }
 
 /* 嵌套文件夹左边线 */
 .explorer-content .folder-outer > ul {
-  border-left: 1px solid #d4c9b0;
-  margin: 0 0 0 0;
-  padding-left: 0;
-  overflow: visible;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  border-left: 1px solid var(--border) !important;
+  margin-left: 8px !important;
 }
 
-/* 文件条目 */
-.explorer-ul li > a,
+/* 文件条目（主条目）*/
 .explorer-content ul li > a {
+  padding: 5px 8px !important;
+  border-radius: 5px !important;
+  border-left: 2px solid transparent !important;
+  font-size: 13.5px !important;
+  line-height: 1.5 !important;
+  color: var(--fg) !important;
+  transition: background 0.12s, border-color 0.12s;
   display: flex;
   align-items: center;
-  padding: 5px 10px;
-  margin: 1px 0;
-  color: #4a3f35;
   text-decoration: none;
-  font-size: 13.5px;
-  line-height: 1.5;
-  border-left: 2px solid transparent;
-  border-radius: 4px;
-  transition: all 0.18s ease;
-
-  /* 琥珀 › 箭头 */
-  &:before {
-    content: "\203A";
-    color: #b8860b;
-    margin-right: 7px;
-    font-size: 15px;
-    font-weight: 300;
-    opacity: 0.5;
-    flex-shrink: 0;
-  }
 }
-.explorer-ul li > a:hover,
+.explorer-content ul li > a:before {
+  content: "\203A" !important;
+  margin-right: 6px !important;
+  color: var(--accent) !important;
+  font-weight: 600 !important;
+}
 .explorer-content ul li > a:hover {
-  color: #b8860b;
-  background: rgba(184, 134, 11, 0.08);
-  border-left-color: #b8860b;
+  background: var(--surface) !important;
+  border-left-color: var(--accent) !important;
 }
 .explorer-ul li > a.active,
 .explorer-content ul li > a.active {
@@ -340,25 +345,14 @@ body:before {
   border-left-color: #b8860b;
 }
 
-/* 嵌套子条目缩进 */
+/* 嵌套子条目 */
 .folder-outer .content > li > a {
   font-size: 13px !important;
-  padding-left: 24px !important;
-  color: #6b5f52 !important;
+  color: var(--muted) !important;
+  padding-left: 16px !important;
 }
-
-/* 嵌套竖线引导 */
-.folder-outer > ul > li {
-  position: relative;
-}
-.folder-outer > ul > li:before {
-  content: "";
-  width: 1.5px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(to bottom, #d4c9b0 0%, rgba(212,201,176,0.15) 100%);
+.folder-outer .content > li > a:hover {
+  color: var(--fg) !important;
 }
 
 /* ---- 5. 中栏：透明底，内容居中 ---- */
