@@ -140,7 +140,7 @@ export default ((userOpts?: Partial<Options>) => {
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="folder-icon"
+                class="folder-icon" width="14" height="14"
               >
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>

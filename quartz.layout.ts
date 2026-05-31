@@ -41,7 +41,7 @@ export const defaultContentPageLayout: PageLayout = {
 }
 
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs()],
+  beforeBody: [],
   left: [
     Component.ContentMeta(),
     Component.MobileOnly(Component.Spacer()),
