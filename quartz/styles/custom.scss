@@ -27,7 +27,7 @@
 }
 
 
-/* ---- 0. 视口锁定 ---- */
+/* @zone:viewport ---- 0. 视口锁定 ---- */
 html, body {
   margin: 0;
   padding: 0;
@@ -40,7 +40,7 @@ html, body {
   overflow: hidden;
 }
 
-/* ---- 1. 纸张 —— 暖纸渐变 + 肌理 ---- */
+/* @zone:paper ---- 1. 纸张 —— 暖纸渐变 + 肌理 ---- */
 body {
   background: linear-gradient(
     175deg,
@@ -65,7 +65,7 @@ body:before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
 }
 
-/* ---- 2. 布局：桌面端三栏 Grid ---- */
+/* @zone:layout ---- 2. 布局：桌面端三栏 Grid ---- */
 @media (min-width: 1200px) {
   #quartz-body {
     display: grid;
@@ -125,7 +125,7 @@ body:before {
   }
 }
 
-/* ---- 3. 顶栏：暗色，金线底边 ---- */
+/* @zone:topbar ---- 3. 顶栏：暗色，金线底边 ---- */
 .page-header {
   position: sticky;
   top: 0;
@@ -176,7 +176,7 @@ body:before {
   background: rgba(196, 168, 92, 0.3);
 }
 
-/* ---- 4. 左栏：文姬 v5 · docs-page 模式 ---- */
+/* @zone:left-sidebar ---- 4. 左栏：文姬 v5 · docs-page 模式 ---- */
 .left.sidebar {
   background: #f4efe2;
   border-right: 1px solid #d4c9b0;
@@ -355,7 +355,7 @@ body:before {
   color: var(--fg) !important;
 }
 
-/* ---- 5. 中栏：透明底，内容居中 ---- */
+/* @zone:center ---- 5. 中栏：透明底，内容居中 ---- */
 .center {
   background: transparent;
   padding: 2.5rem 3rem;
@@ -371,7 +371,7 @@ body:before {
   max-width: 56ch;
 }
 
-/* ---- 6. 右栏：暖纸 + 图谱 ---- */
+/* @zone:right-sidebar ---- 6. 右栏：暖纸 + 图谱 ---- */
 .right.sidebar {
   background: linear-gradient(
     180deg,
@@ -381,7 +381,7 @@ body:before {
   border-left: 0.5px solid rgba(196, 168, 92, 0.2);
 }
 
-/* ---- 7. 页脚 ---- */
+/* @zone:footer ---- 7. 页脚 ---- */
 footer {
   background: #e4dfd1;
   color: #6b5f52;
