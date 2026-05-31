@@ -132,8 +132,8 @@ export default ((userOpts?: Partial<Options>) => {
             <div class="folder-container">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
+                width="11"
+                height="11"
                 viewBox="5 8 14 8"
                 fill="none"
                 stroke="currentColor"
