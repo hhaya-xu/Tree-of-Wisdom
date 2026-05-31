@@ -176,6 +176,11 @@ body:before {
   background: rgba(196, 168, 92, 0.3);
 }
 
+/* 面包屑安全兜底 */
+.breadcrumb-container {
+  display: none !important;
+}
+
 /* @zone:left-sidebar ---- 4. 左栏：文姬 v5 · docs-page 模式 ---- */
 .left.sidebar {
   background: #f4efe2;
@@ -242,6 +247,15 @@ body:before {
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0 20px !important;
+}
+
+/* 日期+阅读时间 */
+.left.sidebar .content-meta {
+  display: block !important;
+  color: var(--muted) !important;
+  font-size: 14px !important;
+  margin: 0 0 24px !important;
+  padding: 0 20px 16px !important;
 }
 
 /* 自定义滚动条 */
