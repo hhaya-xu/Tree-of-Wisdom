@@ -1,0 +1,14 @@
+@mixin emit {
+  html[data-oqc-skin="iruwangsu-archive"] {
+    body { background: var(--irw-paper); color: var(--irw-text); font-family: var(--irw-serif); }
+    .page > #quartz-body { background: var(--irw-paper); grid-template-columns: 260px minmax(0, 1fr); grid-template-areas: "grid-sidebar-left grid-header" "grid-sidebar-left grid-center" "grid-sidebar-left grid-footer"; }
+    .left.sidebar { background: var(--irw-warm); border-right: 1px solid var(--irw-rule); } .right.sidebar { display: none; }
+    .irw-hero { background: linear-gradient(135deg, var(--irw-blue-deep), var(--irw-blue)); color: white; padding: clamp(2rem, 8vw, 6rem); position: relative; overflow: hidden; }
+    .irw-hero__meta { font: 600 .72rem/1 var(--irw-mono); letter-spacing: .14em; opacity: .8; } .irw-hero h1 { color: white; font-size: clamp(2.8rem, 9vw, 7rem); margin: 1rem 0 .5rem; } .irw-hero p { color: var(--irw-blue-pale); font-family: var(--irw-ui); }
+    .irw-hero__circles { display: flex; gap: 1rem; margin-top: 2rem; } .irw-hero__circles i { width: 3rem; height: 3rem; border-radius: 50%; background: var(--irw-blue-bright); border: 1px solid rgba(255,255,255,.65); } .irw-hero__circles i:nth-child(2) { background: var(--irw-red); } .irw-hero__circles i:nth-child(3) { background: var(--irw-paper); }
+    .irw-color-ribbon { display: grid; grid-template-columns: repeat(3, 1fr); height: .45rem; } .irw-color-ribbon i:nth-child(1) { background: var(--irw-blue); } .irw-color-ribbon i:nth-child(2) { background: var(--irw-red); } .irw-color-ribbon i:nth-child(3) { background: var(--irw-blue-bright); }
+    .page > #quartz-body .center { min-width: 0; } .irw-hero ~ .article-title, .irw-hero ~ .content-meta, .irw-hero ~ .tag-list { display: none; } :focus-visible { outline: 3px solid var(--irw-red); outline-offset: 3px; }
+  }
+  @media all and (max-width: 800px) { html[data-oqc-skin="iruwangsu-archive"] .page > #quartz-body { grid-template-columns: minmax(0, 1fr); grid-template-areas: "grid-header" "grid-center" "grid-footer"; } }
+  @media (prefers-reduced-motion: reduce) { html[data-oqc-skin="iruwangsu-archive"] *, html[data-oqc-skin="iruwangsu-archive"] *::before, html[data-oqc-skin="iruwangsu-archive"] *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+}

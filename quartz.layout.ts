@@ -1,3 +1,6 @@
+// OQC IRW HERO START
+import IruwangsuHero from "./quartz/components/oqc/IruwangsuHero";
+// OQC IRW HERO END
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
@@ -17,6 +20,8 @@ export const sharedPageComponents: SharedLayout = {
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
+    // OQC IRW HERO ENTRY
+    IruwangsuHero(),
     Component.ConditionalRender({
       component: Component.Breadcrumbs(),
       condition: (page) => page.fileData.slug !== "index",

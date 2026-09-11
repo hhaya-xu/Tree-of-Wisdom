@@ -1,0 +1,10 @@
+@mixin emit {
+  html[data-oqc-skin="iruwangsu-archive"] {
+    --irw-blue: #0846d9; --irw-blue-deep: #062d91; --irw-blue-bright: #3d72ee; --irw-blue-pale: #d7e2ff;
+    --irw-paper: #fffdf8; --irw-warm: #f4f1e8; --irw-ink: #091a39; --irw-text: #34415a; --irw-muted: #67718a;
+    --irw-red: #e43c46; --irw-rule: rgba(9, 26, 57, 0.18);
+    --irw-serif: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif; --irw-ui: system-ui, "Microsoft YaHei", sans-serif; --irw-mono: "IBM Plex Mono", "Cascadia Mono", monospace;
+    --background-primary: var(--irw-paper); --background-secondary: var(--irw-warm); --text-normal: var(--irw-text); --text-muted: var(--irw-muted); --text-accent: var(--irw-blue);
+  }
+  html[data-oqc-skin="iruwangsu-archive"][saved-theme="dark"] { --irw-paper: #0b1530; --irw-warm: #111b34; --irw-ink: #f5f1e8; --irw-text: #d7ddeb; --irw-muted: #a7b0c5; --irw-rule: rgba(215, 226, 255, 0.2); }
+}
