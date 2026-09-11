@@ -1,5 +1,5 @@
 // OQC IRW HERO START
-import IruwangsuHero from "./quartz/components/oqc/IruwangsuHero";
+import IruwangsuHero from "./quartz/components/oqc/IruwangsuHero"
 // OQC IRW HERO END
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
