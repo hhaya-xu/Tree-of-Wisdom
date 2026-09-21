@@ -1,12 +1,8 @@
 @use "./base.scss";
-// OQC CORE PRESENTATION USES START
-@use "./oqc-core-features.scss" as oqcCoreFeatures;
-@use "./oqc-iruwangsu-tokens.scss" as oqcIrwTokens;
-@use "./oqc-iruwangsu-visual.scss" as oqcIrwVisual;
-// OQC CORE PRESENTATION USES END
+// OQC VISUAL PACKAGE USES START
+@use "./oqc-visual-package.scss" as oqcVisualPackage;
+// OQC VISUAL PACKAGE USES END
 
-// put your custom CSS here!
-
-@include oqcCoreFeatures.emit;
-@include oqcIrwTokens.emit;
-@include oqcIrwVisual.emit;
+// OQC VISUAL PACKAGE INCLUDES START
+@include oqcVisualPackage.emit;
+// OQC VISUAL PACKAGE INCLUDES END
