@@ -406,13 +406,6 @@
       font: 400 0.93rem/1.95 var(--irw-serif);
     }
 
-    .center > .popover-hint > .page-listing {
-      box-sizing: border-box;
-      width: min(100%, 835px);
-      margin: 0 auto;
-      padding: 48px 50px 62px 165px;
-    }
-
     .center > article::before {
       content: "ARCHIVE 00\A项目导览";
       position: absolute;
@@ -691,10 +684,6 @@
         height: 12px;
       }
       .center > article {
-        width: 100%;
-        padding: 36px 22px 50px;
-      }
-      .center > .popover-hint > .page-listing {
         width: 100%;
         padding: 36px 22px 50px;
       }
